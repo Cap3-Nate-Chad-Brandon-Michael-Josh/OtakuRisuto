@@ -1,0 +1,1 @@
+//makes routes only be accessible by people who are not logged in

@@ -1,0 +1,1 @@
+//should give a list of suggestions for the purpose of prefilling some anime lists that someone might be interested in. Should occur during registration process
