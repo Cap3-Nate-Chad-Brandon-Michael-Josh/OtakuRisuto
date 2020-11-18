@@ -1,0 +1,82 @@
+/* Title */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,900&display=swap');
+/* buttons */
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
+*{
+    margin:0px;
+    text-align: center;
+    background-color: ;
+}
+.Title{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 80px;
+    
+}
+
+nav{
+    
+    padding: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-shadow: 0px 3px #FF0000,  3px 0px #00e1ffd8;;
+    font-size:60px;
+    color:rgb(251, 251, 251);
+    background-color: rgb(0, 0, 0);
+}
+h2{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-shadow: 0px 3px #FF0000,  3px 0px #00e1ffd8;;
+    font-size:60px;
+    color:rgb(251, 251, 251);
+    
+}
+a{  
+    /* font-family: 'Barlow Condensed', sans-serif; */
+    text-shadow: 0px 3px #FF0000,  3px 0px #00e1ffd8;;
+    /* font-family: 'Barlow Condensed', sans-serif; */
+    font-size:50px;
+    color:rgb(251, 251, 251);
+    text-decoration: none;
+    font-family: 'Modak', cursive;
+}
+
+.Login{
+    margin: 15px;
+    font-size: 20px;
+}
+
+.Sign-up{
+    margin:15px;
+    font-size: 20px;
+}
+
+input{
+    width: 30%;
+    height: 30px;
+    border-radius:4px;
+    background-color: white;
+}
+
+button{
+    width:20%;
+    height:30px;
+    color:rgba(0, 0, 0, 0.767);
+    border-radius:4px;
+    background-color: white;
+    margin: 4px;
+}
+
+p{
+    
+    font-size:40px;
+    /* background-color: rgba(253, 59, 0, 0.63); */
+    color:white;
+}
+
+.bodyPic{
+    background-image: url(../../img/animeCover.png);
+}
+
+body{
+    background-color: black;
+}

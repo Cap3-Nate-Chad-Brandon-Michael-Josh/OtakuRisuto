@@ -4,12 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { OtakuProvider } from './contexts/OtakuContext'
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <OtakuProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </OtakuProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,22 +1,26 @@
 // Landing Route container
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext'
+import './LandingRoute.css'
 
 class LandingRoute extends Component {
     static contextType = OtakuContext
 
     render(){
         return(
-            <section clalssName='LandingRoute'>
-                {/* {this.context.test} */}
-                <h1>Welcome to OtakuRisuto!</h1>
-                <Link to={'/login'}>
-                    Login
+            <section className='LandingRoute'>
+                    <section className="bodyPic">
+            <nav>
+                <Link className='Login' to={'/login'}>
+                    Login 
                 </Link>
-                <Link to={'/register'}>
-                Sign Up
-                </Link>
+                <Link className='Sign-up' to={'/register'}>
+                Sign Up 
+                </Link> <br></br>
+                
+            </nav>
+            <h2>Welcome to OtakuRisuto!</h2>
                 <p>Otaku Risuto allows you to keep track of your favorite anime, which ones you have seen, which ones you want to see, 
         and any other type of list you want. It also helps you pick what to watch next! Just go to the list and click the anime roulette button!</p>
 
@@ -25,7 +29,11 @@ class LandingRoute extends Component {
                 >
                     Dashboard
                 </Link>
+            
+                </section>
+                <footer>
 
+                </footer>
             </section>
         )
     }

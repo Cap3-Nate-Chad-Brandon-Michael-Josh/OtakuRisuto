@@ -23,7 +23,8 @@ const KitsuApiService = {
        data[i].attributes.slug <-- for title
        data[i].attributes.description,
        data[i].attributes.averageRating, <-- Some titles have null as the value
-       data[i].attributes.posterImage.(tiny, small, medium, large, original) <-- one of */
+       data[i].attributes.posterImage.(tiny, small, medium, large, original) <-- one of
+       data[i].attributes.episodeCount */
     getAnimesBySearchTerm(searchTerm) {
         return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}`, {
             headers: {
