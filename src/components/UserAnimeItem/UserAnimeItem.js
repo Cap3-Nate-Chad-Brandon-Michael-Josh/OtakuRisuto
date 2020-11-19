@@ -4,20 +4,32 @@
 import React, { Component } from 'react'
 
 export default class UserAnimeItem extends Component {
+  state = {
+    expanded: false,
+  }
+
+  // this function is responsible for sending the index 
+  // up to the parent component's state
+  handleExpand = () => {
+    this.props.updateExpandedItem(this.props.index)
+  }
+
   render() {
     //asuming all anime details will be passed in from the parent component
-    const { } = this.props
+    const { title, description, imageUrl, rating, episodeCount, expand } = this.props
     return (
-      <div className='animeItemContainer'>
+      <div onClick={this.handleExpand} className='animeItemContainer'>
         <div className='animeItemHeader'>
-          <h2>Title of Anime</h2>
+          <h2>{title}</h2>
         </div>
-        <div className='animeItemMain'>
-          <span>Description</span>
-          <span>Genre</span>
-          <span>Rating</span>
-          <span>Episode Count</span>
+        { expand && 
+        <div className='animeItemExpanded'>
+          <span>{description}</span>
+          <span>{imageUrl }</span>
+          <span>{rating}</span>
+          <span>{episodeCount}</span>
         </div>
+        }
       </div>
     )
   }
