@@ -6,16 +6,52 @@
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
 
+// REMEMBER TO UNALTER HEADER AFTER TESTING
+
 class SearchBar extends Component {
     state = {
         error: null,
+        searchTerm: '',
+        searchOption: '',
     }
 
     static contextType = OtakuContext
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('search submitted');
+        this.context.setSearchTerm(this.state.searchTerm);
+        this.context.setSearchOption(this.state.searchOption);
+    }
+
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value})
+    }    
+
     render() {
         return (
-            <div></div>
+            <div>
+                <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <label htmlFor='search-bar'>Search for your favorite anime, friends or lists</label>
+                    <br/>
+                    <input
+                        name='searchTerm'
+                        type='text'
+                        htmlFor='search-bar'
+                        onChange={this.handleChange}
+                        value={this.state.searchTerm}
+                        required />                    
+                    <br/>
+                    <select name='searchOption' onChange={this.handleChange} required>
+                        <option value=''>--Choose one--</option>
+                        <option value='animes'>Animes</option>
+                        <option value='users'>Users</option>
+                        <option value='lists'>Lists</option>
+                    </select>
+                    <br/>
+                    <button type='submit'>Search!</button>
+                </form>
+            </div>
         )
     }
 }

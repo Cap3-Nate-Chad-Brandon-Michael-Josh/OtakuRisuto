@@ -6,10 +6,14 @@ import IdleService from '../services/idle-service';
 
 const OtakuContext = React.createContext({
   user: {},
-  error: null,  
+  error: null,
+  searchTerm: '',
+  searchOption: '',  
   setError: () => {},
   clearError: () => {},
-  setUser: () => {}, 
+  setUser: () => {},
+  setSearchTerm: () => {},
+  setSearchOption: () => {}, 
   processLogin: () => {},
   processLogout: () => {},
 })
@@ -20,35 +24,22 @@ export class OtakuProvider extends Component {
     super(props)
     const state = { 
       user: {}, 
-      error: null 
+      error: null,
+      searchTerm: '',
+      searchOption: '', 
     }
 
     const jwtPayload = TokenService.parseAuthToken()
 
     if (jwtPayload)
       state.user = {
-        id: jwtPayload.user_id,
-        name: jwtPayload.name,
+        id: jwtPayload.user_id,        
         username: jwtPayload.sub,
       }
 
     this.state = state;
     IdleService.setIdleCallback(this.logoutBecauseIdle)
-  }
-
-  componentDidMount() {
-    if (TokenService.hasAuthToken()) {
-      IdleService.regiserIdleTimerResets()
-      TokenService.queueCallbackBeforeExpiry(() => {
-        this.fetchRefreshToken()
-      })               
-    }
-  }
-
-  componentWillUnmount() {
-    IdleService.unRegisterIdleResets()
-    TokenService.clearCallbackBeforeExpiry()
-  }
+  }  
 
   setError = error => {
     console.error(error)
@@ -63,51 +54,36 @@ export class OtakuProvider extends Component {
     this.setState({ user })
   }
 
+  setSearchTerm = searchTerm => {
+    this.setState({ searchTerm })
+  }
+
+  setSearchOption = searchOption => {
+    this.setState({ searchOption })
+  }
+
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
     this.setUser({
-      id: jwtPayload.user_id,
-      name: jwtPayload.name,
+      id: jwtPayload.user_id,      
       username: jwtPayload.sub,
-    })
-    IdleService.regiserIdleTimerResets()
-    TokenService.queueCallbackBeforeExpiry(() => {
-      this.fetchRefreshToken()
-    })
+    })    
   }
 
   processLogout = () => {
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
+    TokenService.clearAuthToken()    
     this.setUser({})
-  }
-
-  logoutBecauseIdle = () => {
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-    this.setUser({ idle: true })
-  }
-
-  fetchRefreshToken = () => {
-    AuthApiService.refreshToken()
-      .then(res => {
-        TokenService.saveAuthToken(res.authToken)
-        TokenService.queueCallbackBeforeExpiry(() => {
-          this.fetchRefreshToken()
-        })
-      })
-      .catch(err => {
-        this.setError(err)
-      })
-  }
+  } 
 
   render() {
     const value = {
       user: this.state.user,
-      error: this.state.error,      
+      error: this.state.error,
+      searchTerm: this.state.searchTerm,
+      searchOption: this.state.searchOption,
+      setSearchTerm: this.setSearchTerm,
+      setSearchOption: this.setSearchOption,      
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
