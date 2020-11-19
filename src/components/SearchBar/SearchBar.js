@@ -5,8 +5,8 @@
     in ComponentDidMount for respective redirect, make api call */
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
+import  { Redirect, withRouter } from 'react-router-dom';
 
-// REMEMBER TO UNALTER HEADER AFTER TESTING
 
 class SearchBar extends Component {
     state = {
@@ -22,6 +22,7 @@ class SearchBar extends Component {
         console.log('search submitted');
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
+        this.props.history.push('/results')
     }
 
     handleChange = (event) => {
@@ -56,4 +57,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar
+export default withRouter(SearchBar);

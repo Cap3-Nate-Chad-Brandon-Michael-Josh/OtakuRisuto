@@ -7,21 +7,22 @@ const KitsuAnimeItem = (props) => {
         return (
             <div className='anime-card'>
                 {/* Prop variable names subject to change */}
-                <img src={props.anime.posterImage.tiny && props.anime.posterImage.tiny} alt={props.anime.title && props.anime.title} />
-                <p>{props.anime.title && props.anime.title}</p>
+                <img src={props.anime && props.anime.attributes.posterImage.tiny} 
+                alt={props.anime && props.anime.attributes.canonicalTitle} />
+                <p>{props.anime && props.anime.attributes.canonicalTitle}</p>
             </div>
         )
     }
     return (
         <div>
-            <img src={props.anime.posterImage.medium && props.anime.posterImage.medium} alt={props.anime.title && props.anime.title} />
-            <h2>{props.anime.title && props.anime.title}</h2>
+            <img src={props.anime && props.anime.attributes.posterImage.medium} alt={props.anime.title && props.anime.title} />
+            <h2>{props.anime && props.anime.attributes.canonicalTitle}</h2>
             <h3>Description: </h3>
-            <p>{props.anime.description && props.anime.description}</p>
-            <p>Average rating: {props.anime.averageRating && props.anime.averageRating}</p>
-            {props.genres.map(genre => {
+            <p>{props.anime && props.anime.attributes.description}</p>
+            <p>Average rating: {props.anime && props.anime.attributes.averageRating}</p>
+            {/* {props.genres.map(genre => {
                 return <p>{genre.slug}</p>
-            })}
+            })} */}
         </div>
     )
     
