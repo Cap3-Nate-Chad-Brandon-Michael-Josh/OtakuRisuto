@@ -12,6 +12,7 @@ class LandingRoute extends Component {
             <section className='LandingRoute'>
                     <section className="bodyPic">
             <nav>
+                <div className="img"></div>
                 <div className ='right-nav'>
                 <Link className='Login' to={'/login'}>
                     Login 
@@ -25,7 +26,7 @@ class LandingRoute extends Component {
             <h2>Welcome to OtakuRisuto!</h2>
                 <p>Otaku Risuto allows you to keep track of your favorite anime, which ones you have seen, which ones you want to see, 
         and any other type of list you want. It also helps you pick what to watch next! Just go to the list and click the anime roulette button!</p>
-        </section>
+        
             <section className='footer'>
                 <Link
                     to={'/home'}
@@ -33,7 +34,7 @@ class LandingRoute extends Component {
                     Dashboard
                 </Link>
             </section>
-                
+            </section>
                 
             </section>
         )
