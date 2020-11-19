@@ -4,9 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
 *{
-    margin:0px;
+    /* margin:0px; */
     text-align: center;
-    background-color: ;
+    /* background-color: ; */
 }
 .Title{
     font-family: 'Barlow Condensed', sans-serif;
@@ -19,10 +19,15 @@ nav{
     padding: 10px;
     font-family: 'Barlow Condensed', sans-serif;
     text-shadow: 0px 3px #FF0000,  3px 0px #00e1ffd8;;
-    font-size:60px;
     color:rgb(251, 251, 251);
     background-color: #599DB0;
+    height:100px;
+    
 }
+.right-nav{
+float:right;
+}
+
 h2{
     font-family: 'Barlow Condensed', sans-serif;
     text-shadow: 0px 3px #FF0000,  3px 0px #00e1ffd8;;
@@ -78,5 +83,8 @@ p{
 }
 
 body{
-    background-color: black;
+    background-color: #599DB0;}
+
+.footer{
+    background-color: #599DB0;
 }
