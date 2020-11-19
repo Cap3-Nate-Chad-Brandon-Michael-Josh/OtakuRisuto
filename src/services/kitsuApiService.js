@@ -7,8 +7,8 @@ const KitsuApiService = {
     getAnimes() {
         return fetch(`${kitsuUrl}`, {
             headers: {
-                "Accept": "application/vnd.api+json",
-                "Content-Type": "application/vnd.api+json"
+                // "Accept": "application/vnd.api+json",
+                "Content-Type": "application/json"
             },
         })
             .then(res =>
@@ -28,8 +28,8 @@ const KitsuApiService = {
     getAnimesBySearchTerm(searchTerm) {
         return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}`, {
             headers: {
-                "Accept": "application/vnd.api+json",
-                "Content-Type": "application/vnd.api+json"
+                // "Accept": "application/vnd.api+json",
+                "Content-Type": "application/json"
             },
         })
             .then(res =>
@@ -44,8 +44,8 @@ const KitsuApiService = {
     getAnimeGenre(id) {
         return fetch(`${kitsuUrl}/${id}/genres`, {
           headers: {
-                      "Accept": "application/vnd.api+json",
-                      "Content-Type": "application/vnd.api+json"
+                    //   "Accept": "application/vnd.api+json",
+                      "Content-Type": "application/json"
                   },
         })
           .then(res =>

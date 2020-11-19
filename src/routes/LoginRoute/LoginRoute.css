@@ -35,7 +35,7 @@ div.img{
 float:right;
 }
 
-h2{
+h1{
     font-family: 'Barlow Condensed', sans-serif;
     text-shadow: 0px 3px #FF0000,  3px 0px #00e1ffd8;;
     font-size:60px;
@@ -96,4 +96,9 @@ p {
 
 .footer{
     /* background-image: url(../../img/animeCover.png) */
+}
+
+.Register-QA{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size:30px
 }
