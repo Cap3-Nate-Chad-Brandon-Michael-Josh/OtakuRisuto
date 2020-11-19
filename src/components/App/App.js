@@ -25,10 +25,13 @@ export default class App extends Component {
             path={'/home'}
             component={DashboardRoute}
             />
-            {/* <PrivateRoute
+
+            {/* NEEDS TO BE CHANGED TO PRIVATE ROUTE WHEN READY */}
+            <Route
               exact path={'/results'}
               component={ResultsRoute}
-            /> */}
+            />
+            
             <Route 
               exact path={'/register'}
               component={RegistrationRoute}
