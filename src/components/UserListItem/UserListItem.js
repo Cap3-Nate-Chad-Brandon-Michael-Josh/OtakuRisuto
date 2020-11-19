@@ -2,10 +2,12 @@
 
 import React, { Component } from 'react'
 import UserAnimeItem from '../UserAnimeItem/UserAnimeItem'
+import UserList from '../../store/testStoreForUserListRoute'
 
 export default class UserListItem extends Component {
   state = {
-    userList: {}
+    userList: UserList,
+    expandedItem: null,
   }
 
   componentDidMount () {
@@ -17,17 +19,35 @@ export default class UserListItem extends Component {
     //   })
     // })
   }  
+
+  updateExpandedItem = (index) => {
+    this.setState({
+      expandedItem: index
+    })
+  }
   
   renderListItems = () => {
     const { userList } = this.state
-    return userList.anime.map(anime => {
+    return userList.anime.map((anime, index) => {
+      // 1. this will default all items to their non-expanded view
+      // 2. the updateExpand function will update the expandedItem 
+      // within state when the child component is clicked based on 
+      // the index value passed in as a prop
+      let expand = false
+      if(this.state.expandedItem === index) {
+        expand = true
+      }
       return (
         <UserAnimeItem 
+          key = {index}
+          index = {index}
           title = {anime.title}
           description = {anime.description}
           imageUrl = {anime.imageUrl}
           rating = {anime.rating}
           episodeCount = {anime.episodeCount}
+          expand = {expand}
+          updateExpandedItem = {this.updateExpandedItem}
         />
       )
     })

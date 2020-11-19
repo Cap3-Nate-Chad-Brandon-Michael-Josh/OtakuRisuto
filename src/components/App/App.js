@@ -10,6 +10,7 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute';
 import ResultsRoute from '../../routes/ResultsRoute/ResultsRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.css';
+import UserListRoute from '../../routes/UserListRoute/UserListRoute';
 
 
 export default class App extends Component {
@@ -38,9 +39,14 @@ export default class App extends Component {
               component={LoginRoute} 
             />
             <Route
+              exact path={'/userList'}
+              component={UserListRoute}
+            />
+            <Route
               exact path={'/'}
               component={LandingRoute}
             />
+            
             {/* <Route
               component={NotFoundRoute}
             /> */}
