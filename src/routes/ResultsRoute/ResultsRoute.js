@@ -1,9 +1,8 @@
 // Search results container
 import Header from '../../components/Header/Header';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
-import KitsuApiService from '../../services/kitsuApiService';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
 
 class ResultsRoute extends Component {
@@ -11,22 +10,23 @@ class ResultsRoute extends Component {
         error: null,
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
+        kitsuAnimeData: this.context.kitsuAnimeData,
     }
 
     static contextType = OtakuContext
 
-    async componentDidMount() {
-        await KitsuApiService.getAnimesBySearchTerm(this.state.searchTerm)
-            .then(res => this.setState({ kitsuData: res.data }))
+    componentDidMount() {
+        
     }
 
-    renderAnimeFromKitsu() {
-        if (this.state.kitsuData) {
+    renderAnimeFromKitsu() {        
+        if (this.context.kitsuAnimeData) {
             return (
                 <div>
-                    {this.state.kitsuData.map(anime => {
+                    {this.context.kitsuAnimeData.map(anime => {
                         return (
                         <KitsuResultItem
+                            key={anime.attributes.slug}
                             anime={anime}
                             expanded={true} />
                         )
@@ -52,11 +52,11 @@ class ResultsRoute extends Component {
                     landing page
                 </Link>
                 <p>this is the Results Route</p>
-                {(this.state.kitsuData && this.state.kitsuData) ? this.renderAnimeFromKitsu() : null}
+                {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? this.renderAnimeFromKitsu() : null}
 
             </section>
         )
     }
 }
 
-export default ResultsRoute;
+export default withRouter(ResultsRoute);

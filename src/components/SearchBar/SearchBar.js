@@ -5,7 +5,8 @@
     in ComponentDidMount for respective redirect, make api call */
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
-import  { Redirect, withRouter } from 'react-router-dom';
+import  { withRouter } from 'react-router-dom';
+import KitsuApiService from '../../services/kitsuApiService';
 
 
 class SearchBar extends Component {
@@ -17,12 +18,20 @@ class SearchBar extends Component {
 
     static contextType = OtakuContext
 
+    fetchKitsuAnimeData(searchTerm) {
+        KitsuApiService.getAnimesBySearchTerm(searchTerm)
+        .then(res => 
+            this.context.setKitsuAnimeData(res.data))
+            .catch(error => this.context.setError(error)) 
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('search submitted');
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
-        this.props.history.push('/results')
+        this.fetchKitsuAnimeData(this.state.searchTerm)                   
+        this.props.history.push('/results');    
     }
 
     handleChange = (event) => {
