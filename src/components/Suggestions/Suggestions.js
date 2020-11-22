@@ -38,7 +38,6 @@ export default class Suggestions extends Component {
   render() {
     return (
       <div className='suggestionsBody'>
-        {/* <div className='suggestionsContainer'> */}
         <div className='container'>
           {this.renderSuggestionsItem()}
         </div>
