@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import OtakuContext from '../../contexts/OtakuContext';
+import './Header.css'
 
 class Header extends Component {
     static contextType = OtakuContext;
@@ -18,11 +19,14 @@ class Header extends Component {
             <section className='Header'>
                 <div className='headerTitle'>
                 <nav className='DashNav'>
+                <SearchBar />
                         <Link
                             onClick={this.handleLogoutClick}
                             to={'/'}>
-                            {/* <i class="fas fa-sign-out-alt"></i> */}
-                            Logout
+                                <spam class='sign-out'>
+                            <i class="fas fa-sign-out-alt"></i>
+                                </spam>
+                            {/* Logout */}
                             </Link>
                     </nav>
                     <Link to={'/home'}><h1>OtakuRisuto</h1></Link>
@@ -32,7 +36,7 @@ class Header extends Component {
                         <h2>{this.context.user.username}</h2>
                            
                     </div>
-                    <SearchBar />
+                   
                 </div>
             </section>
         )

@@ -52,7 +52,12 @@ class SearchBar extends Component {
                         <option value='lists'>Lists</option>
                     </select>
                     <br/>
-                    <button type='submit'>Search!</button>
+                    <button
+                    className='search'
+                     type='submit'>
+                         <i class="fas fa-search"></i>
+                         {/* Search! */}
+                         </button>
                 {/* </nav> */}
                 </form>
             </div>
