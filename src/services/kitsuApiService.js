@@ -26,7 +26,7 @@ const KitsuApiService = {
        data[i].attributes.posterImage.(tiny, small, medium, large, original) <-- one of
        data[i].attributes.episodeCount */
     getAnimesBySearchTerm(searchTerm) {
-        return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}`, {
+        return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}&include=categories`, {
             headers: {
                 // "Accept": "application/vnd.api+json",
                 "Content-Type": "application/json"
@@ -41,8 +41,8 @@ const KitsuApiService = {
     /* get genres for anime based on id
        data[i].attributes.slug will give name of genre 
        (meta.count would give number of genres) */
-    getAnimeGenre(id) {
-        return fetch(`${kitsuUrl}/${id}/genres`, {
+    getAnimeGenre(queryString) {
+        return fetch(`${queryString}`, {
           headers: {
                     //   "Accept": "application/vnd.api+json",
                       "Content-Type": "application/json"

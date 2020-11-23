@@ -10,6 +10,7 @@ const KitsuAnimeItem = (props) => {
                 <img src={props.anime && props.anime.attributes.posterImage.tiny} 
                 alt={props.anime && props.anime.attributes.canonicalTitle} />
                 <p>{props.anime && props.anime.attributes.canonicalTitle}</p>
+                <button onClick={event => props.clickDetails(event, props.anime.attributes.slug)}>expand</button>
             </div>
         )
     }
@@ -20,9 +21,10 @@ const KitsuAnimeItem = (props) => {
             <h3>Description: </h3>
             <p>{props.anime && props.anime.attributes.description}</p>
             <p>Average rating: {props.anime && props.anime.attributes.averageRating}</p>
-            {/* {props.genres.map(genre => {
-                return <p>{genre.slug}</p>
-            })} */}
+            {props.genres.map(genre => {
+                return <p>{genre}</p>
+            })}
+            <button onClick={event => props.clickDetails(event, props.anime.attributes.slug)}>condense</button>
         </div>
     )
     

@@ -11,24 +11,47 @@ class ResultsRoute extends Component {
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
         kitsuAnimeData: this.context.kitsuAnimeData,
+        kitsuGenreData: this.context.kitsuGenreData,
+        expandedItem: null,
     }
 
     static contextType = OtakuContext
 
     componentDidMount() {
-        
+
     }
 
-    renderAnimeFromKitsu() {        
-        if (this.context.kitsuAnimeData) {
+    handleDetails = (event, item) => {
+        event.preventDefault()
+        let update = item
+        // this will allow an already expanded list item to collapse
+        if (item === this.state.expandedItem) {
+            update = null
+        }
+        this.setState({ expandedItem: update })
+    }
+
+    renderAnimeFromKitsu() {
+        if (this.context.kitsuAnimeData && this.context.kitsuGenreData) {
             return (
                 <div>
-                    {this.context.kitsuAnimeData.map(anime => {
+                    {this.context.kitsuAnimeData.map((anime, index) => {
+                        let details = false
+                        // set animeGenres variable for easier access to animeGenre ids
+                        let animeGenres = anime.relationships.categories.data.map(genre => {
+                            return this.context.kitsuGenreData[genre.id]
+                        })
+                        if (this.state.expandedItem === anime.attributes.slug) {
+                            details = true
+                        }
                         return (
-                        <KitsuResultItem
-                            key={anime.attributes.slug}
-                            anime={anime}
-                            expanded={true} />
+                            <KitsuResultItem
+                                key={index}
+                                anime={anime}
+                                expanded={details}
+                                clickDetails={this.handleDetails}
+                                genres={animeGenres}
+                                 />
                         )
                     })}
                 </div>
@@ -46,7 +69,7 @@ class ResultsRoute extends Component {
 
     render() {
         return (
-            <section className='DashboardRoute'>
+            <section className='results'>
                 <Header />
                 <Link to={'/'}>
                     landing page

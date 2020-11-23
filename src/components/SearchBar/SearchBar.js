@@ -18,11 +18,25 @@ class SearchBar extends Component {
 
     static contextType = OtakuContext
 
+    componentDidMount() {
+        KitsuApiService.getAnimesBySearchTerm('cowboy bebop')
+            .then(res => console.log(res));
+    }
+
     fetchKitsuAnimeData(searchTerm) {
         KitsuApiService.getAnimesBySearchTerm(searchTerm)
-        .then(res => 
-            this.context.setKitsuAnimeData(res.data))
-            .catch(error => this.context.setError(error)) 
+        .then(res => {             
+            this.context.setKitsuAnimeData(res.data);
+            let genreObject = {}
+            // set context to an object where each genreId's value is the genre title
+            res.included.map(genre => {
+                return genreObject[genre.id] = genre.attributes.title
+            })            
+            this.context.setKitsuGenreData(genreObject);
+            }            
+        )
+            .catch(error => this.context.setError(error))
+         
     }
 
     handleSubmit = (event) => {
