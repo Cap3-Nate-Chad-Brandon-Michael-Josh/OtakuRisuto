@@ -27,17 +27,36 @@ class SearchBar extends Component {
 
     fetchKitsuAnimeData(searchTerm) {
         KitsuApiService.getAnimesBySearchTerm(searchTerm)
-        .then(res => {             
-            this.context.setKitsuAnimeData(res.data);
+        .then(res => {           
+            /*  set an object where each genreId's value is the genre title this is
+                needed to avoid subsequent api calls to the kitsu api for genre data */
             let genreObject = {}
-            // set context to an object where each genreId's value is the genre title
             res.included.map(genre => {
                 return genreObject[genre.id] = genre.attributes.title
-            })            
-            this.context.setKitsuGenreData(genreObject);
-            }            
-        )
-            .catch(error => this.context.setError(error))
+            })               
+            
+            // create an array of anime objects with only the data necessary for our purposes.
+            let animeArray = []
+            res.data.forEach(anime => {
+                let animeObject = {};
+                animeObject = {
+                    title: anime.attributes.canonicalTitle,
+                    description: anime.attributes.description,
+                    smallImage: anime.attributes.posterImage.tiny,
+                    mediumImage: anime.attributes.posterImage.medium,
+                    rating: anime.attributes.averageRating,
+                    episodeCount: anime.attributes.episodeCount,
+                    genres: anime.relationships.categories.data.map(genre => {
+                        return genreObject[genre.id]
+                    })
+                }                
+                animeArray.push(animeObject)
+            })
+
+            this.context.setKitsuAnimeData(animeArray);         
+            
+        })
+        .catch(error => this.context.setError(error))
          
     }
 

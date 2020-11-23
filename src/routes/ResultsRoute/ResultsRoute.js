@@ -36,12 +36,8 @@ class ResultsRoute extends Component {
             return (
                 <div>
                     {this.context.kitsuAnimeData.map((anime, index) => {
-                        let details = false
-                        // set animeGenres variable for easier access to animeGenre ids
-                        let animeGenres = anime.relationships.categories.data.map(genre => {
-                            return this.context.kitsuGenreData[genre.id]
-                        })
-                        if (this.state.expandedItem === anime.attributes.slug) {
+                        let details = false                        
+                        if (this.state.expandedItem === anime.title) {
                             details = true
                         }
                         return (
@@ -49,10 +45,7 @@ class ResultsRoute extends Component {
                                 key={index}
                                 anime={anime}
                                 expanded={details}
-                                clickDetails={this.handleDetails}
-                                genres={animeGenres}
-                                episodeCount={anime.attributes.episodeCount}
-                                 />
+                                clickDetails={this.handleDetails}/>
                         )
                     })}
                 </div>
