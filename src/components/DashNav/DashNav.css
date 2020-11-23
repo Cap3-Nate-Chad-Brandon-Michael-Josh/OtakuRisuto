@@ -75,3 +75,30 @@ content: "\f055";
 font-size: 40px;
 
 }
+
+.navB{
+    font-size: large;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+/* .sidenav2 {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(228, 34, 34, 0.774);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+} */

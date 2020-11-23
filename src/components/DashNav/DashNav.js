@@ -23,8 +23,9 @@ class DashNav extends Component {
         <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
             <h1>anime list</h1>
         </div>
-        <button onClick={this.handleFilterClick}>
-            open Nav
+        <button className="navB" onClick={this.handleFilterClick}>
+        &#9776; Anime Lists
+            {/* open Nav */}
         </button>
     </div>
   
