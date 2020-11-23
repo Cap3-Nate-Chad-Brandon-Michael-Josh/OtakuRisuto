@@ -1,0 +1,13 @@
+.sign-out {
+    position: fixed;
+    
+     top: 0;
+     right: 0;
+}
+
+.DashSearch{
+    top: 0;
+    left: -23%;
+    right: -27%;
+    position: fixed;
+}

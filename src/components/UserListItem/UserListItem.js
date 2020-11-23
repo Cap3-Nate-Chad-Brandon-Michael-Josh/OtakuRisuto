@@ -21,8 +21,13 @@ export default class UserListItem extends Component {
   }  
 
   updateExpandedItem = (index) => {
+    let update = index
+    // this will allow an already expanded list item to collapse
+    if(index === this.state.expandedItem) {
+      update = null
+    }
     this.setState({
-      expandedItem: index
+      expandedItem: update
     })
   }
   
