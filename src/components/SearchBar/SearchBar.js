@@ -32,7 +32,7 @@ class SearchBar extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={(event) => this.handleSubmit(event)}>
+                <form className="DashSearch" onSubmit={(event) => this.handleSubmit(event)}>
                     <label htmlFor='search-bar'></label>
                     <br/>
                 {/* <nav className='DashNav'> */}
