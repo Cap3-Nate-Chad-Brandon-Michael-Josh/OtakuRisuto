@@ -13,7 +13,6 @@ import './App.css';
 import UserListRoute from '../../routes/UserListRoute/UserListRoute';
 import NewListForm from '../NewListForm/NewListForm';
 
-
 export default class App extends Component {
   render(){
     return (
@@ -49,12 +48,7 @@ export default class App extends Component {
             <Route
               exact path={'/'}
               component={LandingRoute}
-            />
-            <Route
-              exact path={'/test'}
-              component={NewListForm}
-            />
-            
+            />         
             {/* <Route
               component={NotFoundRoute}
             /> */}

@@ -54,6 +54,19 @@ const KitsuApiService = {
               : res.json()
           )
       },
+      getAnimeSuggestions(id) {
+        return fetch(`${kitsuUrl}/${id}/suggestions`, {
+          headers: {
+                    //   "Accept": "application/vnd.api+json",
+                      "Content-Type": "application/json"
+                  },
+        })
+          .then(res =>
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : res.json()
+          )
+      },
 }
 
 export default KitsuApiService;
