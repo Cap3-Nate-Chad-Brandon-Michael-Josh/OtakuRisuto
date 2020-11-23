@@ -8,6 +8,8 @@ import OtakuContext from '../../contexts/OtakuContext';
 import  { withRouter } from 'react-router-dom';
 import KitsuApiService from '../../services/kitsuApiService';
 
+import  { Redirect, withRouter } from 'react-router-dom';
+import './SearchBar.css'
 
 class SearchBar extends Component {
     state = {
@@ -41,15 +43,17 @@ class SearchBar extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <label htmlFor='search-bar'>Search for your favorite anime, friends or lists</label>
+                <form className="DashSearch" onSubmit={(event) => this.handleSubmit(event)}>
+                    <label htmlFor='search-bar'></label>
                     <br/>
+                {/* <nav className='DashNav'> */}
                     <input
                         name='searchTerm'
                         type='text'
                         htmlFor='search-bar'
                         onChange={this.handleChange}
                         value={this.state.searchTerm}
+                        placeholder='Search: anime, friends or lists'
                         required />                    
                     <br/>
                     <select name='searchOption' onChange={this.handleChange} required>
@@ -59,7 +63,13 @@ class SearchBar extends Component {
                         <option value='lists'>Lists</option>
                     </select>
                     <br/>
-                    <button type='submit'>Search!</button>
+                    <button
+                    className='search'
+                     type='submit'>
+                         <i class="fas fa-search"></i>
+                         {/* Search! */}
+                         </button>
+                {/* </nav> */}
                 </form>
             </div>
         )

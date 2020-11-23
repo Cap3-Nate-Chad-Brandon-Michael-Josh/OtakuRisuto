@@ -10,6 +10,8 @@ const OtakuContext = React.createContext({
   searchTerm: '',
   searchOption: '',
   kitsuAnimeData: [],  
+  registration: false,
+  setRegistration: () => {},  
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -29,6 +31,7 @@ export class OtakuProvider extends Component {
       error: null,
       searchTerm: '',
       searchOption: '', 
+      registration: false,
     }
 
     const jwtPayload = TokenService.parseAuthToken()
@@ -42,6 +45,12 @@ export class OtakuProvider extends Component {
     this.state = state;
     IdleService.setIdleCallback(this.logoutBecauseIdle)
   }  
+
+  setRegistration = () => {
+    this.setState({
+      registration: !this.state.registration
+    })
+  }
 
   setError = error => {
     console.error(error)
@@ -90,6 +99,8 @@ export class OtakuProvider extends Component {
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
       setKitsuAnimeData: this.setKitsuAnimeData,
+      registration: this.state.registration,
+      setRegistration: this.state.setRegistration,
       setSearchTerm: this.setSearchTerm,
       setSearchOption: this.setSearchOption,      
       setError: this.setError,

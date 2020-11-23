@@ -11,7 +11,7 @@ import ResultsRoute from '../../routes/ResultsRoute/ResultsRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.css';
 import UserListRoute from '../../routes/UserListRoute/UserListRoute';
-
+import NewListForm from '../NewListForm/NewListForm';
 
 export default class App extends Component {
   render(){
@@ -48,8 +48,7 @@ export default class App extends Component {
             <Route
               exact path={'/'}
               component={LandingRoute}
-            />
-            
+            />         
             {/* <Route
               component={NotFoundRoute}
             /> */}
