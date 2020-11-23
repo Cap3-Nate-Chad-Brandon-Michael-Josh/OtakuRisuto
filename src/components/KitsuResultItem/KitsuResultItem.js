@@ -15,7 +15,7 @@ const KitsuAnimeItem = (props) => {
         )
     }
     return (
-        <div>
+        <div className='expanded-anime-card'>
             <img src={props.anime && props.anime.attributes.posterImage.medium} alt={props.anime.title && props.anime.title} />
             <h2>{props.anime && props.anime.attributes.canonicalTitle}</h2>
             <h3>Description: </h3>
@@ -24,6 +24,7 @@ const KitsuAnimeItem = (props) => {
             {props.genres.map(genre => {
                 return <p>{genre}</p>
             })}
+            <p>Total Episodes: {props.episodeCount}</p>
             <button onClick={event => props.clickDetails(event, props.anime.attributes.slug)}>condense</button>
         </div>
     )
