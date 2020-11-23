@@ -30,7 +30,7 @@ class Registration extends Component {
 
     onRegistrationSuccess = () => {
         const { history } = this.props
-        this.context.Registration()
+        this.context.setRegistration()
         history.push('/dashboard')
     }
 
