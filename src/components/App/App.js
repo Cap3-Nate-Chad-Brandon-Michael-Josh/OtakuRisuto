@@ -12,8 +12,6 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.css';
 import UserListRoute from '../../routes/UserListRoute/UserListRoute';
 import NewListForm from '../NewListForm/NewListForm';
-import Suggestions from '../Suggestions/Suggestions';
-
 
 export default class App extends Component {
   render(){
@@ -50,12 +48,7 @@ export default class App extends Component {
             <Route
               exact path={'/'}
               component={LandingRoute}
-            />
-            <Route
-              exact path={'/test'}
-              component={Suggestions}
-            />
-            
+            />         
             {/* <Route
               component={NotFoundRoute}
             /> */}
