@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
 import  { Redirect, withRouter } from 'react-router-dom';
-
+import './SeacrhBar.css'
 
 class SearchBar extends Component {
     state = {
@@ -33,14 +33,16 @@ class SearchBar extends Component {
         return (
             <div>
                 <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <label htmlFor='search-bar'>Search for your favorite anime, friends or lists</label>
+                    <label htmlFor='search-bar'></label>
                     <br/>
+                {/* <nav className='DashNav'> */}
                     <input
                         name='searchTerm'
                         type='text'
                         htmlFor='search-bar'
                         onChange={this.handleChange}
                         value={this.state.searchTerm}
+                        placeholder='Search: anime, friends or lists'
                         required />                    
                     <br/>
                     <select name='searchOption' onChange={this.handleChange} required>
@@ -51,6 +53,7 @@ class SearchBar extends Component {
                     </select>
                     <br/>
                     <button type='submit'>Search!</button>
+                {/* </nav> */}
                 </form>
             </div>
         )
