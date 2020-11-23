@@ -5,7 +5,7 @@
     in ComponentDidMount for respective redirect, make api call */
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
-import  { withRouter } from 'react-router-dom';
+
 import KitsuApiService from '../../services/kitsuApiService';
 
 import  { Redirect, withRouter } from 'react-router-dom';

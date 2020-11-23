@@ -51,6 +51,7 @@ class ResultsRoute extends Component {
                                 expanded={details}
                                 clickDetails={this.handleDetails}
                                 genres={animeGenres}
+                                episodeCount={anime.attributes.episodeCount}
                                  />
                         )
                     })}
