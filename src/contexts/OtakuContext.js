@@ -12,6 +12,7 @@ const OtakuContext = React.createContext({
   kitsuAnimeData: [],
   searchedUserData: [],     
   registration: false,
+  setCurrentList: () => {},
   setRegistration: () => {},  
   setError: () => {},
   clearError: () => {},
@@ -53,6 +54,10 @@ export class OtakuProvider extends Component {
     this.setState({
       registration: !this.state.registration
     })
+  }
+
+  setCurrentList = () => {
+    
   }
 
   setError = error => {

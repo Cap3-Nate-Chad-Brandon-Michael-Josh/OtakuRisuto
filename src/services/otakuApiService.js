@@ -27,6 +27,10 @@ const OtakuApiService = {
         // A service method to retrieve lists when a search is submitted for other lists.
     },
 
+    getListInfo(){
+        // get the info from a single list
+    },
+
     addAnimeToList(animeData, list) {
         // A service method to POST anime data to a specified list.
     },
