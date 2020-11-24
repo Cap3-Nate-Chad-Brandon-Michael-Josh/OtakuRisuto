@@ -1,9 +1,8 @@
 // Search results container
 import Header from '../../components/Header/Header';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
-import KitsuApiService from '../../services/kitsuApiService';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
 
 class ResultsRoute extends Component {
@@ -11,24 +10,42 @@ class ResultsRoute extends Component {
         error: null,
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
+        kitsuAnimeData: this.context.kitsuAnimeData,        
+        expandedItem: null,
     }
 
     static contextType = OtakuContext
 
-    async componentDidMount() {
-        await KitsuApiService.getAnimesBySearchTerm(this.state.searchTerm)
-            .then(res => this.setState({ kitsuData: res.data }))
+    componentDidMount() {
+
+    }
+
+    handleDetails = (event, item) => {
+        event.preventDefault()
+        let update = item
+        // this will allow an already expanded list item to collapse
+        if (item === this.state.expandedItem) {
+            update = null
+        }
+        this.setState({ expandedItem: update })
     }
 
     renderAnimeFromKitsu() {
-        if (this.state.kitsuData) {
+        if (this.context.kitsuAnimeData) {
             return (
                 <div>
-                    {this.state.kitsuData.map(anime => {
+                    {this.context.kitsuAnimeData.map((anime, index) => {
+                        let details = false                        
+                        if (this.state.expandedItem === anime.title) {
+                            details = true
+                        }
                         return (
-                        <KitsuResultItem
-                            anime={anime}
-                            expanded={true} />
+                            <KitsuResultItem
+                                key={index}
+                                anime={anime}
+                                expanded={details}
+                                clickDetails={this.handleDetails}                                
+                                 />
                         )
                     })}
                 </div>
@@ -46,17 +63,17 @@ class ResultsRoute extends Component {
 
     render() {
         return (
-            <section className='DashboardRoute'>
+            <section className='results'>
                 <Header />
                 <Link to={'/'}>
                     landing page
                 </Link>
                 <p>this is the Results Route</p>
-                {(this.state.kitsuData && this.state.kitsuData) ? this.renderAnimeFromKitsu() : null}
+                {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? this.renderAnimeFromKitsu() : null}
 
             </section>
         )
     }
 }
 
-export default ResultsRoute;
+export default withRouter(ResultsRoute);

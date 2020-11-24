@@ -26,7 +26,7 @@ const KitsuApiService = {
        data[i].attributes.posterImage.(tiny, small, medium, large, original) <-- one of
        data[i].attributes.episodeCount */
     getAnimesBySearchTerm(searchTerm) {
-        return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}`, {
+        return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}&include=categories`, {
             headers: {
                 // "Accept": "application/vnd.api+json",
                 "Content-Type": "application/json"
@@ -41,8 +41,8 @@ const KitsuApiService = {
     /* get genres for anime based on id
        data[i].attributes.slug will give name of genre 
        (meta.count would give number of genres) */
-    getAnimeGenre(id) {
-        return fetch(`${kitsuUrl}/${id}/genres`, {
+    getAnimeGenre(queryString) {
+        return fetch(`${queryString}`, {
           headers: {
                     //   "Accept": "application/vnd.api+json",
                       "Content-Type": "application/json"
@@ -68,6 +68,38 @@ const KitsuApiService = {
               : res.json()
           )
       },
+
+      serializeAnime(includedGenres, animeData) {
+          // genres should be res.included anime should be res.data
+            console.log('serializeAnime ran')
+            /*  set an object where each genreId's value is the genre title this is
+                needed to avoid subsequent api calls to the kitsu api for genre data */
+            let genreObject = {}
+            includedGenres.map(genre => {
+                return genreObject[genre.id] = genre.attributes.title
+            })               
+            
+            // create an array of anime objects with only the data necessary for our purposes.
+            let animeArray = []
+            animeData.forEach(anime => {
+                let animeObject = {};
+                animeObject = {
+                    title: anime.attributes.canonicalTitle,
+                    description: anime.attributes.description,                    
+                    mediumImage: anime.attributes.posterImage.medium,
+                    rating: anime.attributes.averageRating,
+                    episodeCount: anime.attributes.episodeCount,
+                    // only return genreObject values that match the id of genres in the anime object from kitsu.
+                    genres: anime.relationships.categories.data.map(genre => {
+                        return genreObject[genre.id]
+                    })
+                }                
+                animeArray.push(animeObject)
+            })
+            return animeArray
+            // this.context.setKitsuAnimeData(animeArray);   
+      }
+
 }
 
 export default KitsuApiService;

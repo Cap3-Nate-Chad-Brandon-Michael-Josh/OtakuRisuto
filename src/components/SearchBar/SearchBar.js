@@ -5,8 +5,11 @@
     in ComponentDidMount for respective redirect, make api call */
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
+
+import KitsuApiService from '../../services/kitsuApiService';
+
 import  { Redirect, withRouter } from 'react-router-dom';
-import './SeacrhBar.css'
+import './SearchBar.css'
 
 class SearchBar extends Component {
     state = {
@@ -17,12 +20,29 @@ class SearchBar extends Component {
 
     static contextType = OtakuContext
 
+    componentDidMount() {
+        KitsuApiService.getAnimesBySearchTerm('cowboy bebop')
+            .then(res => console.log(res));
+    }
+
+    fetchKitsuAnimeData(searchTerm) {
+        KitsuApiService.getAnimesBySearchTerm(searchTerm)
+        .then(res => { 
+            this.context.setKitsuAnimeData(
+                KitsuApiService.serializeAnime(res.included, res.data)
+            )    
+         })
+        .catch(error => this.context.setError(error))
+         
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('search submitted');
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
-        this.props.history.push('/results')
+        this.fetchKitsuAnimeData(this.state.searchTerm)                   
+        this.props.history.push('/results');    
     }
 
     handleChange = (event) => {

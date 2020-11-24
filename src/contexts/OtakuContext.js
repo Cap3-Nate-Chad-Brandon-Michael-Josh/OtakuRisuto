@@ -9,13 +9,15 @@ const OtakuContext = React.createContext({
   error: null,
   searchTerm: '',
   searchOption: '',
+  kitsuAnimeData: [],     
   registration: false,
   setRegistration: () => {},  
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
   setSearchTerm: () => {},
-  setSearchOption: () => {}, 
+  setSearchOption: () => {},
+  setKitsuAnimeData: () => {},  
   processLogin: () => {},
   processLogout: () => {},
 })
@@ -25,7 +27,8 @@ export class OtakuProvider extends Component {
   constructor(props) {
     super(props)
     const state = { 
-      user: {}, 
+      user: {},
+      kitsuAnimeData: [],      
       error: null,
       searchTerm: '',
       searchOption: '', 
@@ -63,6 +66,10 @@ export class OtakuProvider extends Component {
     this.setState({ user })
   }
 
+  setKitsuAnimeData = data => {
+    this.setState({ kitsuAnimeData: data })
+  }  
+
   setSearchTerm = searchTerm => {
     this.setState({ searchTerm })
   }
@@ -89,8 +96,11 @@ export class OtakuProvider extends Component {
     const value = {
       user: this.state.user,
       error: this.state.error,
+      kitsuAnimeData: this.state.kitsuAnimeData,      
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
+      setKitsuAnimeData: this.setKitsuAnimeData,
+      setKitsuGenreData: this.setKitsuGenreData,
       registration: this.state.registration,
       setRegistration: this.state.setRegistration,
       setSearchTerm: this.setSearchTerm,
