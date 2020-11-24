@@ -36,9 +36,17 @@ class SearchBar extends Component {
     }
 
     fetchOtakuUsers(searchTerm) {
-        OtakuApiService.getUsers(searchTerm)
+        OtakuApiService.getUsersBySearch(searchTerm)
         .then(res => {
             this.context.setSearchedUserData(res)
+        })
+        .catch(error => this.context.setError(error))
+    }
+
+    fetchOtakuPublicLists(searchTerm) {
+        OtakuApiService.getPublicListsBySearch(searchTerm)
+        .then(res => {
+            this.context.setPublicListsData(res)
         })
         .catch(error => this.context.setError(error))
     }
@@ -51,13 +59,11 @@ class SearchBar extends Component {
         if (this.state.searchOption === 'animes') {
             this.fetchKitsuAnimeData(this.state.searchTerm);            
         }
-        if (this.state.searchOption === 'users') {
-            // fetch otaku find users endpoint
+        if (this.state.searchOption === 'users') {            
             this.fetchOtakuUsers(this.state.searchTerm);
         }
-        if (this.state.searchOption === 'lists') {
-            // fetch otaku find lists endpoint
-
+        if (this.state.searchOption === 'lists') {            
+            this.fetchOtakuPublicLists(this.state.searchTerm);
         }
         this.props.history.push('/results');            
     }

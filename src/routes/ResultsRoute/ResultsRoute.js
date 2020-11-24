@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
 import UserResultItem from '../../components/UserResultItem/UserResultItem';
+import SearchedPublicListsResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
 
 class ResultsRoute extends Component {
     state = {
@@ -12,7 +13,8 @@ class ResultsRoute extends Component {
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
         kitsuAnimeData: this.context.kitsuAnimeData,
-        searchedUserData: this.context.searchedUserData,        
+        searchedUserData: this.context.searchedUserData,
+        publicListsData: this.context.publicListsData,        
         expandedItem: null,
     }
 
@@ -68,7 +70,15 @@ class ResultsRoute extends Component {
     }
 
     renderLists() {
-
+        if (this.context.publicListsData) {
+            return (
+                <div>
+                    {this.context.publicListsData.map(list => {
+                        return <SearchedPublicListsResults list={list} />
+                    })}
+                </div>
+            )
+        }
     }
 
     render() {
@@ -81,7 +91,7 @@ class ResultsRoute extends Component {
                 <p>this is the Results Route</p>
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? this.renderAnimeFromKitsu() : null}
                 {(this.state.searchedUserData && this.state.searchedUserData) ? this.renderUsers() : null}
-
+                {(this.state.publicListsData && this.state.publicListsData) ? this.renderLists() : null}
             </section>
         )
     }
