@@ -1,10 +1,18 @@
 // Service object for the Otaku API
 
-const OtakuApiService = {
-    
+const OtakuApiService = {    
 
-    getUsers() {
-        // A service method to retrieve users when a search is submitted for users.
+    getUsers(searchTerm) {
+        return fetch(`${config.API_ENDPOINT}/search/users${searchTerm}`, {
+            headers: {                
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
     },
 
     getUserLists() {

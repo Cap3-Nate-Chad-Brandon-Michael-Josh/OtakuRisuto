@@ -6,7 +6,7 @@ const KitsuAnimeItem = (props) => {
     if (!props.expanded) {
         return (
             <div className='anime-card'>               
-                <img src={props.anime && props.anime.smallImage} 
+                <img src={props.anime && props.anime.mediumImage} 
                 alt={props.anime && props.anime.title} />
                 <p>{props.anime && props.anime.title}</p>
                 <button onClick={event => props.clickDetails(event, props.anime.title)}>expand</button>
