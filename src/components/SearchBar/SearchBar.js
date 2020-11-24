@@ -21,8 +21,7 @@ class SearchBar extends Component {
     static contextType = OtakuContext
 
     componentDidMount() {
-        KitsuApiService.getAnimesBySearchTerm('cowboy bebop')
-            .then(res => console.log(res));
+        
     }
 
     fetchKitsuAnimeData(searchTerm) {
@@ -30,10 +29,9 @@ class SearchBar extends Component {
         .then(res => { 
             this.context.setKitsuAnimeData(
                 KitsuApiService.serializeAnime(res.included, res.data)
-            )    
+            );    
          })
-        .catch(error => this.context.setError(error))
-         
+        .catch(error => this.context.setError(error))         
     }
 
     handleSubmit = (event) => {
@@ -41,8 +39,18 @@ class SearchBar extends Component {
         console.log('search submitted');
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
-        this.fetchKitsuAnimeData(this.state.searchTerm)                   
-        this.props.history.push('/results');    
+        if (this.state.searchOption === 'animes') {
+            this.fetchKitsuAnimeData(this.state.searchTerm);            
+        }
+        if (this.state.searchOption === 'users') {
+            // fetch otaku find users endpoint
+            
+        }
+        if (this.state.searchOption === 'lists') {
+            // fetch otaku find lists endpoint
+
+        }
+        this.props.history.push('/results');            
     }
 
     handleChange = (event) => {
