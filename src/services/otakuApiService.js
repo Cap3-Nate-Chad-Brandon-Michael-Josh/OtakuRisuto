@@ -1,6 +1,6 @@
 // Service object for the Otaku API
 import config from '../config';
-import TokenService from '../services/token-service';
+import TokenService from './token-service';
 
 const OtakuApiService = {    
 
@@ -36,6 +36,24 @@ const OtakuApiService = {
 
     getUserAnime() {
         // A service to populate a user's list with the associated anime data.
+    },
+
+    getListsBySearch() {
+        // A service method to retrieve lists when a search is submitted for other lists.
+    },
+
+    getListInfo(list_id){
+        // get the info from a single list
+        return fetch(`${config.API_ENDPOINT}/list/${list_id}`, {
+            headers: {                
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
     },
 
     addAnimeToList(animeData, list) {

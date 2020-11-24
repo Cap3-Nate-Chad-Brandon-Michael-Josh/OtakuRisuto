@@ -13,6 +13,8 @@ const OtakuContext = React.createContext({
   searchedUserData: [],
   publicListsData: [],     
   registration: false,
+  currentList: {},
+  setCurrentList: () => {},
   setRegistration: () => {},  
   setError: () => {},
   clearError: () => {},
@@ -39,6 +41,7 @@ export class OtakuProvider extends Component {
       searchTerm: '',
       searchOption: '', 
       registration: false,
+      currentList: {}
     }
 
     const jwtPayload = TokenService.parseAuthToken()
@@ -57,6 +60,10 @@ export class OtakuProvider extends Component {
     this.setState({
       registration: !this.state.registration
     })
+  }
+
+  setCurrentList = data => {
+    this.setState({currentList: data})
   }
 
   setError = error => {
@@ -115,6 +122,8 @@ export class OtakuProvider extends Component {
       publicListsData: this.state.publicListsData,      
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
+      currentList: this.state.currentList,
+      setCurrentList: this.setCurrentList,
       setSearchedUserData: this.setSearchedUserData,
       setKitsuAnimeData: this.setKitsuAnimeData,
       setPublicListsData: this.setPublicListsData,
