@@ -10,7 +10,7 @@ import KitsuApiService from '../../services/kitsuApiService';
 import OtakuApiService from '../../services/otakuApiService';
 
 import  { Redirect, withRouter } from 'react-router-dom';
-import './SearchBar.css'
+// import './SearchBar.css'
 
 class SearchBar extends Component {
     state = {
