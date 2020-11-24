@@ -1,6 +1,8 @@
 // Service object for the Otaku API
 
 const OtakuApiService = {
+    
+
     getUsers() {
         // A service method to retrieve users when a search is submitted for users.
     },

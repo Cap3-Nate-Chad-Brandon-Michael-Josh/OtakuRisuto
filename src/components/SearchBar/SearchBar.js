@@ -27,36 +27,36 @@ class SearchBar extends Component {
 
     fetchKitsuAnimeData(searchTerm) {
         KitsuApiService.getAnimesBySearchTerm(searchTerm)
-        .then(res => {           
-            /*  set an object where each genreId's value is the genre title this is
-                needed to avoid subsequent api calls to the kitsu api for genre data */
-            let genreObject = {}
-            res.included.map(genre => {
-                return genreObject[genre.id] = genre.attributes.title
-            })               
+        .then(res => { this.context.setKitsuAnimeData(KitsuApiService.serializeAnime(res.included, res.data))           
+        //     /*  set an object where each genreId's value is the genre title this is
+        //         needed to avoid subsequent api calls to the kitsu api for genre data */
+        //     let genreObject = {}
+        //     res.included.map(genre => {
+        //         return genreObject[genre.id] = genre.attributes.title
+        //     })               
             
-            // create an array of anime objects with only the data necessary for our purposes.
-            let animeArray = []
-            res.data.forEach(anime => {
-                let animeObject = {};
-                animeObject = {
-                    title: anime.attributes.canonicalTitle,
-                    description: anime.attributes.description,
-                    smallImage: anime.attributes.posterImage.tiny,
-                    mediumImage: anime.attributes.posterImage.medium,
-                    rating: anime.attributes.averageRating,
-                    episodeCount: anime.attributes.episodeCount,
-                    // only return genreObject values that match the id of genres in the anime object from kitsu.
-                    genres: anime.relationships.categories.data.map(genre => {
-                        return genreObject[genre.id]
-                    })
-                }                
-                animeArray.push(animeObject)
-            })
+        //     // create an array of anime objects with only the data necessary for our purposes.
+        //     let animeArray = []
+        //     res.data.forEach(anime => {
+        //         let animeObject = {};
+        //         animeObject = {
+        //             title: anime.attributes.canonicalTitle,
+        //             description: anime.attributes.description,
+        //             smallImage: anime.attributes.posterImage.tiny,
+        //             mediumImage: anime.attributes.posterImage.medium,
+        //             rating: anime.attributes.averageRating,
+        //             episodeCount: anime.attributes.episodeCount,
+        //             // only return genreObject values that match the id of genres in the anime object from kitsu.
+        //             genres: anime.relationships.categories.data.map(genre => {
+        //                 return genreObject[genre.id]
+        //             })
+        //         }                
+        //         animeArray.push(animeObject)
+        //     })
 
-            this.context.setKitsuAnimeData(animeArray);         
+        //     this.context.setKitsuAnimeData(animeArray);         
             
-        })
+         })
         .catch(error => this.context.setError(error))
          
     }
