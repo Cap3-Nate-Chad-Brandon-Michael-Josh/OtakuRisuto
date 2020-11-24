@@ -9,25 +9,32 @@ class Comments extends Component {
 
     componentDidMount() {
         this.context.clearError()
-        // otakuApiService.getListInfo()
-        //   .then(this.context.setCurrentList)
-        //   .catch(this.context.setError)
-      }
+        otakuApiService.getListInfo(1)
+            .then(res => {
+                console.log(res)
+                this.context.setCurrentList(res[0]);
+            })
+            .catch(this.context.setError)
+    }
 
     renderItems() {
         const { currentList = {} } = this.context
+        console.log(currentList)
         return currentList.comments.map(comment =>
-          <Comment
-            comment={comment}
-          />
+            <Comment
+                comment={comment.comment}
+            />
         )
-      }
+    }
 
-    render(){
-        return(
+    render() {
+        const { error } = this.context
+        return (
             <section className='comments'>
                 <CommentForm />
-                <Comment />
+                {error
+                    ? <p className=''>There was an error, try again</p>
+                    : this.renderItems()}
             </section>
         )
     }

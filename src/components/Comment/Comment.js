@@ -7,7 +7,7 @@ class Comment extends Component {
         // console.log(comment.comment)
         return(
             <section className='comment'>
-                <p>this is the comment text</p>
+                <p>{comment}</p>
             </section>
         )
     }
