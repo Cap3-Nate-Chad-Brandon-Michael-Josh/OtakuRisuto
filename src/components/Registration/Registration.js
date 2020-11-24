@@ -13,9 +13,10 @@ class Registration extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const { email, password } = event.target
+        const { email, username, password } = event.target
         AuthApiService.postUser({
             email: email.value,
+            username: username.value,
             password: password.value
         })
             .then(user => {
@@ -36,12 +37,14 @@ class Registration extends Component {
 
     render(){
         return(
-            <form className='Registration' onSubmit={this.hanldeSubmit}>
-                <label for='email'>Email</label><br></br>
+            <form className='Registration' onSubmit={this.handleSubmit}>
+                <label htmlFor='email'>Email</label><br></br>
                 <input type='text' name='email' className='' placeholder='email'></input><br></br>
-                <label for='password'>Password</label><br></br>
+                <label htmlFor="username" ref={this.firstInput}>username</label><br></br>
+                <input type='text' name='username' className='' placeholder='username'></input><br></br>
+                <label htmlFor='password'>Password</label><br></br>
                 <input type='text' name='password' className='' placeholder='password'></input><br></br>
-                <label for='re-enter password'>re-enter password</label><br></br>
+                <label htmlFor='re-enter password'>re-enter password</label><br></br>
                 <input type='text' className='' placeholder='re-enter password'></input><br></br>
                 <button type='submit' className=''>Submit</button>
             </form>
