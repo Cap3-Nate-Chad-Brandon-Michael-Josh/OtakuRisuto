@@ -13,7 +13,7 @@ export default class SuggestionsItem extends Component {
       //   </div>
       // </div>
 
-        <div class="box">
+        <div className="box">
           <h2>{title}</h2>
           <h3>service one</h3>
           <p>{description}</p>
