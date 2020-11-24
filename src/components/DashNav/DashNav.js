@@ -9,7 +9,8 @@ class DashNav extends Component {
     state ={
         Nav: false,
         className: "sidenav",
-        classNameHidden: "sidenav2"
+        classNameHidden: "sidenav2",
+        registration: this.context.registration
     }
 
       handleFilterClick = () => {
@@ -21,7 +22,7 @@ class DashNav extends Component {
         
        return(
     <div> 
-        {!this.context.registraion &&
+        {this.context.registration &&
         <Suggestions />
         }
         <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>

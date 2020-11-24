@@ -56,7 +56,7 @@ const KitsuApiService = {
       },
       // this fetch request will return the 10 anime with the highest 'average rating'
       getAnimeSuggestions() {
-        return fetch(`${kitsuUrl}?sort=-averageRating`, {
+        return fetch(`${kitsuUrl}?sort=-averageRating&include=categories`, {
           headers: {
                     //   "Accept": "application/vnd.api+json",
                       "Content-Type": "application/json"
