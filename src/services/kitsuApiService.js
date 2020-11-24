@@ -54,8 +54,9 @@ const KitsuApiService = {
               : res.json()
           )
       },
-      getAnimeSuggestions(id) {
-        return fetch(`${kitsuUrl}/${id}/suggestions`, {
+      // this fetch request will return the 10 anime with the highest 'average rating'
+      getAnimeSuggestions() {
+        return fetch(`${kitsuUrl}?sort=-averageRating`, {
           headers: {
                     //   "Accept": "application/vnd.api+json",
                       "Content-Type": "application/json"

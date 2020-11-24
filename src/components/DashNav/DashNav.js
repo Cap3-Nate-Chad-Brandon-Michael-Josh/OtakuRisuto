@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { component } from 'react'
 import OtakuContext from '../../contexts/OtakuContext';
+import Suggestions from '../Suggestions/Suggestions'
 import './DashNav.css'
+
 class DashNav extends Component {
     static contextType = OtakuContext;
     state ={
         Nav: false,
         className: "sidenav",
         classNameHidden: "sidenav2"
-      }
+    }
 
       handleFilterClick = () => {
         this.setState({ Nav: !this.state.Nav})
@@ -19,7 +21,9 @@ class DashNav extends Component {
         
        return(
     <div> 
-    
+        {!this.context.registraion &&
+        <Suggestions />
+        }
         <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
             <h1>anime list</h1>
         </div>
