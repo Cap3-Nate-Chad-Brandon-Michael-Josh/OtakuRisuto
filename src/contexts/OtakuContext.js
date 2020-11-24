@@ -18,7 +18,8 @@ const OtakuContext = React.createContext({
   setUser: () => {},
   setSearchTerm: () => {},
   setSearchOption: () => {},
-  setKitsuAnimeData: () => {},  
+  setKitsuAnimeData: () => {},
+  setSearchedUserData: () => {},  
   processLogin: () => {},
   processLogout: () => {},
 })

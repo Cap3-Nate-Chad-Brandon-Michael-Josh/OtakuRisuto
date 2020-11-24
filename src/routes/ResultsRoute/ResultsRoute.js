@@ -4,13 +4,15 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
+import UserResultItem from '../../components/UserResultItem/UserResultItem';
 
 class ResultsRoute extends Component {
     state = {
         error: null,
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
-        kitsuAnimeData: this.context.kitsuAnimeData,        
+        kitsuAnimeData: this.context.kitsuAnimeData,
+        searchedUserData: this.context.searchedUserData,        
         expandedItem: null,
     }
 
@@ -54,7 +56,15 @@ class ResultsRoute extends Component {
     }
 
     renderUsers() {
-
+        if (this.context.searchedUserData) {
+            return (
+                <div>
+                    {this.context.searchedUserData.map(user => {
+                        return <UserResultItem user={user} />
+                    })}
+                </div>
+            )
+        }
     }
 
     renderLists() {
@@ -70,6 +80,7 @@ class ResultsRoute extends Component {
                 </Link>
                 <p>this is the Results Route</p>
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? this.renderAnimeFromKitsu() : null}
+                {(this.state.searchedUserData && this.state.searchedUserData) ? this.renderUsers() : null}
 
             </section>
         )

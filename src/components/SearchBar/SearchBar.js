@@ -7,13 +7,14 @@ import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
 
 import KitsuApiService from '../../services/kitsuApiService';
+import OtakuApiService from '../../services/otakuApiService';
 
 import  { Redirect, withRouter } from 'react-router-dom';
 import './SearchBar.css'
 
 class SearchBar extends Component {
     state = {
-        error: null,
+        error: this.context.error,
         searchTerm: '',
         searchOption: '',
     }
@@ -34,6 +35,14 @@ class SearchBar extends Component {
         .catch(error => this.context.setError(error))         
     }
 
+    fetchOtakuUsers(searchTerm) {
+        OtakuApiService.getUsers(searchTerm)
+        .then(res => {
+            this.context.setSearchedUserData(res)
+        })
+        .catch(error => this.context.setError(error))
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('search submitted');
@@ -44,7 +53,7 @@ class SearchBar extends Component {
         }
         if (this.state.searchOption === 'users') {
             // fetch otaku find users endpoint
-            
+            this.fetchOtakuUsers(this.state.searchTerm);
         }
         if (this.state.searchOption === 'lists') {
             // fetch otaku find lists endpoint

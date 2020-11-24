@@ -1,9 +1,11 @@
 // Service object for the Otaku API
+import config from '../config';
+import TokenService from '../services/token-service';
 
 const OtakuApiService = {    
 
     getUsers(searchTerm) {
-        return fetch(`${config.API_ENDPOINT}/search/users${searchTerm}`, {
+        return fetch(`${config.API_ENDPOINT}/search/users/${searchTerm}`, {
             headers: {                
                 'authorization' : `Bearer ${TokenService.getAuthToken()}`,
             },
