@@ -9,7 +9,7 @@ import OtakuContext from '../../contexts/OtakuContext';
 import KitsuApiService from '../../services/kitsuApiService';
 
 import  { Redirect, withRouter } from 'react-router-dom';
-import './SearchBar.css'
+// import './SearchBar.css'
 
 class SearchBar extends Component {
     state = {
