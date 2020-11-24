@@ -23,8 +23,8 @@ class Header extends Component {
                         <Link
                             onClick={this.handleLogoutClick}
                             to={'/'}>
-                                <spam class='sign-out'>
-                            <i class="fas fa-sign-out-alt"></i>
+                                <spam className='sign-out'>
+                            <i className="fas fa-sign-out-alt"></i>
                                 </spam>
                             {/* Logout */}
                             </Link>

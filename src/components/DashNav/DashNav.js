@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { component } from 'react'
 import OtakuContext from '../../contexts/OtakuContext';
+import Modal from './Modal'
+
 import './DashNav.css'
+
 class DashNav extends Component {
     static contextType = OtakuContext;
     state ={
@@ -24,9 +27,14 @@ class DashNav extends Component {
             <h1>anime list</h1>
         </div>
         <button className="navB" onClick={this.handleFilterClick}>
-        &#9776; Anime Lists
-            {/* open Nav */}
+            &#9776; Anime Lists
+            
         </button>
+        
+        <section className= 'animeItem'>
+            <h1>Anime Name</h1>
+            <Modal />
+        </section>
     </div>
   
        )
