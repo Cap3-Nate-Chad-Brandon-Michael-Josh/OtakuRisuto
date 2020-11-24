@@ -23,15 +23,9 @@ class Header extends Component {
                         <Link
                             onClick={this.handleLogoutClick}
                             to={'/'}>
-<<<<<<< HEAD
                                 <span className='sign-out'>
                             <i className="fas fa-sign-out-alt"></i>
                                 </span>
-=======
-                                <spam className='sign-out'>
-                            <i className="fas fa-sign-out-alt"></i>
-                                </spam>
->>>>>>> Modal
                             {/* Logout */}
                             </Link>
                     </nav>

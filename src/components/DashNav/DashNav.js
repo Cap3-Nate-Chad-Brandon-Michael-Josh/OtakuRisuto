@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { component } from 'react'
 import OtakuContext from '../../contexts/OtakuContext';
-<<<<<<< HEAD
 import Suggestions from '../Suggestions/Suggestions'
-=======
 import Modal from './Modal'
 
->>>>>>> Modal
 import './DashNav.css'
 
 class DashNav extends Component {
