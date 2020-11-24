@@ -10,8 +10,7 @@ class ResultsRoute extends Component {
         error: null,
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
-        kitsuAnimeData: this.context.kitsuAnimeData,
-        kitsuGenreData: this.context.kitsuGenreData,
+        kitsuAnimeData: this.context.kitsuAnimeData,        
         expandedItem: null,
     }
 
@@ -32,7 +31,7 @@ class ResultsRoute extends Component {
     }
 
     renderAnimeFromKitsu() {
-        if (this.context.kitsuAnimeData && this.context.kitsuGenreData) {
+        if (this.context.kitsuAnimeData) {
             return (
                 <div>
                     {this.context.kitsuAnimeData.map((anime, index) => {
@@ -45,7 +44,8 @@ class ResultsRoute extends Component {
                                 key={index}
                                 anime={anime}
                                 expanded={details}
-                                clickDetails={this.handleDetails}/>
+                                clickDetails={this.handleDetails}                                
+                                 />
                         )
                     })}
                 </div>
