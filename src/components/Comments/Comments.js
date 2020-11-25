@@ -7,24 +7,26 @@ import otakuApiService from '../../services/otakuApiService'
 class Comments extends Component {
     static contextType = OtakuContext;
 
-    componentDidMount() {
+    async componentDidMount() {
         this.context.clearError()
-        otakuApiService.getListInfo(1)
+        await otakuApiService.getListInfo(1)
             .then(res => {
-                console.log(res)
-                this.context.setCurrentList(res[0]);
+                this.context.setCurrentList(res);
             })
             .catch(this.context.setError)
     }
 
     renderItems() {
+        // change backend to send username as well as comment user id??
         const { currentList = {} } = this.context
-        console.log(currentList)
-        return currentList.comments.map(comment =>
-            <Comment
-                comment={comment.comment}
-            />
-        )
+        if (currentList && currentList.comments) {
+            return currentList.comments.map(comment =>
+                <Comment
+                    comment={comment.comment}
+                    user={comment.comment_user_id}
+                />
+            )
+        }
     }
 
     render() {

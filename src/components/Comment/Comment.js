@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 class Comment extends Component {
 
     render(){
-        const { comment } = this.props;
+        const { comment, user } = this.props;
         // console.log(comment.comment)
         return(
             <section className='comment'>
-                <p>{comment}</p>
+                <p>Comment: {comment}</p>
+                <p>User: {user}</p>
             </section>
         )
     }
