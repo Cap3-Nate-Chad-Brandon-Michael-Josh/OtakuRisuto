@@ -1,7 +1,7 @@
 //form for registering
 
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service'
 import OtakuContext from '../../contexts/OtakuContext'
 import './Registration.css'
