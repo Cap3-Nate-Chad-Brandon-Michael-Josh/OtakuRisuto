@@ -86,7 +86,7 @@ const KitsuApiService = {
                 animeObject = {
                     title: anime.attributes.canonicalTitle,
                     description: anime.attributes.description,                    
-                    mediumImage: anime.attributes.posterImage.medium,
+                    image_url: anime.attributes.posterImage.medium,
                     rating: anime.attributes.averageRating,
                     episodeCount: anime.attributes.episodeCount,
                     // only return genreObject values that match the id of genres in the anime object from kitsu.

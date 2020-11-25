@@ -30,17 +30,23 @@ const OtakuApiService = {
             )
     },
 
-    getUserLists() {
+    getLoggedInUserLists() {
         // A service method to retrieve lists when a search is submitted for other lists.
+        return fetch (`${config.API_ENDPOINT}/list`, {
+            headers: {
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`
+            },
+        })
+            .then(res => 
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+                )
     },
 
-    getUserAnime() {
+    getLoggedInUserAnime() {
         // A service to populate a user's list with the associated anime data.
-    },
-
-    getListsBySearch() {
-        // A service method to retrieve lists when a search is submitted for other lists.
-    },
+    },    
 
     getListInfo(list_id){
         // get the info from a single list
