@@ -51,13 +51,23 @@ export default class Suggestions extends Component {
     let suggestionsResults = []
     for(var i=0; i<10; i++) {
       if(inputElements[i].checked) {
-        suggestionsResults.push(this.state.suggestions[i])
+        let anime = this.state.suggestions[i]
+        suggestionsResults.push({
+          title: anime.title,
+          description: anime.description,
+          image_url: anime.mediumImage,
+          rating: anime.rating,
+          episode_count: anime.episodeCount,
+          genre: anime.genres
+        })
       }
     }
 
-    // KitsuApiService.postList({
-    //   anime: [] // suggestions
-    // })
+    KitsuApiService.postList({
+      title: 'My First Anime List',
+      Private: false,
+      anime: suggestionsResults
+    })
     this.context.setRegistration()
   }
 
