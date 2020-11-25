@@ -14,6 +14,7 @@ const OtakuContext = React.createContext({
   publicListsData: [],     
   registration: false,
   currentList: {},
+  resetComments: () => {},
   setCurrentList: () => {},
   setRegistration: () => {},  
   setError: () => {},
@@ -55,6 +56,12 @@ export class OtakuProvider extends Component {
     this.state = state;
     IdleService.setIdleCallback(this.logoutBecauseIdle)
   }  
+
+  resetComments = comment => {
+    const newList = {...this.state.currentList};
+    newList.comments = [...newList.comments, comment];
+    this.setState({currentList: newList});
+  }
 
   setRegistration = () => {
     this.setState({
@@ -123,6 +130,7 @@ export class OtakuProvider extends Component {
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
       currentList: this.state.currentList,
+      resetComments: this.resetComments,
       setCurrentList: this.setCurrentList,
       setSearchedUserData: this.setSearchedUserData,
       setKitsuAnimeData: this.setKitsuAnimeData,
