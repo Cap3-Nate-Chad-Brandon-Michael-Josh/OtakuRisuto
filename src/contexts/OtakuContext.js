@@ -10,15 +10,20 @@ const OtakuContext = React.createContext({
   searchTerm: '',
   searchOption: '',
   kitsuAnimeData: [],
-  searchedUserData: [],     
+  searchedUserData: [],
+  publicListsData: [],     
   registration: false,
+  currentList: {},
+  setCurrentList: () => {},
   setRegistration: () => {},  
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
   setSearchTerm: () => {},
   setSearchOption: () => {},
-  setKitsuAnimeData: () => {},  
+  setKitsuAnimeData: () => {},
+  setSearchedUserData: () => {},
+  setPublicListsData: () => {},  
   processLogin: () => {},
   processLogout: () => {},
 })
@@ -30,11 +35,13 @@ export class OtakuProvider extends Component {
     const state = { 
       user: {},
       kitsuAnimeData: [],
-      searchedUserData: [],      
+      searchedUserData: [],
+      publicListsData: [],      
       error: null,
       searchTerm: '',
       searchOption: '', 
       registration: false,
+      currentList: {}
     }
 
     const jwtPayload = TokenService.parseAuthToken()
@@ -53,6 +60,10 @@ export class OtakuProvider extends Component {
     this.setState({
       registration: !this.state.registration
     })
+  }
+
+  setCurrentList = data => {
+    this.setState({currentList: data})
   }
 
   setError = error => {
@@ -74,6 +85,10 @@ export class OtakuProvider extends Component {
   
   setSearchedUserData = data => {
     this.setState({ searchedUserData: data })
+  }
+
+  setPublicListsData = data => {
+    this.setState({ publicListsData: data })
   }
 
   setSearchTerm = searchTerm => {
@@ -103,11 +118,15 @@ export class OtakuProvider extends Component {
       user: this.state.user,
       error: this.state.error,
       kitsuAnimeData: this.state.kitsuAnimeData,
-      searchedUserData: this.state.searchedUserData,      
+      searchedUserData: this.state.searchedUserData,
+      publicListsData: this.state.publicListsData,      
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
+      currentList: this.state.currentList,
+      setCurrentList: this.setCurrentList,
       setSearchedUserData: this.setSearchedUserData,
       setKitsuAnimeData: this.setKitsuAnimeData,
+      setPublicListsData: this.setPublicListsData,
       setKitsuGenreData: this.setKitsuGenreData,
       registration: this.state.registration,
       setSearchTerm: this.setSearchTerm,

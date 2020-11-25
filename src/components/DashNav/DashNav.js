@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { component } from 'react'
 import OtakuContext from '../../contexts/OtakuContext';
 import Suggestions from '../Suggestions/Suggestions'
+import Modal from './Modal'
+
 import './DashNav.css'
 
 class DashNav extends Component {
@@ -29,9 +31,14 @@ class DashNav extends Component {
             <h1>anime list</h1>
         </div>
         <button className="navB" onClick={this.handleFilterClick}>
-        &#9776; Anime Lists
-            {/* open Nav */}
+            &#9776; Anime Lists
+            
         </button>
+        
+        <section className= 'animeItem'>
+            <h1>Anime Name</h1>
+            <Modal />
+        </section>
     </div>
   
        )

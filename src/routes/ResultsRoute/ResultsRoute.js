@@ -4,13 +4,17 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
+import UserResultItem from '../../components/UserResultItem/UserResultItem';
+import SearchedPublicListsResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
 
 class ResultsRoute extends Component {
     state = {
         error: null,
         searchTerm: this.context.searchTerm,
         searchOption: this.context.searchOption,
-        kitsuAnimeData: this.context.kitsuAnimeData,        
+        kitsuAnimeData: this.context.kitsuAnimeData,
+        searchedUserData: this.context.searchedUserData,
+        publicListsData: this.context.publicListsData,        
         expandedItem: null,
     }
 
@@ -54,11 +58,27 @@ class ResultsRoute extends Component {
     }
 
     renderUsers() {
-
+        if (this.context.searchedUserData) {
+            return (
+                <div>
+                    {this.context.searchedUserData.map(user => {
+                        return <UserResultItem user={user} />
+                    })}
+                </div>
+            )
+        }
     }
 
     renderLists() {
-
+        if (this.context.publicListsData) {
+            return (
+                <div>
+                    {this.context.publicListsData.map(list => {
+                        return <SearchedPublicListsResults list={list} />
+                    })}
+                </div>
+            )
+        }
     }
 
     render() {
@@ -69,8 +89,17 @@ class ResultsRoute extends Component {
                     landing page
                 </Link>
                 <p>this is the Results Route</p>
-                {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? this.renderAnimeFromKitsu() : null}
+                {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
+                (this.context.searchOption === 'animes') ? 
+                this.renderAnimeFromKitsu() : null : null}
 
+                {(this.state.searchedUserData && this.state.searchedUserData) ? 
+                (this.context.searchOption === 'users') ? 
+                this.renderUsers() : null : null}
+
+                {(this.state.publicListsData && this.state.publicListsData) ?
+                 (this.context.searchOption === 'lists') ? 
+                 this.renderLists() : null : null}
             </section>
         )
     }

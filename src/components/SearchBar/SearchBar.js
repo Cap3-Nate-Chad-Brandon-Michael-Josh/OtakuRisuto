@@ -7,13 +7,14 @@ import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
 
 import KitsuApiService from '../../services/kitsuApiService';
+import OtakuApiService from '../../services/otakuApiService';
 
 import  { Redirect, withRouter } from 'react-router-dom';
-import './SearchBar.css'
+// import './SearchBar.css'
 
 class SearchBar extends Component {
     state = {
-        error: null,
+        error: this.context.error,
         searchTerm: '',
         searchOption: '',
     }
@@ -34,6 +35,22 @@ class SearchBar extends Component {
         .catch(error => this.context.setError(error))         
     }
 
+    fetchOtakuUsers(searchTerm) {
+        OtakuApiService.getUsersBySearch(searchTerm)
+        .then(res => {
+            this.context.setSearchedUserData(res)
+        })
+        .catch(error => this.context.setError(error))
+    }
+
+    fetchOtakuPublicLists(searchTerm) {
+        OtakuApiService.getPublicListsBySearch(searchTerm)
+        .then(res => {
+            this.context.setPublicListsData(res)
+        })
+        .catch(error => this.context.setError(error))
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('search submitted');
@@ -42,13 +59,11 @@ class SearchBar extends Component {
         if (this.state.searchOption === 'animes') {
             this.fetchKitsuAnimeData(this.state.searchTerm);            
         }
-        if (this.state.searchOption === 'users') {
-            // fetch otaku find users endpoint
-            
+        if (this.state.searchOption === 'users') {            
+            this.fetchOtakuUsers(this.state.searchTerm);
         }
-        if (this.state.searchOption === 'lists') {
-            // fetch otaku find lists endpoint
-
+        if (this.state.searchOption === 'lists') {            
+            this.fetchOtakuPublicLists(this.state.searchTerm);
         }
         this.props.history.push('/results');            
     }
