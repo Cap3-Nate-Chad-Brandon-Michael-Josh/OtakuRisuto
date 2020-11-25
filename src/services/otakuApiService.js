@@ -44,6 +44,20 @@ const OtakuApiService = {
                 )
     },
 
+    getSpecifiedUserLists(userId) {
+        return fetch (`${config.API_ENDPOINT}/list/user/${userId}`, {
+            headers: {
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+                'Content-Type' : 'application/json'
+            },            
+        })
+            .then(res => 
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+                )
+    },
+
     getLoggedInUserAnime() {
         // A service to populate a user's list with the associated anime data.
     },    
