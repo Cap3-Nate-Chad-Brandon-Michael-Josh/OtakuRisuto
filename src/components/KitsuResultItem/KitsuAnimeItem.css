@@ -1,0 +1,71 @@
+.container2 {
+    position: relative;
+    width: 50%;
+    margin:auto;
+  }
+  
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 14px;
+    right: 0;
+    height: 99%;
+    width: 94%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+  
+  .container2:hover .overlay {
+    opacity: 1;
+  }
+  
+  .text {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    overflow-x: hidden;
+  }
+
+  .genre {
+      color:white;
+      font-size: 25px;
+  }
+
+ .titles{
+     /* color:grey; */
+     font-family: 'Modak', cursive;
+     color:black;
+     text-shadow: 0px 3px #FF0000,  3px 0px#00e1ffd8;;
+ }
+
+ .pop-out{
+    height: 100%;
+    width: 250;
+    position: fixed;
+    z-index: 1;
+    top: 177px;
+    bottom: 102px;
+    left: 195px;
+    background-color: rgba(228, 34, 34, 0.774);
+    overflow-x: hidden;
+    transition: 0.5s;
+     padding-top: 60px;
+     margin:auto;
+ }
+
+ .desc{
+     color:white;
+     font-size:30px;
+ }
