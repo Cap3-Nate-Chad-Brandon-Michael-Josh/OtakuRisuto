@@ -2,8 +2,7 @@
 const kitsuUrl = 'https://kitsu.io/api/edge/anime';
 
 const KitsuApiService = {
-    // returns a generic GET request to kitsuUrl
-    // data[i].attributes.slug for title
+    // returns a generic GET request to kitsuUrl    
     getAnimes() {
         return fetch(`${kitsuUrl}`, {
             headers: {
@@ -17,15 +16,9 @@ const KitsuApiService = {
                     : res.json()
             )
     },
-
-    /* returns a user specified text query GET request to kitsu API
-       data[i].id <-- needed in order to get genres in subsequent api request
-       data[i].attributes.slug <-- for title
-       data[i].attributes.description,
-       data[i].attributes.averageRating, <-- Some titles have null as the value
-       data[i].attributes.posterImage.(tiny, small, medium, large, original) <-- one of
-       data[i].attributes.episodeCount */
+    
     getAnimesBySearchTerm(searchTerm) {
+        // Gets up to 10 anime related to a specified search term.
         return fetch(`${kitsuUrl}?filter%5Btext%5D=${searchTerm}&include=categories`, {
             headers: {
                 // "Accept": "application/vnd.api+json",
@@ -38,24 +31,9 @@ const KitsuApiService = {
                     : res.json()
             )
     },
-    /* get genres for anime based on id
-       data[i].attributes.slug will give name of genre 
-       (meta.count would give number of genres) */
-    getAnimeGenre(queryString) {
-        return fetch(`${queryString}`, {
-          headers: {
-                    //   "Accept": "application/vnd.api+json",
-                      "Content-Type": "application/json"
-                  },
-        })
-          .then(res =>
-            (!res.ok)
-              ? res.json().then(e => Promise.reject(e))
-              : res.json()
-          )
-      },
-      // this fetch request will return the 10 anime with the highest 'average rating'
-      getAnimeSuggestions() {
+    
+    getAnimeSuggestions() {
+        // this fetch request will return the 10 anime with the highest 'average rating'
         return fetch(`${kitsuUrl}?sort=-averageRating&include=categories`, {
           headers: {
                     //   "Accept": "application/vnd.api+json",
@@ -70,9 +48,9 @@ const KitsuApiService = {
       },
 
       serializeAnime(includedGenres, animeData) {
-          // genres should be res.included anime should be res.data
+          // genres will be res.included anime will be res.data
             console.log('serializeAnime ran')
-            /*  set an object where each genreId's value is the genre title this is
+            /*  set an object where each key is a genreId and each value is the genre title this is
                 needed to avoid subsequent api calls to the kitsu api for genre data */
             let genreObject = {}
             includedGenres.map(genre => {

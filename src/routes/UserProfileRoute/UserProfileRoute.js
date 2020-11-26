@@ -6,24 +6,38 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './UserProfileRoute.css';
 import OtakuApiService from '../../services/otakuApiService';
+import SearchedUserListItem from '../../components/SearchedUserListItem/SearchedUserListItem';
+import UserAnimeItem from '../../components/UserAnimeItem/UserAnimeItem';
+import SearchPublicListResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
 
 class UserProfileRoute extends Component {
     state = {
         error: null,
-        userLists: []
+        userLists: [],
+        userAnimeItems: [],
+        expanded: false,
+        viewing: false,
     }
-    
-    /* AWAITING NEW API PATH FOR FETCH CALL */
-    // async componentDidMount() {
-    //     let id = this.props.match.params.id;
-    //     console.log(id);
-    //     await OtakuApiService.getSpecifiedUserLists(id)
-    //         .then(res => this.setState({ userLists: res }))
-    // }
 
-    render(){
-        return(
-            <section className='DashboardRoute'>
+    async componentDidMount() {
+        let id = this.props.match.params.id;
+        console.log(id);
+        await OtakuApiService.getSpecifiedUserLists(id)
+            .then(res => this.setState({ userLists: res }))
+    }
+
+    // handleViewContentsClick = (event, listId) => {
+    //     event.preventDefault();
+    //     OtakuApiService.getListInfo(listId)
+    //         .then(res => this.setState({
+    //             userAnimeItems: res.anime,
+    //             viewing: true,
+    //         }))
+    // }   
+
+    render() {
+        return (
+            <section className='userProfileRoute'>
                 <Header />
                 <DashNav />
                 {/* <Modal /> */}
@@ -31,7 +45,9 @@ class UserProfileRoute extends Component {
                     Home
                 </Link>
                 <p>this is User Profile Route</p>
-
+                {this.state.userLists && this.state.userLists.map(list => {
+                   return <SearchedUserListItem listId={list.list_id}/>
+                })}
             </section>
         )
     }

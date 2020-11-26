@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
 import UserResultItem from '../../components/UserResultItem/UserResultItem';
-import SearchedPublicListsResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
+import SearchPublicListResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
 
 class ResultsRoute extends Component {
     state = {
@@ -79,7 +79,7 @@ class ResultsRoute extends Component {
             return (
                 <div>
                     {this.context.publicListsData.map(list => {
-                        return <SearchedPublicListsResults list={list} />
+                        return <SearchPublicListResults list={list} />
                     })}
                 </div>
             )

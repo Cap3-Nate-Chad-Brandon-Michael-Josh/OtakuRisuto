@@ -5,6 +5,7 @@ import TokenService from './token-service';
 const OtakuApiService = {    
 
     getUsersBySearch(searchTerm) {
+        // Get all users related to a specific search term.
         return fetch(`${config.API_ENDPOINT}/search/users/${searchTerm}`, {
             headers: {                
                 'authorization' : `Bearer ${TokenService.getAuthToken()}`,
@@ -18,6 +19,7 @@ const OtakuApiService = {
     },
 
     getPublicListsBySearch(searchTerm) {
+        // Get all public anime lists related to a specified search term.
         return fetch(`${config.API_ENDPOINT}/search/lists/${searchTerm}`, {
             headers: {                
                 'authorization' : `Bearer ${TokenService.getAuthToken()}`,
@@ -31,7 +33,7 @@ const OtakuApiService = {
     },
 
     getLoggedInUserLists() {
-        // A service method to retrieve lists when a search is submitted for other lists.
+        // Get the logged in user's anime lists.
         return fetch (`${config.API_ENDPOINT}/list`, {
             headers: {
                 'authorization' : `Bearer ${TokenService.getAuthToken()}`
@@ -45,6 +47,7 @@ const OtakuApiService = {
     },
 
     getSpecifiedUserLists(userId) {
+        // Get a specified user's public anime lists.
         return fetch (`${config.API_ENDPOINT}/list/user/${userId}`, {
             headers: {
                 'authorization' : `Bearer ${TokenService.getAuthToken()}`,
