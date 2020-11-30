@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
 import Comment from '../Comment/Comment';
 import CommentForm from '../CommentForm/CommentForm';
-import otakuApiService from '../../services/otakuApiService'
+// import otakuApiService from '../../services/otakuApiService'
 
 class Comments extends Component {
     static contextType = OtakuContext;
 
-    async componentDidMount() {
-        this.context.clearError()
-        await otakuApiService.getListInfo(1)
-            .then(res => {
-                this.context.setCurrentList(res);
-            })
-            .catch(this.context.setError)
-    }
+    // async componentDidMount() {
+    //     this.context.clearError()
+    //     let id = this.props.match.params.id;
+    //     await otakuApiService.getListInfo(id)
+    //         .then(res => {
+    //             this.context.setCurrentList(res);
+    //         })
+    //         .catch(this.context.setError)
+    // }
 
     renderItems() {
-        const { currentList = {} } = this.context
+        const { currentList = {} } = this.props
         if (currentList && currentList.comments) {
             return (
             <div>
