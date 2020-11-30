@@ -24,6 +24,7 @@ class ResultsRoute extends Component {
 
     }
 
+    // this is for expanding kitsu anime item details
     handleDetails = (event, item) => {
         event.preventDefault()
         let update = item
@@ -67,19 +68,32 @@ class ResultsRoute extends Component {
             return (
                 <div>
                     {this.context.searchedUserData.map(user => {
-                        return <UserResultItem user={user} key={user.username} viewUser={this.handleViewUserClick}/>
+                        return <UserResultItem 
+                                    user={user} 
+                                    key={user.username} 
+                                    viewUser={this.handleViewUserClick}
+                                />
                     })}
                 </div>
             )
         }
     }
 
+    handleViewListClick = (event, listId) => {
+        event.preventDefault();
+        this.props.history.push(`/SearchedList/${listId}`);
+    }
+
     renderLists() {
         if (this.context.publicListsData) {
             return (
                 <div>
-                    {this.context.publicListsData.map(list => {
-                        return <SearchPublicListResults list={list} />
+                    {this.context.publicListsData.map((list, index) => {
+                        return <SearchPublicListResults 
+                                    list={list} 
+                                    key={list.name, index} 
+                                    viewList={this.handleViewListClick} 
+                                />
                     })}
                 </div>
             )
@@ -94,6 +108,10 @@ class ResultsRoute extends Component {
                     landing page
                 </Link>
                 <p>this is the Results Route</p>
+
+                {/* The multiple ternary statements conditionally render what is
+                    displayed in the results route based off of the search term */}
+
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
                 (this.context.searchOption === 'animes') ? 
                 this.renderAnimeFromKitsu() : null : null}

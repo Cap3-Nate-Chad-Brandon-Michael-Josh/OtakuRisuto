@@ -46,7 +46,13 @@ class UserProfileRoute extends Component {
                 </Link>
                 <p>this is User Profile Route</p>
                 {this.state.userLists && this.state.userLists.map(list => {
-                   return <SearchedUserListItem listId={list.list_id}/>
+                    return (
+                        <section>
+                            <h2>{list.name}</h2>
+                            <button>View {list.name}</button>
+                            {/* <SearchedUserListItem listId={list.list_id} /> */}
+                        </section>
+                    )
                 })}
             </section>
         )

@@ -59,6 +59,7 @@ export default class SearchedUserListItem extends Component {
   render() {
     return (
       <div className='userListItemContainer'>
+        <h2></h2>
         {this.renderListItems()}
       </div>
     )

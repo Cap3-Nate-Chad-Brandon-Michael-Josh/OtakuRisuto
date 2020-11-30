@@ -98,7 +98,7 @@ class SearchBar extends Component {
                     <button
                     className='search'
                      type='submit'>
-                         <i class="fas fa-search"></i>
+                         <i className="fas fa-search"></i>
                          {/* Search! */}
                          </button>
                 {/* </nav> */}

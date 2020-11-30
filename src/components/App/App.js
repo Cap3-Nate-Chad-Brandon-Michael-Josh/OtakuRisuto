@@ -13,6 +13,7 @@ import './App.css';
 import UserListRoute from '../../routes/UserListRoute/UserListRoute';
 import NewListForm from '../NewListForm/NewListForm';
 import UserProfileRoute from '../../routes/UserProfileRoute/UserProfileRoute';
+import SearchedListRoute from '../../routes/SearchedListRoute/SearchedListRoute';
 
 export default class App extends Component {
   render(){
@@ -49,6 +50,10 @@ export default class App extends Component {
             <Route
               exact path={'/userProfile/:id'}
               component={UserProfileRoute}
+            />
+            <Route 
+              exact path={'/SearchedList/:id'}
+              component={SearchedListRoute}
             />
             <Route
               exact path={'/'}
