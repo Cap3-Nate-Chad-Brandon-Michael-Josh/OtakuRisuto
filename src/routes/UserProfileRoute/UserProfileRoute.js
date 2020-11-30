@@ -6,9 +6,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './UserProfileRoute.css';
 import OtakuApiService from '../../services/otakuApiService';
-import SearchedUserListItem from '../../components/SearchedUserListItem/SearchedUserListItem';
-import UserAnimeItem from '../../components/UserAnimeItem/UserAnimeItem';
-import SearchPublicListResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
 
 class UserProfileRoute extends Component {
     state = {
@@ -26,14 +23,10 @@ class UserProfileRoute extends Component {
             .then(res => this.setState({ userLists: res }))
     }
 
-    // handleViewContentsClick = (event, listId) => {
-    //     event.preventDefault();
-    //     OtakuApiService.getListInfo(listId)
-    //         .then(res => this.setState({
-    //             userAnimeItems: res.anime,
-    //             viewing: true,
-    //         }))
-    // }   
+    handleViewListClick = (event, listId) => {
+        event.preventDefault();
+        this.props.history.push(`/SearchedList/${listId}`);
+    }  
 
     render() {
         return (
@@ -49,8 +42,10 @@ class UserProfileRoute extends Component {
                     return (
                         <section>
                             <h2>{list.name}</h2>
-                            <button>View {list.name}</button>
-                            {/* <SearchedUserListItem listId={list.list_id} /> */}
+                            <button onClick={event => this.handleViewListClick(event, list.list_id)}>
+                                View {list.name}
+                            </button>
+                            
                         </section>
                     )
                 })}
