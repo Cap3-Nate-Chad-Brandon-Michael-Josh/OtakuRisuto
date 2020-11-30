@@ -30,18 +30,6 @@ const OtakuApiService = {
             )
     },
 
-    getUserLists() {
-        // A service method to retrieve lists when a search is submitted for other lists.
-    },
-
-    getUserAnime() {
-        // A service to populate a user's list with the associated anime data.
-    },
-
-    getListsBySearch() {
-        // A service method to retrieve lists when a search is submitted for other lists.
-    },
-
     getListInfo(list_id){
         // get the info from a single list
         return fetch(`${config.API_ENDPOINT}/list/${list_id}`, {
