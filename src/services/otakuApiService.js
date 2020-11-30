@@ -82,6 +82,25 @@ const OtakuApiService = {
                 : res.json()
         )
     },
+    postList(title, privacy, anime = []) {
+        return fetch(`${config.API_ENDPOINT}/list`, {
+            method: 'POST',
+            headers: {                
+                'content-type': 'application/json',
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify({
+                name: title,
+                private: privacy,
+                anime: anime,
+            })
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
+    },
 
 
 }
