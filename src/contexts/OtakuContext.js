@@ -58,8 +58,10 @@ export class OtakuProvider extends Component {
   }  
 
   resetComments = comment => {
+    const newComment = comment;
+    newComment.username = this.state.user.username;
     const newList = {...this.state.currentList};
-    newList.comments = [...newList.comments, comment];
+    newList.comments = [...newList.comments, newComment];
     this.setState({currentList: newList});
   }
 

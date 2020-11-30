@@ -9,7 +9,7 @@ class CommentForm extends Component {
         this.state = {
             item: {
                 comment: '',
-                // list_id: this.context.currentList.list_id,
+                list_id: this.props.list_id,
             },
 
             error: null,
@@ -31,7 +31,7 @@ class CommentForm extends Component {
     handleSubmit = ev => {
         ev.preventDefault();
         const newComment = this.state.item.comment;
-        const list_id = 1;
+        const list_id = this.state.item.list_id;
 
         OtakuApiService.postComment(newComment, list_id)
             .then(res => {
