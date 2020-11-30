@@ -57,11 +57,45 @@ const OtakuApiService = {
     },
 
     addAnimeToList(animeData, list) {
-        // A service method to POST anime data to a specified list.
+       // A service method to POST anime data to a specified list.
+        return fetch(`${config.API_ENDPOINT}/anime`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',                
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify({
+                anime: animeData,
+                list_id: list.list_id
+            })
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
     },
 
     updateListName(newName, list) {
         // A service method to PATCH a user list and change the name. 
+        return fetch(`${config.API_ENDPOINT}/list/${list.list_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',                
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify({
+                name: newName,
+                private: list.private
+            })
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
+    },
+        
     },
 
     postComment(comment, list_id){
