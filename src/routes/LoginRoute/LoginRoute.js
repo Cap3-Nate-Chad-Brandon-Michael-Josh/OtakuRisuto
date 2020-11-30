@@ -15,7 +15,7 @@ class LoginRoute extends Component {
                 <Login />
                 <Link className="Register-QA" to={'/register'}>Don't have an account yet?</Link><br></br>
                 {/* <p>this is the login page</p> */}
-                <Link to={'/home'}>dashboard</Link>
+                <Link to={'/register'}>Sign Up</Link>
             </section>
         )
     }
