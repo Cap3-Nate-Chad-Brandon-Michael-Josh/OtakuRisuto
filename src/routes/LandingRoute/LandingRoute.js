@@ -29,9 +29,9 @@ class LandingRoute extends Component {
         
             <section className='footer'>
                 <Link
-                    to={'/home'}
+                    to={'/login'}
                 >
-                    Dashboard
+                    Login
                 </Link>
             </section>
             </section>
