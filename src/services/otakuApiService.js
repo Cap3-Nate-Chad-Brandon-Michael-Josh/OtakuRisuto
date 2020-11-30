@@ -83,6 +83,11 @@ const OtakuApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
+
+  postRating(rating, list_id) {
+
+  },
+  
   postList(title, privacy, anime = []) {
     return fetch(`${config.API_ENDPOINT}/list`, {
       method: "POST",
