@@ -17,13 +17,12 @@ class Comments extends Component {
     }
 
     renderItems() {
-        // change backend to send username as well as comment user id??
         const { currentList = {} } = this.context
         if (currentList && currentList.comments) {
             return currentList.comments.map(comment =>
                 <Comment
                     comment={comment.comment}
-                    user={comment.comment_user_id}
+                    user={comment.username}
                 />
             )
         }
