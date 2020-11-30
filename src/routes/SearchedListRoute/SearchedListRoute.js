@@ -35,7 +35,8 @@ class SearchedListRoute extends Component {
         })
     }
 
-    renderListItems = () => {        
+    renderListItems = () => {
+        return (       
         (this.state.list && this.state.list.anime.map((anime, index) => {
             // 1. this will default all items to their non-expanded view
             // 2. the updateExpand function will update the expandedItem 
@@ -59,6 +60,7 @@ class SearchedListRoute extends Component {
                 />
             )
         }))
+        )
     }
 
     render() {
@@ -69,10 +71,9 @@ class SearchedListRoute extends Component {
                 {/* <Modal /> */}
                 <Link to={'/home'}>
                     Home
-            </Link>
-                <p>this is the Searched List Route</p>
-                <h2>{this.state.list.name}</h2>
+            </Link>                
                 <p>this is the Searched List Route</p>                
+                <h2>{this.state.list && this.state.list.name}</h2>
                 {(this.state.list) ? this.renderListItems() : null}
             </section>
 
