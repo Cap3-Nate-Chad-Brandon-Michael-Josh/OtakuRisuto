@@ -1,2 +1,7 @@
 changes
 .env file
+
+
+how to make modal for expand
+1. make div under expanded-anime-card
+2.fix poistion
