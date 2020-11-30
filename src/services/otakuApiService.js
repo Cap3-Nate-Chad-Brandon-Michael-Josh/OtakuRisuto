@@ -1,93 +1,104 @@
 // Service object for the Otaku API
-import config from '../config';
-import TokenService from './token-service';
+import config from "../config";
+import TokenService from "./token-service";
 
-const OtakuApiService = {    
+const OtakuApiService = {
+  getUsersBySearch(searchTerm) {
+    return fetch(`${config.API_ENDPOINT}/search/users/${searchTerm}`, {
+      headers: {
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 
-    getUsersBySearch(searchTerm) {
-        // Get all users related to a specific search term.
-        return fetch(`${config.API_ENDPOINT}/search/users/${searchTerm}`, {
-            headers: {                
-                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
-            },
-        })
-            .then(res =>
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()
-            )
-    },
+  getPublicListsBySearch(searchTerm) {
+    return fetch(`${config.API_ENDPOINT}/search/lists/${searchTerm}`, {
+      headers: {
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 
-    getPublicListsBySearch(searchTerm) {
-        // Get all public anime lists related to a specified search term.
-        return fetch(`${config.API_ENDPOINT}/search/lists/${searchTerm}`, {
-            headers: {                
-                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
-            },
-        })
-            .then(res =>
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()
-            )
-    },
+  getListInfo(list_id) {
+    // get the info from a single list
+    return fetch(`${config.API_ENDPOINT}/list/${list_id}`, {
+      headers: {
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 
-    getLoggedInUserLists() {
-        // Get the logged in user's anime lists.
-        return fetch (`${config.API_ENDPOINT}/list`, {
-            headers: {
-                'authorization' : `Bearer ${TokenService.getAuthToken()}`
-            },
-        })
-            .then(res => 
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()
-                )
-    },
+  addAnimeToList(animeData, list) {
+    // A service method to POST anime data to a specified list.
+    return fetch(`${config.API_ENDPOINT}/anime`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        anime: animeData,
+        list_id: list.list_id,
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 
-    getSpecifiedUserLists(userId) {
-        // Get a specified user's public anime lists.
-        return fetch (`${config.API_ENDPOINT}/list/user/${userId}`, {
-            headers: {
-                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
-                'Content-Type' : 'application/json'
-            },            
-        })
-            .then(res => 
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()
-                )
-    },
+  updateListName(newName, list) {
+    // A service method to PATCH a user list and change the name.
+    return fetch(`${config.API_ENDPOINT}/list/${list.list_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        name: newName,
+        private: list.private,
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 
-    getLoggedInUserAnime() {
-        // A service to populate a user's list with the associated anime data.
-    },    
-
-    getListInfo(list_id){
-        // get the info from a single list
-        return fetch(`${config.API_ENDPOINT}/list/${list_id}`, {
-            headers: {                
-                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
-            },
-        })
-        .then(res =>
-            (!res.ok)
-                ? res.json().then(e => Promise.reject(e))
-                : res.json()
-        )
-    },
-
-    addAnimeToList(animeData, list) {
-        // A service method to POST anime data to a specified list.
-    },
-
-    updateListName(newName, list) {
-        // A service method to PATCH a user list and change the name. 
-    },
-
-
-}
+  postComment(comment, list_id) {
+    return fetch(`${config.API_ENDPOINT}/list/comment`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        comment: comment,
+        list_id: Number(list_id),
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+  postList(title, privacy, anime = []) {
+    return fetch(`${config.API_ENDPOINT}/list`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        name: title,
+        private: privacy,
+        anime: anime,
+      }),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+};
 
 export default OtakuApiService;

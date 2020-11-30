@@ -4,6 +4,7 @@ import KitsuApiService from '../../services/kitsuApiService'
 import SuggestionsItem from '../SuggestionsItem/SuggestionsItem'
 import Context from '../../contexts/OtakuContext'
 import './Suggestions.css'
+import OtakuApiService from '../../services/otakuApiService'
 
 export default class Suggestions extends Component {
   state = {
@@ -63,11 +64,7 @@ export default class Suggestions extends Component {
       }
     }
 
-    KitsuApiService.postList({
-      title: 'My First Anime List',
-      Private: false,
-      anime: suggestionsResults
-    })
+    OtakuApiService.postList('My First Anime List', false, suggestionsResults)
     this.context.setRegistration()
   }
 

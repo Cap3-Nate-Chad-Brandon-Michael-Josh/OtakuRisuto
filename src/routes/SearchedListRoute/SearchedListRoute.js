@@ -72,6 +72,7 @@ class SearchedListRoute extends Component {
             </Link>
                 <p>this is the Searched List Route</p>
                 <h2>{this.state.list.name}</h2>
+                <p>this is the Searched List Route</p>                
                 {(this.state.list) ? this.renderListItems() : null}
             </section>
 

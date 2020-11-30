@@ -11,7 +11,7 @@ class RegistrationRoute extends Component {
                  <h2>OtakuRisuto</h2>
                 <Link to={'/'}>landing</Link>
                 <br></br>
-                <Registration />
+                <Registration history={this.props.history}/>
                 <Link className='login-QA' to={'/login'}>Already have an account?</Link><br></br>
                 {/* <p>this is the registration page</p> */}
                 <Link to={'/home'}>dashboard</Link>
