@@ -84,6 +84,44 @@ const OtakuApiService = {
         // A service method to PATCH a user list and change the name. 
     },
 
+    postComment(comment, list_id){
+        return fetch(`${config.API_ENDPOINT}/list/comment`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',                
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify({
+                comment: comment,
+                list_id: Number(list_id)
+            })
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
+    },
+    postList(title, privacy, anime = []) {
+        return fetch(`${config.API_ENDPOINT}/list`, {
+            method: 'POST',
+            headers: {                
+                'content-type': 'application/json',
+                'authorization' : `Bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify({
+                name: title,
+                private: privacy,
+                anime: anime,
+            })
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
+    },
+
 
 }
 
