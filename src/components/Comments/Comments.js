@@ -19,11 +19,16 @@ class Comments extends Component {
     renderItems() {
         const { currentList = {} } = this.context
         if (currentList && currentList.comments) {
-            return currentList.comments.map(comment =>
-                <Comment
-                    comment={comment.comment}
-                    user={comment.username}
-                />
+            return (
+            <div>
+                <CommentForm list_id={currentList.list_id}/>
+                {currentList.comments.map(comment =>
+                    <Comment
+                        comment={comment.comment}
+                        user={comment.username}
+                    />
+                )}
+            </div>
             )
         }
     }
@@ -32,7 +37,6 @@ class Comments extends Component {
         const { error } = this.context
         return (
             <section className='comments'>
-                <CommentForm />
                 {error
                     ? <p className=''>There was an error, try again</p>
                     : this.renderItems()}
