@@ -12,6 +12,7 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.css';
 import UserListRoute from '../../routes/UserListRoute/UserListRoute';
 import NewListForm from '../NewListForm/NewListForm';
+import UserProfileRoute from '../../routes/UserProfileRoute/UserProfileRoute';
 
 export default class App extends Component {
   render(){
@@ -44,6 +45,10 @@ export default class App extends Component {
             <Route
               exact path={'/userList'}
               component={UserListRoute}
+            />
+            <Route
+              exact path={'/userProfile/:id'}
+              component={UserProfileRoute}
             />
             <Route
               exact path={'/'}

@@ -45,7 +45,7 @@ class ResultsRoute extends Component {
                         }
                         return (
                             <KitsuResultItem
-                                key={index}
+                                key={index, anime.title}
                                 anime={anime}
                                 expanded={details}
                                 clickDetails={this.handleDetails}                                
@@ -57,12 +57,17 @@ class ResultsRoute extends Component {
         }
     }
 
+    handleViewUserClick = (event, userId) => {
+        event.preventDefault();
+        this.props.history.push(`/userProfile/${userId}`);
+    }
+
     renderUsers() {
         if (this.context.searchedUserData) {
             return (
                 <div>
                     {this.context.searchedUserData.map(user => {
-                        return <UserResultItem user={user} />
+                        return <UserResultItem user={user} key={user.username} viewUser={this.handleViewUserClick}/>
                     })}
                 </div>
             )

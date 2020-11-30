@@ -7,32 +7,57 @@ import OtakuContext from '../../contexts/OtakuContext'
 import './Registration.css'
 
 class Registration extends Component {
+    static defaultProps = {
+        history: {
+            push: () => {}
+        },
+    };
+
     state = { error: null }
 
     static contextType = OtakuContext
 
     handleSubmit = event => {
+        console.log('handlesubmit')
         event.preventDefault()
-        const { email, username, password } = event.target
+        const { email, username, password, password2 } = event.target
         AuthApiService.postUser({
             email: email.value,
             username: username.value,
             password: password.value
         })
             .then(user => {
+                this.onRegistrationSuccess(username.value, password.value)
                 email.value = ''
+                username.value = ''
                 password.value = ''
-                this.onRegistrationSuccess()
+                password2.value = ''
             })
             .catch(res => {
                 this.setState({ error: res.error })
             })
     }
 
-    onRegistrationSuccess = () => {
-        const { history } = this.props
-        this.context.setRegistration()
-        history.push('/dashboard')
+    onRegistrationSuccess = (username, password) => {
+        console.log('Reg Success', username, password)
+        AuthApiService.postLogin({
+            username: username,
+            password: password,
+        })
+            .then(res => {
+                this.context.processLogin(res.authToken)
+                console.log('Registration success')
+                console.log(this.props.history)
+                const { history } = this.props
+                this.context.setRegistration()
+                history.push('/home')
+            })
+            .then(() => {
+
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
     render(){
@@ -45,7 +70,7 @@ class Registration extends Component {
                 <label htmlFor='password'>Password</label><br></br>
                 <input type='text' name='password' className='' placeholder='password'></input><br></br>
                 <label htmlFor='re-enter password'>re-enter password</label><br></br>
-                <input type='text' className='' placeholder='re-enter password'></input><br></br>
+                <input type='text' className='' name='password2' placeholder='re-enter password'></input><br></br>
                 <button type='submit' className=''>Submit</button>
             </form>
         )
