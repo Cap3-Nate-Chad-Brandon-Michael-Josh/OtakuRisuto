@@ -7,7 +7,7 @@ const KitsuAnimeItem = (props) => {
         return (
             <div className='anime-card'>   
                 <div className='container2'>
-                    <img src={props.anime && props.anime.mediumImage} 
+                    <img src={props.anime && props.anime.image_url} 
                     alt={props.anime && props.anime.title} />
                     <div className='overlay'>
                     <div class="text">
@@ -31,7 +31,7 @@ const KitsuAnimeItem = (props) => {
             <div className='pop-out'>
             <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button> <br></br>
 
-                <img src={props.anime && props.anime.mediumImage} alt={props.anime.title && props.anime.title} />
+                <img src={props.anime && props.anime.image_url} alt={props.anime.title && props.anime.title} />
                 <h2>{props.anime && props.anime.title}</h2>
                 <h3>Description: </h3>
                 <p className='desc'>{props.anime && props.anime.description}</p>

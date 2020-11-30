@@ -10,10 +10,7 @@ import OtakuApiService from '../../services/otakuApiService';
 class UserProfileRoute extends Component {
     state = {
         error: null,
-        userLists: [],
-        userAnimeItems: [],
-        expanded: false,
-        viewing: false,
+        userLists: [],               
     }
 
     async componentDidMount() {
