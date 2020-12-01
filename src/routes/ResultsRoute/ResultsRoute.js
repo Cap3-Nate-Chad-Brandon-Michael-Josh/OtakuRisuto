@@ -6,6 +6,7 @@ import OtakuContext from '../../contexts/OtakuContext';
 import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
 import UserResultItem from '../../components/UserResultItem/UserResultItem';
 import SearchPublicListResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
+import OtakuApiService from '../../services/otakuApiService';
 
 class ResultsRoute extends Component {
     state = {
@@ -14,14 +15,16 @@ class ResultsRoute extends Component {
         searchOption: this.context.searchOption,
         kitsuAnimeData: this.context.kitsuAnimeData,
         searchedUserData: this.context.searchedUserData,
-        publicListsData: this.context.publicListsData,        
-        expandedItem: null,
+        publicListsData: this.context.publicListsData,
+        addToSelectedList: null,        
+        expandedItem: null,        
     }
 
     static contextType = OtakuContext
 
-    componentDidMount() {
-
+    async componentDidMount() {
+        await OtakuApiService.getLoggedInUserLists()
+            .then(res => this.context.setLoggedInUserLists(res))
     }
 
     // this is for expanding kitsu anime item details
@@ -33,6 +36,18 @@ class ResultsRoute extends Component {
             update = null
         }
         this.setState({ expandedItem: update })
+    }
+
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value})
+    } 
+
+    handleAddToList = (event, anime) => {
+        event.preventDefault();
+        console.log(anime)
+        console.log(this.state.addToSelectedList)
+        OtakuApiService.addAnimeToList(anime, this.state.addToSelectedList)
+        .then(res => console.log(res))
     }
 
     renderAnimeFromKitsu() {
@@ -48,6 +63,9 @@ class ResultsRoute extends Component {
                             <KitsuResultItem
                                 key={index, anime.title}
                                 anime={anime}
+                                userLists={this.context.loggedInUserLists}
+                                changeSelectedList={this.handleChange}
+                                submitAnime={this.handleAddToList}
                                 expanded={details}
                                 clickDetails={this.handleDetails}                                
                                  />
