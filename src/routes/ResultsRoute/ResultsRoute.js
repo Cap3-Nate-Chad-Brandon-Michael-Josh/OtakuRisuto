@@ -128,7 +128,7 @@ class ResultsRoute extends Component {
                 <p>this is the Results Route</p>
 
                 {/* The multiple ternary statements conditionally render what is
-                    displayed in the results route based off of the search term */}
+                    displayed in the results route based off of the search option */}
 
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
                 (this.context.searchOption === 'animes') ? 

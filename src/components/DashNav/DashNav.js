@@ -5,22 +5,28 @@ import Suggestions from '../Suggestions/Suggestions'
 import Modal from './Modal'
 
 import './DashNav.css'
+import OtakuApiService from '../../services/otakuApiService';
 
 class DashNav extends Component {
     static contextType = OtakuContext;
-    state ={
+    state = {
         Nav: false,
         className: "sidenav",
         classNameHidden: "sidenav2",
         registration: this.context.registration
     }
 
+    async componentDidMount() {
+        await OtakuApiService.getLoggedInUserLists()
+            .then(res => this.context.setLoggedInUserLists(res))
+    }
+
       handleFilterClick = () => {
         this.setState({ Nav: !this.state.Nav})
         
       }
-    render(){
-       
+    
+      render() {      
         
        return(
     <div> 
@@ -28,7 +34,9 @@ class DashNav extends Component {
         <Suggestions />
         }
         <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
-            <h1>anime list</h1>
+            <h1>Your lists</h1>
+            {(this.context.loggedInUserLists && 
+                this.context.loggedInUserLists.map(list => <h3>{list.name}</h3>))}
         </div>
         <button className="navB" onClick={this.handleFilterClick}>
             &#9776; Anime Lists
