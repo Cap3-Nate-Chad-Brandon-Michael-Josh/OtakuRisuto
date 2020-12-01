@@ -24,9 +24,6 @@ class DashNav extends Component {
         
        return(
     <div> 
-        {this.context.registration &&
-        <Suggestions />
-        }
         <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
             <h1>anime list</h1>
         </div>
@@ -39,6 +36,9 @@ class DashNav extends Component {
             <h1>Anime Name</h1>
             <Modal />
         </section>
+        {this.context.registration &&
+                <Suggestions />
+        }
     </div>
   
        )

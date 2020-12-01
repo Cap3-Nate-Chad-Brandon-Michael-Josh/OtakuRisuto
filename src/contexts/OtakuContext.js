@@ -65,9 +65,9 @@ export class OtakuProvider extends Component {
     this.setState({currentList: newList});
   }
 
-  setRegistration = () => {
+  setRegistration = (value) => {
     this.setState({
-      registration: !this.state.registration
+      registration: value
     })
   }
 
