@@ -7,8 +7,9 @@ import CommentForm from '../CommentForm/CommentForm';
 class Comments extends Component {
     static contextType = OtakuContext;
 
-    // async componentDidMount() {
-    //     this.context.clearError()
+    async componentDidMount() {
+        this.context.clearError()
+    }
     //     let id = this.props.match.params.id;
     //     await otakuApiService.getListInfo(id)
     //         .then(res => {

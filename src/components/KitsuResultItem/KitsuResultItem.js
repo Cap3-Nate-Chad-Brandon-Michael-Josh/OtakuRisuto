@@ -5,34 +5,32 @@ const KitsuAnimeItem = (props) => {
 
     if (!props.expanded) {
         return (
-            <div className='anime-card'>   
+            <div className='anime-card'>
                 <div className='container2'>
                     <div className="animeImg">
-                    <img src={props.anime && props.anime.image_url} 
-                    alt={props.anime && props.anime.title} />
-                       
+                        <img src={props.anime && props.anime.image_url}
+                            alt={props.anime && props.anime.title} />
                     </div>
                     <div className='overlay'>
-                    <div class="text">
-                        <p className='titles'>Rating</p>
-                        { props.anime.rating}
-                        <p className='titles'>Genre</p>
-                        {props.anime.genres.map(genre => {
-                         return <p class='genre'>{genre}</p>
-                    })}
-                        
+                        <div class="text">
+                            <p className='titles'>Rating</p>
+                            {props.anime.rating}
+                            <p className='titles'>Genre</p>
+                            {props.anime.genres.map(genre => {
+                                return <p class='genre'>{genre}</p>
+                            })}
                         </div>
                     </div>
-                 </div>
-                    <p>{props.anime && props.anime.title}</p>
-                    <button onClick={event => props.clickDetails(event, props.anime.title)}>expand</button>
+                </div>
+                <p>{props.anime && props.anime.title}</p>
+                <button onClick={event => props.clickDetails(event, props.anime.title)}>expand</button>
             </div>
         )
     }
     return (
         <div className='expanded-anime-card'>
             <div className='pop-out'>
-            <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button> <br></br>
+                <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button> <br></br>
 
                 <img src={props.anime && props.anime.image_url} alt={props.anime.title && props.anime.title} />
                 <h2>{props.anime && props.anime.title}</h2>
@@ -47,7 +45,7 @@ const KitsuAnimeItem = (props) => {
             <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button>
         </div>
     )
-    
+
 }
 
 export default KitsuAnimeItem;
