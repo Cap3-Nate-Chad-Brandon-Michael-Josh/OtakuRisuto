@@ -48,15 +48,16 @@ class RatingForm extends Component {
         const currentState = item;
         currentState.rating = value;
         this.setState({item: currentState})
-        console.log(this.state.item.rating)
+        console.log(ev.target.dataset.num)
+        console.log(ev.target.getAttribute('value'))
     }
 
     starRatingInput() {
         return (
             <div>
                 <p>Your Rating:</p>
-                <i onClick={this.setRating} value={1} name='star1' className="far fa-star"></i>
-                <i className="far fa-star"></i>
+                <i onClick={this.setRating} data-num={1} name='star1' className="far fa-star"></i>
+                <i onClick={this.setRating} value={2} className="far fa-star"></i>
                 <i value={3} className="far fa-star"></i>
                 <i value={4} className="far fa-star"></i>
                 <i value={5} className="far fa-star"></i>
