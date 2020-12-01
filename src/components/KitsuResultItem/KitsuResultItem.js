@@ -7,8 +7,11 @@ const KitsuAnimeItem = (props) => {
         return (
             <div className='anime-card'>   
                 <div className='container2'>
+                    <div className="animeImg">
                     <img src={props.anime && props.anime.image_url} 
                     alt={props.anime && props.anime.title} />
+                       
+                    </div>
                     <div className='overlay'>
                     <div class="text">
                         <p className='titles'>Rating</p>
