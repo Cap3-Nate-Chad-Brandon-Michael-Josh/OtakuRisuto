@@ -12,7 +12,6 @@ class DashboardRoute extends Component {
             <section className='DashboardRoute'>
                 <Header />
                 <DashNav />
-                <Rating></Rating>
                 {/* <Modal /> */}
                 <Link to={'/'}>
                     landing page
