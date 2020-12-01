@@ -12,14 +12,21 @@ const KitsuAnimeItem = (props) => {
                             alt={props.anime && props.anime.title} />
                     </div>
                     <div className='overlay'>
-                        <div class="text">
+                        <div className="text">
                             <p className='titles'>Rating</p>
                             {props.anime.rating}
                             <p className='titles'>Genre</p>
-                            {props.anime.genres.map(genre => {
-                                return <p class='genre'>{genre}</p>
+                            {props.anime.genre.map(genre => {
+                                return <p className='genre' key={genre}>{genre}</p>
                             })}
                         </div>
+                        <form onSubmit={event => props.submitAnime(event, props.anime)}>
+                            <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)}>
+                                <option value=''>--Select One--</option>
+                                {props.userLists.map(list => <option value={list.list_id}>{list.name}</option>)}
+                            </select>
+                            <button>Add to list</button>
+                        </form>
                     </div>
                 </div>
                 <p>{props.anime && props.anime.title}</p>
@@ -31,18 +38,24 @@ const KitsuAnimeItem = (props) => {
         <div className='expanded-anime-card'>
             <div className='pop-out'>
                 <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button> <br></br>
-
+                <form onSubmit={event => props.submitAnime(event, props.anime)}>
+                    <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)}>
+                        <option value=''>--Select One--</option>
+                        {props.userLists.map(list => <option value={list.list_id}>{list.name}</option>)}
+                    </select>
+                    <button type='submit'>Add to list</button>
+                </form >
                 <img src={props.anime && props.anime.image_url} alt={props.anime.title && props.anime.title} />
                 <h2>{props.anime && props.anime.title}</h2>
                 <h3>Description: </h3>
                 <p className='desc'>{props.anime && props.anime.description}</p>
                 <p>Average rating: {props.anime && props.anime.rating}</p>
-                {props.anime.genres.map(genre => {
-                    return <p class='genre'>{genre}</p>
+                {props.anime.genre.map(genre => {
+                    return <p className='genre' key={genre}>{genre}</p>
                 })}
                 <p>Total Episodes: {props.anime.episodeCount}</p>
+
             </div>
-            <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button>
         </div>
     )
 
