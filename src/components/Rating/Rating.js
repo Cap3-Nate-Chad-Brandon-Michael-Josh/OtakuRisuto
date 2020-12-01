@@ -31,7 +31,6 @@ class Rating extends Component {
 
     renderItems() {
         const { currentList = {} } = this.props;
-        console.log('hi', currentList.list_id, currentList.rating)
         if (currentList && currentList.list_id && currentList.rating !== undefined) {
             return (
             <div>

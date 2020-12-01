@@ -44,8 +44,6 @@ class RatingForm extends Component {
         ev.preventDefault();
         const newRating = await this.state.item.rating;
         const list_id = await this.state.item.list_id;
-        console.log(this.state.item)
-        console.log(this.props.rating)
         if (newRating && list_id){
             await OtakuApiService.postRating(newRating, list_id)
             .then(res => {
