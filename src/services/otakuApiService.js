@@ -110,7 +110,6 @@ const OtakuApiService = {
         );
     },
 
-<<<<<<< HEAD
   postRating(rating, list_id) {
     return fetch(`${config.API_ENDPOINT}/list/rating`, {
         method: "POST",
@@ -126,7 +125,6 @@ const OtakuApiService = {
         !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
       );
   },
-=======
     getLoggedInUserLists() {
         return fetch(`${config.API_ENDPOINT}/list`, {
             headers: {
@@ -137,7 +135,6 @@ const OtakuApiService = {
         )
     },
 
->>>>>>> resultsRoute
 };
 
 export default OtakuApiService;
