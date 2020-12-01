@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
-import Comment from '../Comment/Comment';
 import RatingForm from '../RatingForm/RatingForm'
 import otakuApiService from '../../services/otakuApiService'
 
@@ -17,7 +16,7 @@ class Rating extends Component {
     }
 
     renderRating(){
-        let acc = this.context.currentList.rating;
+        let acc = Math.round(this.context.currentList.rating);
         let res = []
         for(let i = 0; i < 5; i++){
             if(acc === 0){
@@ -32,14 +31,15 @@ class Rating extends Component {
 
     renderItems() {
         const { currentList = {} } = this.context
+        console.log(currentList)
         if (currentList && currentList.rating) {
             return (
             <div>
                 <div className='avgRating'>
-                    <p>Average Rating:</p>
+                    <p>Average OR Rating:</p>
                     {this.renderRating()}
                 </div>
-                <RatingForm list_id={currentList.list_id}/>
+                <RatingForm rating={currentList.rating}list_id={currentList.list_id}/>
             </div>
             )
         }

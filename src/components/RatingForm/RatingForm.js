@@ -8,7 +8,7 @@ class RatingForm extends Component {
         super(props);
         this.state = {
             item: {
-                rating: 0,
+                rating: this.props.rating,
                 list_id: this.props.list_id,
             },
 
@@ -32,9 +32,9 @@ class RatingForm extends Component {
         ev.preventDefault();
         const newRating = this.state.item.rating;
         const list_id = this.state.item.list_id;
-
         OtakuApiService.postRating(newRating, list_id)
             .then(res => {
+                console.log(res)
                 this.context.resetRating(res);
             })
             .catch(error => {
@@ -43,24 +43,32 @@ class RatingForm extends Component {
     }
 
     setRating(ev){
-        const { value } = ev.target;
+        const value = ev.target.getAttribute('value');
         const { item } = { ...this.state };
         const currentState = item;
         currentState.rating = value;
         this.setState({item: currentState})
-        console.log(ev.target.dataset.num)
-        console.log(ev.target.getAttribute('value'))
+    }
+
+    renderRating(){
+        let acc = Math.round(this.state.item.rating);
+        let res = []
+        for(let i = 0; i < 5; i++){
+            if(acc === 0){
+                res.push(<i onClick={this.setRating} value={i + 1} name={`star${i + 1}`} className="far fa-star"></i>)
+            } else {
+                res.push(<i onClick={this.setRating} value={i + 1} name={`star${i + 1}`} className="fas fa-star"></i>)
+                acc--;
+            }
+        }
+        return res;
     }
 
     starRatingInput() {
         return (
             <div>
                 <p>Your Rating:</p>
-                <i onClick={this.setRating} data-num={1} name='star1' className="far fa-star"></i>
-                <i onClick={this.setRating} value={2} className="far fa-star"></i>
-                <i value={3} className="far fa-star"></i>
-                <i value={4} className="far fa-star"></i>
-                <i value={5} className="far fa-star"></i>
+                {this.renderRating()}
             </div>
         )
     }
@@ -69,17 +77,7 @@ class RatingForm extends Component {
         return (
             <form onSubmit={this.handleSubmit} className='ratingForm'>
                 {this.starRatingInput()}
-                <label htmlFor='newRating'><i className="far fa-star"></i></label>
-                <input type='radio' name='newRating' placeholder='Add a new rating' value={1} onChange={this.setRating}></input>
-                <label htmlFor='newRating'><i className="far fa-star"></i></label>
-                <input type='radio' name='newRating' placeholder='Add a new rating' value={2} onChange={this.setRating}></input>
-                <label htmlFor='newRating'><i className="far fa-star"></i></label>
-                <input type='radio' name='newRating' placeholder='Add a new rating' value={3} onChange={this.setRating}></input>
-                <label htmlFor='newRating'><i className="far fa-star"></i></label>
-                <input type='radio' name='newRating' placeholder='Add a new rating' value={4} onChange={this.setRating}></input>
-                <label htmlFor='newRating'><i className="far fa-star"></i></label>
-                <input type='radio' name='newRating' placeholder='Add a new rating' value={5} onChange={this.setRating}></input>
-                <label htmlFor='ratingSubmit'><i className="far fa-star"></i></label>
+                <label htmlFor='ratingSubmit'></label>
                 <button type='submit' name='ratingSubmit'>Submit</button>
             </form>
         )
