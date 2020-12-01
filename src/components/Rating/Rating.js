@@ -6,17 +6,17 @@ import otakuApiService from '../../services/otakuApiService'
 class Rating extends Component {
     static contextType = OtakuContext;
 
-    async componentDidMount() {
+    componentDidMount() {
         this.context.clearError()
-        await otakuApiService.getListInfo(1)
-            .then(res => {
-                this.context.setCurrentList(res);
-            })
-            .catch(this.context.setError)
+        // await otakuApiService.getListInfo(1)
+        //     .then(res => {
+        //         this.context.setCurrentList(res);
+        //     })
+        //     .catch(this.context.setError)
     }
 
     renderRating(){
-        let acc = Math.round(this.context.currentList.rating);
+        let acc = Math.round(this.props.currentList.rating);
         let res = []
         for(let i = 0; i < 5; i++){
             if(acc === 0){
@@ -30,16 +30,16 @@ class Rating extends Component {
     }
 
     renderItems() {
-        const { currentList = {} } = this.context
+        const { currentList = {} } = this.props;
         console.log(currentList)
-        if (currentList && currentList.rating) {
+        if (currentList) {
             return (
             <div>
                 <div className='avgRating'>
                     <p>Average OR Rating:</p>
                     {this.renderRating()}
                 </div>
-                <RatingForm rating={currentList.rating}list_id={currentList.list_id}/>
+                <RatingForm rating={currentList.rating} list_id={currentList.list_id}/>
             </div>
             )
         }

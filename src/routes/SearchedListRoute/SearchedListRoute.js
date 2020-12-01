@@ -9,6 +9,7 @@ import OtakuContext from '../../contexts/OtakuContext';
 import OtakuApiService from '../../services/otakuApiService';
 import UserAnimeItem from '../../components/UserAnimeItem/UserAnimeItem';
 import Comments from '../../components/Comments/Comments';
+import Rating from '../../components/Rating/Rating';
 
 
 class SearchedListRoute extends Component {
@@ -84,6 +85,7 @@ class SearchedListRoute extends Component {
                 <p>this is the Searched List Route</p>
                 <h2>{this.state.list && this.state.list.name}</h2>
                 {this.context.currentList ? this.renderListItems() : null}
+                <Rating currentList={this.context.currentList} />
                 <Comments currentList={this.context.currentList} />
             </section>
 
