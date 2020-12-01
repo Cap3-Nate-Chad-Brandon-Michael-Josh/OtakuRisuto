@@ -3,7 +3,8 @@
 }
 body{
   background-image: url(../../img/animeCover.png);
-
+  /* background-repeat: no-repeat; */
+  /* background-color: blue; */
 }
 .App-logo {
   height: 40vmin;
@@ -47,5 +48,142 @@ body{
   
 }
 /* ---------------------------------- */
+@media all and (max-width:340px) {
+  * {
+    
+    color:rgb(255, 251, 0);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 118px;
+    right: 0px;
+    height: 99%;
+    width: 62%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+  .animeImg{
+    /* color:yellow; */
+    /* margin-left: -61px; */
+
+  }
+}
+
+
+@media all and (min-width:350px) {
+  * {
+    
+    color:rgb(255, 0, 0);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 118px;
+    right: 0px;
+    height: 99%;
+    width: 62%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+
+  .animeImg{
+    /* color:yellow; */
+    /* display:block; */
+    /* margin-left: 0;
+    margin-right:0; */
+
+
+  }
+}
+
+
+@media all and (min-width:750px) {
+  * {
+    
+    color:blue;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 118px;
+    right: 0px;
+    height: 99%;
+    width: 62%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+}
+
+@media all and (min-width:1200px) {
+  * {
+   
+    color:green;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 118px;
+    right: 0px;
+    height: 99%;
+    width: 62%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+}
+
+@media all and (min-width:1250px) {
+  * {
+    
+    color:rgb(158, 100, 235);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 148px;
+    right: 0;
+    height: 100%;
+    width: 57%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+}
+
+
+@media all and (min-width:1300px) {
+  * {
+    
+    color:rgb(255, 255, 255);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 152px;
+    right: 0;
+    height: 100%;
+    width: 52%;
+    opacity: 3;
+    transition: .5s ease;
+    background-color: #0000004d;
+  }
+}
+
 
 
