@@ -49,7 +49,7 @@ const KitsuApiService = {
 
       serializeAnime(includedGenres, animeData) {
           // genres will be res.included anime will be res.data
-            console.log('serializeAnime ran')
+            
             /*  set an object where each key is a genreId and each value is the genre title this is
                 needed to avoid subsequent api calls to the kitsu api for genre data */
             let genreObject = {}

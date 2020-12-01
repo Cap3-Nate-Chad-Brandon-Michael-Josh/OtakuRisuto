@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header';
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
-import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
+import KitsuAnimeItem from '../../components/KitsuAnimeItem/KitsuAnimeItem';
 import UserResultItem from '../../components/UserResultItem/UserResultItem';
 import SearchPublicListResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
 import OtakuApiService from '../../services/otakuApiService';
@@ -60,7 +60,7 @@ class ResultsRoute extends Component {
                             details = true
                         }
                         return (
-                            <KitsuResultItem
+                            <KitsuAnimeItem
                                 key={index, anime.title}
                                 anime={anime}
                                 userLists={this.context.loggedInUserLists}
