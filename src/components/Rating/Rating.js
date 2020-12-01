@@ -31,8 +31,7 @@ class Rating extends Component {
 
     renderItems() {
         const { currentList = {} } = this.props;
-        console.log(currentList)
-        if (currentList) {
+        if (currentList && currentList.list_id && currentList.rating !== undefined) {
             return (
             <div>
                 <div className='avgRating'>
