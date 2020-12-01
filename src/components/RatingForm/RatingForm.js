@@ -17,6 +17,18 @@ class RatingForm extends Component {
         this.setRating = this.setRating.bind(this);
     }
 
+    // componentDidMount(){
+    //     const rating = this.props.rating;
+    //     const list_id = this.props.list_id;
+    //     console.log(rating, list_id)
+    //     const item = {
+    //         rating,
+    //         list_id
+    //     }
+    //     console.log(item)
+    //     this.setState({ item: item })
+    // }
+
     handleInputChange(event) {
         const { item } = { ...this.state };
         const currentState = item;
@@ -28,11 +40,14 @@ class RatingForm extends Component {
         this.setState({ item: currentState });
     }
 
-    handleSubmit = ev => {
+    handleSubmit = async ev => {
         ev.preventDefault();
-        const newRating = this.state.item.rating;
-        const list_id = this.state.item.list_id;
-        OtakuApiService.postRating(newRating, list_id)
+        const newRating = await this.state.item.rating;
+        const list_id = await this.state.item.list_id;
+        console.log(this.state.item)
+        console.log(this.props.rating)
+        if (newRating && list_id){
+            await OtakuApiService.postRating(newRating, list_id)
             .then(res => {
                 console.log(res)
                 this.context.resetRating(res);
@@ -40,6 +55,7 @@ class RatingForm extends Component {
             .catch(error => {
                 this.setState((error))
             })
+        }
     }
 
     setRating(ev){
