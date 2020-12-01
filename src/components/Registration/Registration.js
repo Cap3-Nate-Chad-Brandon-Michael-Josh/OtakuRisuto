@@ -49,7 +49,7 @@ class Registration extends Component {
                 console.log('Registration success')
                 console.log(this.props.history)
                 const { history } = this.props
-                this.context.setRegistration()
+                this.context.setRegistration(true)
                 history.push('/home')
             })
             .then(() => {

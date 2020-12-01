@@ -69,7 +69,7 @@ export default class Suggestions extends Component {
   }
 
   handleCancelSubmit = () => {
-    this.context.setRegistration()
+    this.context.setRegistration(false)
   }
 
   render() {
@@ -77,7 +77,9 @@ export default class Suggestions extends Component {
       <div className='3sBody'>
         <div className='container'>
           {this.state.seggestions !== [] &&
+        
           <form className='suggestionsListForm' onSubmit={this.handleSubmitForm}>
+            <p>To help you get started we pulled some of the most popular anime to add to your first list!</p>
             {this.renderSuggestionsItem()}
             <button type='submit'>Submit</button>
             <button onClick={this.handleCancelSubmit}>Cancel</button>
