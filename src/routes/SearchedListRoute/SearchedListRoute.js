@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import './SearchedListRoute.css';
 import OtakuContext from '../../contexts/OtakuContext';
 import OtakuApiService from '../../services/otakuApiService';
-import SearchedUserListItem from '../../components/SearchedUserListItem/SearchedUserListItem';
 import UserAnimeItem from '../../components/UserAnimeItem/UserAnimeItem';
 import Comments from '../../components/Comments/Comments';
 
