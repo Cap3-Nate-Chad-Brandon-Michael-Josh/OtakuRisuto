@@ -9,7 +9,7 @@ import OtakuContext from '../../contexts/OtakuContext';
 import KitsuApiService from '../../services/kitsuApiService';
 import OtakuApiService from '../../services/otakuApiService';
 
-import  { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 // import './SearchBar.css'
 
 class SearchBar extends Component {
@@ -22,33 +22,33 @@ class SearchBar extends Component {
     static contextType = OtakuContext
 
     componentDidMount() {
-        
+
     }
 
     fetchKitsuAnimeData(searchTerm) {
         KitsuApiService.getAnimesBySearchTerm(searchTerm)
-        .then(res => { 
-            this.context.setKitsuAnimeData(
-                KitsuApiService.serializeAnime(res.included, res.data)
-            );    
-         })
-        .catch(error => this.context.setError(error))         
+            .then(res => {
+                this.context.setKitsuAnimeData(
+                    KitsuApiService.serializeAnime(res.included, res.data)
+                );
+            })
+            .catch(error => this.context.setError(error))
     }
 
     fetchOtakuUsers(searchTerm) {
         OtakuApiService.getUsersBySearch(searchTerm)
-        .then(res => {
-            this.context.setSearchedUserData(res)
-        })
-        .catch(error => this.context.setError(error))
+            .then(res => {
+                this.context.setSearchedUserData(res)
+            })
+            .catch(error => this.context.setError(error))
     }
 
     fetchOtakuPublicLists(searchTerm) {
         OtakuApiService.getPublicListsBySearch(searchTerm)
-        .then(res => {
-            this.context.setPublicListsData(res)
-        })
-        .catch(error => this.context.setError(error))
+            .then(res => {
+                this.context.setPublicListsData(res)
+            })
+            .catch(error => this.context.setError(error))
     }
 
     handleSubmit = (event) => {
@@ -57,28 +57,29 @@ class SearchBar extends Component {
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
         if (this.state.searchOption === 'animes') {
-            this.fetchKitsuAnimeData(this.state.searchTerm);            
+            this.fetchKitsuAnimeData(this.state.searchTerm);
         }
-        if (this.state.searchOption === 'users') {            
+        if (this.state.searchOption === 'users') {
             this.fetchOtakuUsers(this.state.searchTerm);
         }
-        if (this.state.searchOption === 'lists') {            
+        if (this.state.searchOption === 'lists') {
             this.fetchOtakuPublicLists(this.state.searchTerm);
         }
-        this.props.history.push('/results');            
+        this.props.history.push('/results');
     }
 
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value})
-    }    
+        this.setState({ [event.target.name]: event.target.value })
+    }
 
     render() {
         return (
             <div>
                 <form className="DashSearch" onSubmit={(event) => this.handleSubmit(event)}>
                     <label htmlFor='search-bar'></label>
-                    <br/>
-                {/* <nav className='DashNav'> */}
+                    {this.context.error ? <p>{this.context.error}</p> : null}
+                    <br />
+                    {/* <nav className='DashNav'> */}
                     <input
                         name='searchTerm'
                         type='text'
@@ -86,22 +87,22 @@ class SearchBar extends Component {
                         onChange={this.handleChange}
                         value={this.state.searchTerm}
                         placeholder='Search: anime, friends or lists'
-                        required />                    
-                    <br/>
+                        required />
+                    <br />
                     <select name='searchOption' onChange={this.handleChange} required>
                         <option value=''>--Choose one--</option>
                         <option value='animes'>Animes</option>
                         <option value='users'>Users</option>
                         <option value='lists'>Lists</option>
                     </select>
-                    <br/>
+                    <br />
                     <button
-                    className='search'
-                     type='submit'>
-                         <i className="fas fa-search"></i>
-                         {/* Search! */}
-                         </button>
-                {/* </nav> */}
+                        className='search'
+                        type='submit'>
+                        <i className="fas fa-search"></i>
+                        {/* Search! */}
+                    </button>
+                    {/* </nav> */}
                 </form>
             </div>
         )

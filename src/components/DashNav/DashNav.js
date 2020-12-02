@@ -35,6 +35,7 @@ class DashNav extends Component {
     }
 
     handleAddNewList = () => {
+        // select option values are always converted to strings, OR API is expecting boolean.
         let privacyValue = true;         
         if (this.state.privateOption === 'false') {
             privacyValue = false;
