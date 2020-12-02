@@ -26,7 +26,6 @@ export default class Suggestions extends Component {
   }
 
   handleHover = (index) => {
-    console.log('hanlde hover', this.state.hoverIndex)
     this.setState({
       hoverIndex: index
     })
@@ -35,41 +34,25 @@ export default class Suggestions extends Component {
   renderSuggestionsItem = () => {
     return this.state.suggestions.map((anime, index) => {
       let background = {backgroundImage: `url(${anime.image_url})`}
+      let genreString = ''
+      anime.genre.forEach(genre => genreString += `${genre}, `)
       return (
-        // <>
-        //   <input name={`suggestion${index}`} type='checkbox' id={`checkbox${index}`} className='suggestionsItemCheckbox'/>
-        //   <label htmlFor={`checkbox${index}`}>
-        //     <button>
-        //     <SuggestionsItem
-        //       key = {index}
-        //       title = {anime.title}
-        //       image = {anime.mediumImage}
-        //       description = {anime.description}
-        //       episodeCount = {anime.episodeCount}
-        //       rating = {anime.rating}
-        //       genres = {anime.genres}
-        //     />
-        //     </button>
-        //   </label>
-        // </>
-        
         <label className='optionItem'> 
           <input type='checkbox' className='suggestionsItemCheckbox'></input>
           {this.state.hoverIndex !== index && 
           <div className='optionInner' style={background} onMouseEnter={() => this.handleHover(index)}>
             <div className='tickmark'></div>
-            <div className='icon'>{anime.title}</div>
+            <div className='animeTitle'>{anime.title}</div>
           </div>
           }
           {this.state.hoverIndex === index &&
           <div className='optionInner' style={{backgroundColor: 'black'}} onMouseLeave={() => this.handleHover(null)}>
             <div className='tickmark'></div>
-            <div className='icon'>
-              <span>{anime.title}</span>
-              <span>{anime.description}</span>
-              <span>{anime.rating}</span>
-              <span>{anime.episodeCount}</span>
-              <span>{anime.genre}</span>
+            <div className='animeDescription'>
+              <span className='animeDescriptionTitle'>{anime.title}</span><br></br><br></br>
+              <span className='animeDescriptionRating'>{`Rating: ${anime.rating}`}</span><br></br>
+              <span className='animeDescriptionCount'>{`Episode Count: ${anime.episodeCount}`}</span><br></br>
+              <span className='animeDescriptionGenre'>{`Genres: ${genreString}`}</span>
             </div>
           </div>
           }
@@ -79,6 +62,7 @@ export default class Suggestions extends Component {
   }
 
   handleSubmitForm = event => {
+    console.log('handleSubmitform')
     event.preventDefault()
     // checks to see what checkboxes are checked. Then proceeds to match the checked anime indexes to this.state.suggestions and pushes them into an new array to be sent to the OR API
     let inputElements = document.getElementsByClassName('suggestionsItemCheckbox')
@@ -107,17 +91,6 @@ export default class Suggestions extends Component {
 
   render() {
     return (
-      // <div className='3sBody'>
-      //   <div className='container'>
-      //     {this.state.seggestions !== [] &&
-      //     <form className='suggestionsListForm' onSubmit={this.handleSubmitForm}>
-      //       <p>To help you get started we pulled some of the most popular anime to add to your first list!</p>
-      //       {this.renderSuggestionsItem()}
-      //       <button type='submit'>Submit</button>
-      //       <button onClick={this.handleCancelSubmit}>Cancel</button>
-      //     </form> }
-      //   </div>
-      // </div>
       <form className='suggestionsListForm' onSubmit={this.handleSubmitForm}>
         {this.state.seggestions !== [] &&
         <div className='wrapper'>
@@ -130,7 +103,7 @@ export default class Suggestions extends Component {
           </div>
         </div>
         }
-      <button type='submit'>Submit</button>
+      <button type='submit' onClick={this.handleSubmitForm}>Submit</button>
       <button onClick={this.handleCancelSubmit}>Cancel</button>
       </form>
     )
