@@ -13,11 +13,22 @@ export default class SuggestionsItem extends Component {
       //   </div>
       // </div>
 
-        <div className="box">
-          <h2>{title}</h2>
-          <h3>service one</h3>
-          <p>{description}</p>
-        </div>  
+        // <div className="box">
+        //   <h2>{title}</h2>
+        //   <h3>service one</h3>
+        //   <p>{description}</p>
+        // </div>  
+
+      <div className='container'>
+        <label className='optionItem'>
+          <input type='checkbox' className='suggestionsItemCheckbox'></input>
+          <div className='optionInner'>
+            <div className='tickmark'></div>
+            <div className='icon'>{title}</div>
+            <div className='anime'></div>
+          </div>
+        </label>
+      </div>
     )
   }
 }

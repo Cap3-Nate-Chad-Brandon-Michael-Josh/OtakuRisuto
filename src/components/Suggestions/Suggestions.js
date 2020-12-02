@@ -8,7 +8,8 @@ import OtakuApiService from '../../services/otakuApiService'
 
 export default class Suggestions extends Component {
   state = {
-    suggestions: []
+    suggestions: [],
+    hoverIndex: 4
   }
 
   static contextType = Context
@@ -24,23 +25,55 @@ export default class Suggestions extends Component {
       })
   }
 
+  handleHover = (index) => {
+    console.log('hanlde hover', this.state.hoverIndex)
+    this.setState({
+      hoverIndex: index
+    })
+  }
+
   renderSuggestionsItem = () => {
     return this.state.suggestions.map((anime, index) => {
+      let background = {backgroundImage: `url(${anime.image_url})`}
       return (
-        <>
-          <input name={`suggestion${index}`} type='checkbox' id={`checkbox${index}`} className='suggestionsItemCheckbox'/>
-          <label htmlFor={`checkbox${index}`}>
-            <SuggestionsItem
-              key = {index}
-              title = {anime.title}
-              image = {anime.mediumImage}
-              description = {anime.description}
-              episodeCount = {anime.episodeCount}
-              rating = {anime.rating}
-              genres = {anime.genres}
-            />
-          </label>
-        </>
+        // <>
+        //   <input name={`suggestion${index}`} type='checkbox' id={`checkbox${index}`} className='suggestionsItemCheckbox'/>
+        //   <label htmlFor={`checkbox${index}`}>
+        //     <button>
+        //     <SuggestionsItem
+        //       key = {index}
+        //       title = {anime.title}
+        //       image = {anime.mediumImage}
+        //       description = {anime.description}
+        //       episodeCount = {anime.episodeCount}
+        //       rating = {anime.rating}
+        //       genres = {anime.genres}
+        //     />
+        //     </button>
+        //   </label>
+        // </>
+        
+        <label className='optionItem'> 
+          <input type='checkbox' className='suggestionsItemCheckbox'></input>
+          {this.state.hoverIndex !== index && 
+          <div className='optionInner' style={background} onMouseEnter={() => this.handleHover(index)}>
+            <div className='tickmark'></div>
+            <div className='icon'>{anime.title}</div>
+          </div>
+          }
+          {this.state.hoverIndex === index &&
+          <div className='optionInner' style={{backgroundColor: 'black'}} onMouseLeave={() => this.handleHover(null)}>
+            <div className='tickmark'></div>
+            <div className='icon'>
+              <span>{anime.title}</span>
+              <span>{anime.description}</span>
+              <span>{anime.rating}</span>
+              <span>{anime.episodeCount}</span>
+              <span>{anime.genre}</span>
+            </div>
+          </div>
+          }
+        </label>
       )
     })
   }
@@ -74,18 +107,32 @@ export default class Suggestions extends Component {
 
   render() {
     return (
-      <div className='3sBody'>
-        <div className='container'>
-          {this.state.seggestions !== [] &&
-        
-          <form className='suggestionsListForm' onSubmit={this.handleSubmitForm}>
-            <p>To help you get started we pulled some of the most popular anime to add to your first list!</p>
+      // <div className='3sBody'>
+      //   <div className='container'>
+      //     {this.state.seggestions !== [] &&
+      //     <form className='suggestionsListForm' onSubmit={this.handleSubmitForm}>
+      //       <p>To help you get started we pulled some of the most popular anime to add to your first list!</p>
+      //       {this.renderSuggestionsItem()}
+      //       <button type='submit'>Submit</button>
+      //       <button onClick={this.handleCancelSubmit}>Cancel</button>
+      //     </form> }
+      //   </div>
+      // </div>
+      <form className='suggestionsListForm' onSubmit={this.handleSubmitForm}>
+        {this.state.seggestions !== [] &&
+        <div className='wrapper'>
+          <div className='title'>
+            Choose Your Favorites!
+          </div>
+          <div></div>
+          <div className='container'>
             {this.renderSuggestionsItem()}
-            <button type='submit'>Submit</button>
-            <button onClick={this.handleCancelSubmit}>Cancel</button>
-          </form> }
+          </div>
         </div>
-      </div>
+        }
+      <button type='submit'>Submit</button>
+      <button onClick={this.handleCancelSubmit}>Cancel</button>
+      </form>
     )
   }
 }
