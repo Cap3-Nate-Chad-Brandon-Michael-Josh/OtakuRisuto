@@ -16,35 +16,6 @@ class DashNav extends Component {
         registration: this.context.registration
     }
 
-<<<<<<< HEAD
-      handleFilterClick = () => {
-        this.setState({ Nav: !this.state.Nav})
-        
-      }
-    render(){
-       
-        
-       return(
-    <div> 
-        <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
-            <h1>anime list</h1>
-        </div>
-        <button className="navB" onClick={this.handleFilterClick}>
-            &#9776; Anime Lists
-            
-        </button>
-        
-        <section className= 'animeItem'>
-            <h1>Anime Name</h1>
-            <Modal />
-        </section>
-        {this.context.registration &&
-                <Suggestions />
-        }
-    </div>
-  
-       )
-=======
     async componentDidMount() {
         await OtakuApiService.getLoggedInUserLists()
             .then(res => this.context.setLoggedInUserLists(res))
@@ -99,7 +70,6 @@ class DashNav extends Component {
             </div>
 
         )
->>>>>>> 962be805aad189d75a697489e113fce93c3be00e
     }
 }
 
