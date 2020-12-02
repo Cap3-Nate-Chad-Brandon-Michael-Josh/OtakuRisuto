@@ -69,9 +69,9 @@ class RatingForm extends Component {
         let res = []
         for(let i = 0; i < 5; i++){
             if(acc === 0){
-                res.push(<i onClick={this.setRating} value={i + 1} name={`star${i + 1}`} className="far fa-star"></i>)
+                res.push(<i onClick={this.setRating} key={i} value={i + 1} name={`star${i + 1}`} className="far fa-star"></i>)
             } else {
-                res.push(<i onClick={this.setRating} value={i + 1} name={`star${i + 1}`} className="fas fa-star"></i>)
+                res.push(<i onClick={this.setRating} key={i} value={i + 1} name={`star${i + 1}`} className="fas fa-star"></i>)
                 acc--;
             }
         }

@@ -24,8 +24,9 @@ class Comments extends Component {
             return (
             <div>
                 <CommentForm list_id={currentList.list_id}/>
-                {currentList.comments.map(comment =>
+                {currentList.comments.map((comment, index) =>
                     <Comment
+                        key={index}
                         comment={comment.comment}
                         user={comment.username}
                     />

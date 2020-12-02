@@ -20,9 +20,9 @@ class Rating extends Component {
         let res = []
         for(let i = 0; i < 5; i++){
             if(acc === 0){
-                res.push(<i className="far fa-star"></i>)
+                res.push(<i key={i} className="far fa-star"></i>)
             } else {
-                res.push(<i className="fas fa-star"></i>)
+                res.push(<i key={i} className="fas fa-star"></i>)
                 acc--;
             }
         }
