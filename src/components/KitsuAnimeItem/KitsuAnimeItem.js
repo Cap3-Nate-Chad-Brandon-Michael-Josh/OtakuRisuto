@@ -16,8 +16,8 @@ const KitsuAnimeItem = (props) => {
                             <p className='titles'>Rating</p>
                             {props.anime.rating}
                             <p className='titles'>Genre</p>
-                            {props.anime.genre.map(genre => {
-                                return <p className='genre' key={genre}>{genre}</p>
+                            {props.anime.genre.map((genre, index) => {
+                                return <p className='genre' key={genre, index}>{genre}</p>
                             })}
                         </div>
                         <form onSubmit={event => props.submitAnime(event, props.anime)}>

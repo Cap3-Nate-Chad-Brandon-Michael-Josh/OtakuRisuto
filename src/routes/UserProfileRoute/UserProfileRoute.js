@@ -14,8 +14,7 @@ class UserProfileRoute extends Component {
     }
 
     async componentDidMount() {
-        let id = this.props.match.params.id;
-        console.log(id);
+        let id = this.props.match.params.id;        
         await OtakuApiService.getSpecifiedUserLists(id)
             .then(res => this.setState({ userLists: res }))
     }
@@ -28,21 +27,19 @@ class UserProfileRoute extends Component {
     render() {
         return (
             <section className='userProfileRoute'>
-                <Header />
-                <DashNav />
+                <Header />                
                 {/* <Modal /> */}
                 <Link to={'/home'}>
                     Home
                 </Link>
                 <p>this is User Profile Route</p>
-                {this.state.userLists && this.state.userLists.map(list => {
+                {this.state.userLists && this.state.userLists.map((list, index) => {
                     return (
-                        <section>
+                        <section key={index}>
                             <h2>{list.name}</h2>
                             <button onClick={event => this.handleViewListClick(event, list.list_id)}>
                                 View {list.name}
-                            </button>
-                            
+                            </button>                            
                         </section>
                     )
                 })}
