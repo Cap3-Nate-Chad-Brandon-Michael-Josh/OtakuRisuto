@@ -13,7 +13,9 @@ class DashNav extends Component {
         Nav: false,
         className: "sidenav",
         classNameHidden: "sidenav2",
-        registration: this.context.registration
+        registration: this.context.registration,
+        newListInput: '',
+        privateOption: true,
     }
 
     async componentDidMount() {
@@ -32,6 +34,20 @@ class DashNav extends Component {
             .then(res => this.context.setCurrentList(res));
     }
 
+    handleAddNewList = () => {
+        let privacyValue = true;         
+        if (this.state.privateOption === 'false') {
+            privacyValue = false;
+        }
+        OtakuApiService.postList(this.state.newListInput, privacyValue)
+        OtakuApiService.getLoggedInUserLists()
+            .then(res => this.context.setLoggedInUserLists(res));    
+    }
+
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value})
+    } 
+
     render() {
 
         return (
@@ -46,6 +62,28 @@ class DashNav extends Component {
                             return <h3 key={index} value={list.list_id} onClick={this.handleListClick}>{list.name}</h3>
                         })
                     )}
+                    <form 
+                        htmlFor='Add a new list'
+                        onSubmit={(event) => this.handleAddNewList(event)}>
+                        <input 
+                            placeholder='New List'
+                            name='newListInput'
+                            htmlFor='New list name'
+                            onChange={this.handleChange}
+                            value={this.state.newListInput}
+                            required />
+                        <br/>
+                        <select 
+                            name='privateOption' 
+                            onChange={this.handleChange} 
+                            required>
+                            <option>--Select One--</option>
+                            <option value={false}>Public</option>
+                            <option value={true}>Private</option>
+                        </select>
+                        <br/>
+                        <button type='submit'>add</button>
+                    </form>
                 </div>
                 <button className="navB" onClick={this.handleFilterClick}>
                     &#9776; Anime Lists
