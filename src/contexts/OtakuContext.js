@@ -45,7 +45,7 @@ export class OtakuProvider extends Component {
       error: null,
       searchTerm: '',
       searchOption: '', 
-      registration: false,
+      registration: true,
       currentList: {}
     }
 
