@@ -19,44 +19,48 @@ class DashNav extends Component {
             .then(res => this.context.setLoggedInUserLists(res))
     }
 
-      handleFilterClick = () => {
-        this.setState({ Nav: !this.state.Nav})        
-      }
+    handleFilterClick = () => {
+        this.setState({ Nav: !this.state.Nav })
+    }
 
-      handleListClick = (event) => {
+    handleListClick = (event) => {
         const listId = event.target.getAttribute('value');
         OtakuApiService.getListInfo(listId)
             .then(res => this.context.setCurrentList(res));
-      }
-    
-      render() {      
-        
-       return(
-            <div> 
+    }
+
+    render() {
+
+        return (
+            <div>
                 {this.context.registration &&
                     <Suggestions />
                 }
                 <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
-                <h1>Your lists</h1>
-            {(this.context.loggedInUserLists && 
-                this.context.loggedInUserLists.map(list => {
-                return <h3 value={list.list_id} onClick={this.handleListClick}>{list.name}</h3>
-                })
-                )}
-        </div>
-        <button className="navB" onClick={this.handleFilterClick}>
-            &#9776; Anime Lists
-            
-        </button>
-        
-        <section className= 'animeItem'>
-            {(this.context.currentList) ? <h1>{this.context.currentList.name}</h1> : null}
-            <Modal 
-                anime={this.context.currentList.anime}/>
-        </section>
+                    <h1>Your lists</h1>
+                    {(this.context.loggedInUserLists &&
+                        this.context.loggedInUserLists.map(list => {
+                            return <h3 value={list.list_id} onClick={this.handleListClick}>{list.name}</h3>
+                        })
+                    )}
+                </div>
+                <button className="navB" onClick={this.handleFilterClick}>
+                    &#9776; Anime Lists
+                </button>
+                {(this.context.currentList) ? <h1>{this.context.currentList.name}</h1> : null}
+
+                <section className='animeItem'>
+                    {(this.context.currentList.anime) ? this.context.currentList.anime.map(anime => 
+                    <div>
+                        <h2>{anime.title}</h2>
+                        <Modal anime={anime} />
+                    </div> )
+                    : null 
+                    }                                        
+                </section>
             </div>
-  
-       )
+
+        )
     }
 }
 
