@@ -22,16 +22,19 @@ class SearchBar extends Component {
     static contextType = OtakuContext
 
     componentDidMount() {
-
+        this.context.clearError()
     }
 
     fetchKitsuAnimeData(searchTerm) {
         KitsuApiService.getAnimesBySearchTerm(searchTerm)
-            .then(res => {
+            .then(res => 
+                (res.data.length) ?
                 this.context.setKitsuAnimeData(
                     KitsuApiService.serializeAnime(res.included, res.data)
-                );
-            })
+                )
+                :
+                this.context.setError('Sorry, we did not find any anime related to your search.')
+            )
             .catch(error => this.context.setError(error))
     }
 
@@ -56,7 +59,7 @@ class SearchBar extends Component {
         console.log('search submitted');
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
-        if (this.state.searchOption === 'animes') {
+        if (this.state.searchOption === 'anime') {
             this.fetchKitsuAnimeData(this.state.searchTerm);
         }
         if (this.state.searchOption === 'users') {
@@ -91,7 +94,7 @@ class SearchBar extends Component {
                     <br />
                     <select name='searchOption' onChange={this.handleChange} required>
                         <option value=''>--Choose one--</option>
-                        <option value='animes'>Animes</option>
+                        <option value='anime'>Anime</option>
                         <option value='users'>Users</option>
                         <option value='lists'>Lists</option>
                     </select>

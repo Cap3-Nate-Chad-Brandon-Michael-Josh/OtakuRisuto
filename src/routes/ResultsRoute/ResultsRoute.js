@@ -130,7 +130,7 @@ class ResultsRoute extends Component {
                     displayed in the results route based off of the search option */}
 
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
-                (this.context.searchOption === 'animes') ? 
+                (this.context.searchOption === 'anime') ? 
                 this.renderAnimeFromKitsu() : null : null}
 
                 {(this.state.searchedUserData && this.state.searchedUserData) ? 
