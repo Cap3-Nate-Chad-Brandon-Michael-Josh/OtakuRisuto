@@ -31,6 +31,7 @@ class Rating extends Component {
 
     renderItems() {
         const { currentList = {} } = this.props;
+        console.log(currentList)
         if (currentList && currentList.list_id && currentList.rating !== undefined) {
             return (
             <div>
@@ -38,7 +39,7 @@ class Rating extends Component {
                     <p>Average OR Rating:</p>
                     {this.renderRating()}
                 </div>
-                <RatingForm rating={currentList.rating} list_id={currentList.list_id}/>
+                <RatingForm user_rating={currentList.user_rating} rating={currentList.rating} list_id={currentList.list_id}/>
             </div>
             )
         }
