@@ -8,7 +8,7 @@ class RatingForm extends Component {
         super(props);
         this.state = {
             item: {
-                rating: this.props.rating,
+                rating: this.props.user_rating,
                 list_id: this.props.list_id,
             },
 
@@ -17,17 +17,17 @@ class RatingForm extends Component {
         this.setRating = this.setRating.bind(this);
     }
 
-    // componentDidMount(){
-    //     const rating = this.props.rating;
-    //     const list_id = this.props.list_id;
-    //     console.log(rating, list_id)
-    //     const item = {
-    //         rating,
-    //         list_id
-    //     }
-    //     console.log(item)
-    //     this.setState({ item: item })
-    // }
+    componentDidMount(){
+        const rating = this.props.user_rating;
+        const list_id = this.props.list_id;
+        console.log(rating, list_id)
+        const item = {
+            rating,
+            list_id
+        }
+        console.log(item)
+        this.setState({ item: item })
+    }
 
     handleInputChange(event) {
         const { item } = { ...this.state };
@@ -69,9 +69,9 @@ class RatingForm extends Component {
         let res = []
         for(let i = 0; i < 5; i++){
             if(acc === 0){
-                res.push(<i onClick={this.setRating} value={i + 1} name={`star${i + 1}`} className="far fa-star"></i>)
+                res.push(<i onClick={this.setRating} key={i} value={i + 1} name={`star${i + 1}`} className="far fa-star"></i>)
             } else {
-                res.push(<i onClick={this.setRating} value={i + 1} name={`star${i + 1}`} className="fas fa-star"></i>)
+                res.push(<i onClick={this.setRating} key={i} value={i + 1} name={`star${i + 1}`} className="fas fa-star"></i>)
                 acc--;
             }
         }

@@ -23,6 +23,7 @@ class SearchedListRoute extends Component {
     static contextType = OtakuContext;
 
     async componentDidMount() {
+        this.context.setCurrentList({});
         let id = this.props.match.params.id;
         await OtakuApiService.getListInfo(id)
             .then(res => {
