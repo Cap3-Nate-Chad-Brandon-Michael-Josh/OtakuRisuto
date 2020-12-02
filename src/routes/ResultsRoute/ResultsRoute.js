@@ -3,9 +3,10 @@ import Header from '../../components/Header/Header';
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import OtakuContext from '../../contexts/OtakuContext';
-import KitsuResultItem from '../../components/KitsuResultItem/KitsuResultItem';
+import KitsuAnimeItem from '../../components/KitsuAnimeItem/KitsuAnimeItem';
 import UserResultItem from '../../components/UserResultItem/UserResultItem';
 import SearchPublicListResults from '../../components/SearchPublicListsResults/SearchPublicListsResults';
+import OtakuApiService from '../../services/otakuApiService';
 
 class ResultsRoute extends Component {
     state = {
@@ -14,14 +15,16 @@ class ResultsRoute extends Component {
         searchOption: this.context.searchOption,
         kitsuAnimeData: this.context.kitsuAnimeData,
         searchedUserData: this.context.searchedUserData,
-        publicListsData: this.context.publicListsData,        
-        expandedItem: null,
+        publicListsData: this.context.publicListsData,
+        addToSelectedList: null,        
+        expandedItem: null,        
     }
 
     static contextType = OtakuContext
 
-    componentDidMount() {
-
+    async componentDidMount() {
+        await OtakuApiService.getLoggedInUserLists()
+            .then(res => this.context.setLoggedInUserLists(res))
     }
 
     // this is for expanding kitsu anime item details
@@ -35,6 +38,17 @@ class ResultsRoute extends Component {
         this.setState({ expandedItem: update })
     }
 
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value})
+    } 
+
+    handleAddToList = (event, anime) => {
+        event.preventDefault();        
+        OtakuApiService.addAnimeToList(anime, this.state.addToSelectedList)
+            .then(res => console.log(res))
+        this.setState({ expandedItem: null })
+    }
+
     renderAnimeFromKitsu() {
         if (this.context.kitsuAnimeData) {
             return (
@@ -45,9 +59,12 @@ class ResultsRoute extends Component {
                             details = true
                         }
                         return (
-                            <KitsuResultItem
+                            <KitsuAnimeItem
                                 key={index, anime.title}
                                 anime={anime}
+                                userLists={this.context.loggedInUserLists}
+                                changeSelectedList={this.handleChange}
+                                submitAnime={this.handleAddToList}
                                 expanded={details}
                                 clickDetails={this.handleDetails}                                
                                  />
@@ -110,7 +127,7 @@ class ResultsRoute extends Component {
                 <p>this is the Results Route</p>
 
                 {/* The multiple ternary statements conditionally render what is
-                    displayed in the results route based off of the search term */}
+                    displayed in the results route based off of the search option */}
 
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
                 (this.context.searchOption === 'animes') ? 

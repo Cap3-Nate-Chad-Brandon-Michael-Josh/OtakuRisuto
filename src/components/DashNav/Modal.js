@@ -1,62 +1,46 @@
 import { render } from "@testing-library/react"
 import React, { Component } from "react"
 import './Modal.css'
-  
-export default class Modal extends Component{
-    state ={
+
+export default class Modal extends Component {
+    state = {
         modal: false,
         className: "modal-wrapper",
         classNameHidden: "modal-wrapper2"
-      }
+    }
 
-      handleModalclick = () => {
-        this.setState({ modal: !this.state.modal})
-      }
+    handleModalclick = () => {
+        this.setState({ modal: !this.state.modal })
+    }
 
-    render(){
+    render() {
         const animeImg = require('../../img/animeCover.png')
-        return(
-           
-        <div>
-           
-            <div className={(this.state.modal) ? this.state.className : this.state.classNameHidden}
-
-            
-            >
-                <div className="modal-header">
-                    <p className='Title'>Naruto</p>
-                    
+        return (
+            <div>
+                <div className={(this.state.modal) ? this.state.className : this.state.classNameHidden}>
+                    <div>
+                        <div className="modal-header">
+                            <p className='Title'>{this.props.anime.title}</p>
+                        </div>
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                <img src={this.props.anime.image_url} />
+                                <h3>Genres:</h3>
+                                {this.props.anime.genre.map(genre => <h4>{genre}</h4>)}
+                                <h3>Episode Count:</h3>
+                                <h4>{this.props.anime.episodeCount}</h4>
+                                <h3>Rating: {this.props.anime.rating}</h3>
+                                <p>Description: {this.props.anime.description}</p>
+                            </div>
+                            <div className="modal-footer">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="modal-content">
-                    <div className="modal-body">
-                    <img src={animeImg}/>
-                   
-
-                    
-                    
-                     <h3>Genre</h3>
-                     <h4>Adventure fiction</h4>
-                     <h3>Episode Count</h3>
-                     <h4>ep: 234</h4>
-                     <h3>Rating</h3>
-                    <h4><i className="fas fa-star"></i></h4>
-
-                    <p>Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village.</p>
-                </div>
-                <div className="modal-footer">
-                </div>
-                
+                <button className="modalS" onClick={this.handleModalclick}>
+                <i className="fas fa-list-alt">Expand</i>
+                </button>
             </div>
-            
-            </div>
-
-            <button className="modalS" onClick={this.handleModalclick}>
-            <i className="fas fa-list-alt"></i>
-            </button>
-        </div>
-           
-            
         )
-    
     }
 }

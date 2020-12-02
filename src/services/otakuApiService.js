@@ -34,7 +34,7 @@ const OtakuApiService = {
         );
     },
 
-    addAnimeToList(animeData, list) {
+    addAnimeToList(animeData, list_id) {
         // A service method to POST anime data to a specified list.
         return fetch(`${config.API_ENDPOINT}/anime`, {
             method: "POST",
@@ -44,7 +44,7 @@ const OtakuApiService = {
             },
             body: JSON.stringify({
                 anime: animeData,
-                list_id: list.list_id,
+                list_id,
             }),
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
@@ -108,6 +108,31 @@ const OtakuApiService = {
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
+    },
+
+  postRating(rating, list_id) {
+    return fetch(`${config.API_ENDPOINT}/list/rating`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify({
+          rating: Number(rating),
+          list_id: Number(list_id),
+        }),
+      }).then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      );
+  },
+    getLoggedInUserLists() {
+        return fetch(`${config.API_ENDPOINT}/list`, {
+            headers: {
+                authorization: `Bearer ${TokenService.getAuthToken()}`,
+            },
+        }).then((res) =>
+            !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+        )
     },
 
 };

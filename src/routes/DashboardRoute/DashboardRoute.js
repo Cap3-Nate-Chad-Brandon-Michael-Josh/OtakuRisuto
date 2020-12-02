@@ -5,6 +5,7 @@ import DashNav from '../../components/DashNav/DashNav'
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './DashBoardRoute.css'
+import Rating from '../../components/Rating/Rating';
 class DashboardRoute extends Component {
     render(){
         return(

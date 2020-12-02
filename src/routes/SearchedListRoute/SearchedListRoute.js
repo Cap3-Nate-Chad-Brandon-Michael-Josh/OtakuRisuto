@@ -9,6 +9,7 @@ import OtakuContext from '../../contexts/OtakuContext';
 import OtakuApiService from '../../services/otakuApiService';
 import UserAnimeItem from '../../components/UserAnimeItem/UserAnimeItem';
 import Comments from '../../components/Comments/Comments';
+import Rating from '../../components/Rating/Rating';
 
 
 class SearchedListRoute extends Component {
@@ -22,6 +23,7 @@ class SearchedListRoute extends Component {
     static contextType = OtakuContext;
 
     async componentDidMount() {
+        this.context.setCurrentList({});
         let id = this.props.match.params.id;
         await OtakuApiService.getListInfo(id)
             .then(res => {
@@ -43,7 +45,7 @@ class SearchedListRoute extends Component {
         })
     }
 
-    renderListItems = () => {        
+    renderListItems = () => {
         return (
             (this.context.currentList.anime && this.context.currentList.anime.map((anime, index) => {
                 // 1. this will default all items to their non-expanded view
@@ -76,14 +78,10 @@ class SearchedListRoute extends Component {
         return (
             <section className='SearchedListRoute'>
                 <Header />
-                <DashNav />
-                {/* <Modal /> */}
-                <Link to={'/home'}>
-                    Home
-            </Link>
-                <p>this is the Searched List Route</p>
+                <Link to={'/home'}>Home</Link>                
                 <h2>{this.state.list && this.state.list.name}</h2>
                 {this.context.currentList ? this.renderListItems() : null}
+                <Rating currentList={this.context.currentList} />
                 <Comments currentList={this.context.currentList} />
             </section>
 

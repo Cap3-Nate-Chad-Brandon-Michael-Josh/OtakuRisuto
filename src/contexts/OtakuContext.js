@@ -10,11 +10,13 @@ const OtakuContext = React.createContext({
   searchTerm: '',
   searchOption: '',
   kitsuAnimeData: [],
+  loggedInUserLists: [],
   searchedUserData: [],
   publicListsData: [],     
   registration: false,
   currentList: {},
   resetComments: () => {},
+  resetRating: () => {},
   setCurrentList: () => {},
   setRegistration: () => {},  
   setError: () => {},
@@ -23,6 +25,7 @@ const OtakuContext = React.createContext({
   setSearchTerm: () => {},
   setSearchOption: () => {},
   setKitsuAnimeData: () => {},
+  setLoggedInUserLists: () => {},
   setSearchedUserData: () => {},
   setPublicListsData: () => {},  
   processLogin: () => {},
@@ -35,6 +38,7 @@ export class OtakuProvider extends Component {
     super(props)
     const state = { 
       user: {},
+      loggedInUserLists: [],
       kitsuAnimeData: [],
       searchedUserData: [],
       publicListsData: [],      
@@ -88,6 +92,10 @@ export class OtakuProvider extends Component {
     this.setState({ user })
   }
 
+  setLoggedInUserLists = data => {
+    this.setState({ loggedInUserLists: data })
+  }
+
   setKitsuAnimeData = data => {
     this.setState({ kitsuAnimeData: data })
   }
@@ -127,15 +135,18 @@ export class OtakuProvider extends Component {
       user: this.state.user,
       error: this.state.error,
       kitsuAnimeData: this.state.kitsuAnimeData,
+      loggedInUserLists: this.state.loggedInUserLists,
       searchedUserData: this.state.searchedUserData,
       publicListsData: this.state.publicListsData,      
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
       currentList: this.state.currentList,
       resetComments: this.resetComments,
+      resetRating: this.resetRating,
       setCurrentList: this.setCurrentList,
       setSearchedUserData: this.setSearchedUserData,
       setKitsuAnimeData: this.setKitsuAnimeData,
+      setLoggedInUserLists: this.setLoggedInUserLists,
       setPublicListsData: this.setPublicListsData,
       setKitsuGenreData: this.setKitsuGenreData,
       registration: this.state.registration,

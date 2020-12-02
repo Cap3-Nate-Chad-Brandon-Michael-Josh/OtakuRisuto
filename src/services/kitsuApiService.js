@@ -49,7 +49,7 @@ const KitsuApiService = {
 
       serializeAnime(includedGenres, animeData) {
           // genres will be res.included anime will be res.data
-            console.log('serializeAnime ran')
+            
             /*  set an object where each key is a genreId and each value is the genre title this is
                 needed to avoid subsequent api calls to the kitsu api for genre data */
             let genreObject = {}
@@ -68,7 +68,7 @@ const KitsuApiService = {
                     rating: anime.attributes.averageRating,
                     episodeCount: anime.attributes.episodeCount,
                     // only return genreObject values that match the id of genres in the anime object from kitsu.
-                    genres: anime.relationships.categories.data.map(genre => {
+                    genre: anime.relationships.categories.data.map(genre => {
                         return genreObject[genre.id]
                     })
                 }                
