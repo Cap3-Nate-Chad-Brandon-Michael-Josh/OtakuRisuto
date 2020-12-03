@@ -21,8 +21,8 @@ export default class Modal extends Component {
         const list_anime = this.context.currentList.list_anime;
         const animeToDelete = list_anime.find(anime => anime.anime_id === this.props.anime.anime_id);
         console.log(animeToDelete.list_anime_id)
-        this.context.resetCurrentList(animeToDelete)
         this.setState({ modal: !this.state.modal })
+        this.context.resetCurrentList(animeToDelete)
         OtakuApiService.deleteListAnime(animeToDelete.list_anime_id)
             .then(res => {
                 console.log(res);
