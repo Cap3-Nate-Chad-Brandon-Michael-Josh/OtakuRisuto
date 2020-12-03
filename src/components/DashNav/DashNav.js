@@ -16,12 +16,21 @@ class DashNav extends Component {
         registration: this.context.registration,
         newListInput: '',
         privateOption: true,
+        currentList: this.context.currentList
     }
 
     async componentDidMount() {
         await OtakuApiService.getLoggedInUserLists()
             .then(res => this.context.setLoggedInUserLists(res))
         this.context.setCurrentList({})
+    }
+
+    handleItemDelete = () => {
+        console.log('item deleted')
+        console.log(this.context.currentList.list_anime)
+        this.setState({ currentList: this.context.currentList });
+        this.forceUpdate();
+
     }
 
     handleFilterClick = () => {
@@ -31,7 +40,10 @@ class DashNav extends Component {
     handleListClick = (event) => {
         const listId = event.target.getAttribute('value');
         OtakuApiService.getListInfo(listId)
-            .then(res => this.context.setCurrentList(res));
+            .then(res => {
+                this.context.setCurrentList(res);
+                this.setState({ currentList: this.context.currentList })
+            });
     }
 
     handleAddNewList = () => {
@@ -50,7 +62,6 @@ class DashNav extends Component {
     } 
 
     render() {
-
         return (
             <div>
                 {this.context.registration &&
@@ -92,10 +103,9 @@ class DashNav extends Component {
                 {(this.context.currentList) ? <h1>{this.context.currentList.name}</h1> : null}
 
                 <section className='animeItem'>
-                    {(this.context.currentList.anime) ? this.context.currentList.anime.map(anime =>
+                    {(this.state.currentList.anime) ? this.state.currentList.anime.map(anime =>
                         <div>
-                            <h2>{anime.title}</h2>
-                            <Modal anime={anime} />
+                            <Modal handleItemDelete={this.handleItemDelete} anime={anime} />
                         </div>)
                         : null
                     }
