@@ -148,6 +148,20 @@ const OtakuApiService = {
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
     },
+    deleteList(list_id){
+        return fetch(`${config.API_ENDPOINT}/list/${list_id}`, {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${TokenService.getAuthToken()}`,
+            },
+            body: JSON.stringify({
+                list_id: Number(list_id)
+            }),
+        }).then((res) =>
+            !res.ok ? res.json().then((e) => Promise.reject(e)) : res.ok
+        );
+    },
 
 };
 
