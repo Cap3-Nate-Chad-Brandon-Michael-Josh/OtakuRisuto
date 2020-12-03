@@ -4,10 +4,10 @@ import React from 'react';
 
 function Roulette(props) {
     function shuffle(list) {
-        const img = document.getElementById("img");
-        console.log(img)
-        let randomNumber = Math.floor(Math.random() * props.list.length-1) + 1;
-        // console.log(randomNumber)
+        // const img = document.getElementById("img");
+        // console.log(img)
+        let randomNumber = Math.floor(Math.random() * (props.list.length-1)) + 1;
+        console.log(randomNumber)
         // img.setAttribute('src', `${randomNumber}.png`)
         props.updateExpandedItem(randomNumber)
     }
@@ -19,9 +19,12 @@ function Roulette(props) {
     // }
   return (
     <div className="main">
-        <img src={require("./1.png")} alt="" id="img" />
+        {/* <img src={require("./1.png")} alt="" id="img" /> */}
         
-        <button id="btn" onClick={shuffle}>Shuffle</button>
+        <button id="btn" onClick={()=>{
+          shuffle()
+          props.handleShuffle()
+          }}>Shuffle</button>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import OtakuApiService from '../../services/otakuApiService';
 import Rating from '../Rating/Rating';
 import Comments from '../Comments/Comments';
 import Roulette from '../Roulette/Roulette';
+import EditListForm from '../EditListForm/EditListForm';
 
 class DashNav extends Component {
     static contextType = OtakuContext;
@@ -18,7 +19,8 @@ class DashNav extends Component {
         newListInput: '',
         privateOption: true,
         currentList: this.context.currentList,
-        randomAnimeIndex: null
+        randomAnimeIndex: null,
+        editing: false,
     }
 
     async componentDidMount() {
@@ -27,12 +29,8 @@ class DashNav extends Component {
         this.context.setCurrentList({})
     }
 
-    handleItemDelete = () => {
-        console.log('item deleted')
-        console.log(this.context.currentList.list_anime)
-        this.setState({ currentList: this.context.currentList });
-        this.forceUpdate();
-
+    handleItemDelete = () => {        
+        this.setState({ currentList: this.context.currentList });        
     }
 
     handleFilterClick = () => {
@@ -48,8 +46,9 @@ class DashNav extends Component {
             });
     }
 
-    handleAddNewList = () => {
+    handleAddNewList = (event) => {
         // select option values are always converted to strings, OR API is expecting boolean.
+        event.preventDefault()
         let privacyValue = true;         
         if (this.state.privateOption === 'false') {
             privacyValue = false;
@@ -64,21 +63,22 @@ class DashNav extends Component {
     } 
 
     setRandomAnime = (num) => {
-        this.setState({randomAnime:num})
+        this.setState({randomAnimeIndex:num})
     }
 
-    generateModalList = (num) => {
-        console.log(this.state.currentList.anime.length)
-        for (let i = 0; i < this.state.currentList.anime.length; i++){
-            let expanded= false;
-            if(i === num){
-                expanded = true
-            }
-            return (<div>
-            <Modal handleItemDelete={this.handleItemDelete} anime={this.state.currentList.anime[i]} show={expanded} />
-        </div>)
+    
+    handleEditListClick = (event) => {
+        event.preventDefault()
+        this.setState({ editing: !this.state.editing })
+    }
 
-        }
+    handleShuffle = () => {
+        this.forceUpdate();
+    }
+
+    handleResetRandomAnime = () => {
+        this.setState({randomAnimeIndex: null})
+        
     }
     render() {
         return (
@@ -119,10 +119,25 @@ class DashNav extends Component {
                 <button className="navB" onClick={this.handleFilterClick}>
                     &#9776; Anime Lists
                 </button>
-                {(this.context.currentList) ? <h1>{this.context.currentList.name}</h1> : null}
+                {(this.context.currentList.name) ? 
+                    <div>
+                        <h1>{this.context.currentList.name}</h1>
+                        {(this.state.editing) ? 
+                            <EditListForm editing={this.handleEditListClick}/>
+                            : null }
+                        <button onClick={this.handleEditListClick}>Edit List</button>
+                    </div> 
+                    : null}
 
                 <section className='animeItem'>
-                    {(this.state.currentList.anime) ? this.generateModalList(this.state.randomAnimeIndex)
+                    {(this.context.currentList.anime) ? this.context.currentList.anime.map((anime, index) => {
+                        let expanded = false 
+                        if(index === this.state.randomAnimeIndex){
+                            expanded = true
+                        }
+                        
+                       return <Modal key={index} handleItemDelete={this.handleItemDelete} anime={anime} show={expanded} index={index} handleResetRandomAnime={this.handleResetRandomAnime} />
+                    })
                         : null
                     }
                 </section>
@@ -135,8 +150,9 @@ class DashNav extends Component {
                             {/* <img src={require("./1.png")} alt="" id="img" /> */}
 
                     <Roulette 
-                        list={this.state.currentList}
+                        list={this.state.currentList.anime}
                         updateExpandedItem={this.setRandomAnime}
+                        handleShuffle={this.handleShuffle}
                     />
         
             </div>

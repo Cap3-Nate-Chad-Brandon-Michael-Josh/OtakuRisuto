@@ -7,20 +7,31 @@ import OtakuApiService from '../../services/otakuApiService';
 export default class Modal extends Component {
     static contextType = OtakuContext;
     state = {
-        modal: this.props.show,
+        modal: false,
         className: "modal-wrapper",
         classNameHidden: "modal-wrapper2",
         error: null
     }
 
+    componentDidMount = () => {
+        console.log("TEST", this.props.show)
+        this.setState({ modal: this.props.show })
+    }
     handleModalclick = () => {
-        this.setState({ modal: !this.state.modal })
+        if (this.props.show) {
+            this.props.handleResetRandomAnime()
+        }
+        else{this.setState({ modal: !this.state.modal })}
+        
+
+
     }
 
     handleDelete = () => {
         const list_anime = this.context.currentList.list_anime;
         const animeToDelete = list_anime.find(anime => anime.anime_id === this.props.anime.anime_id);
         console.log(animeToDelete.list_anime_id)
+        this.setState({ modal: !this.state.modal })
         this.context.resetCurrentList(animeToDelete)
         OtakuApiService.deleteListAnime(animeToDelete.list_anime_id)
             .then(res => {
@@ -33,11 +44,14 @@ export default class Modal extends Component {
     }
 
     render() {
+        console.log(this.props.show, this.state.modal)
         const animeImg = require('../../img/animeCover.png')
         return (
             <div>
-                <h2 onClick={this.handleModalclick} >{this.props.anime.title}</h2>
-                <div className={(this.state.modal) ? this.state.className : this.state.classNameHidden}>
+                <h2 onClick={() => {
+                    this.handleModalclick(); 
+                }} >{this.props.anime.title}</h2>
+                <div className={(this.state.modal || this.props.show) ? this.state.className : this.state.classNameHidden}>
                     <div>
                         {/* <div className="modal-header">
                             <p className='Title'>{this.props.anime.title}</p>
@@ -46,7 +60,7 @@ export default class Modal extends Component {
                             <div className="modal-body">
                                 <img src={this.props.anime.image_url} />
                                 <h3>Genres:</h3>
-                                {this.props.anime.genre.map(genre => <h4>{genre}</h4>)}
+                                {this.props.anime.genre.map((genre, index) => <h4 key={index}>{genre}</h4>)}
                                 <h3>Episode Count: {this.props.anime.episode_count}</h3>
                                 <h3>Rating: {this.props.anime.rating}</h3>
                                 <p>Description: {this.props.anime.description}</p>

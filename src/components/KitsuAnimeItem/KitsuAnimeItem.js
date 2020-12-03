@@ -53,7 +53,7 @@ const KitsuAnimeItem = (props) => {
                 {props.anime.genre.map(genre => {
                     return <p className='genre' key={genre}>{genre}</p>
                 })}
-                <p>Total Episodes: {props.anime.episodeCount}</p>
+                <p>Total Episodes: {props.anime.episode_count}</p>
 
             </div>
         </div>
