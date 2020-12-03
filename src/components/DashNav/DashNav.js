@@ -17,7 +17,8 @@ class DashNav extends Component {
         registration: this.context.registration,
         newListInput: '',
         privateOption: true,
-        currentList: this.context.currentList
+        currentList: this.context.currentList,
+        editing: false,
     }
 
     async componentDidMount() {
@@ -43,8 +44,9 @@ class DashNav extends Component {
             });
     }
 
-    handleAddNewList = () => {
+    handleAddNewList = (event) => {
         // select option values are always converted to strings, OR API is expecting boolean.
+        event.preventDefault()
         let privacyValue = true;         
         if (this.state.privateOption === 'false') {
             privacyValue = false;
@@ -57,6 +59,11 @@ class DashNav extends Component {
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value})
     } 
+
+    handleEditListClick = (event) => {
+        event.preventDefault()
+        this.setState({ editing: !this.state.editing })
+    }
 
     render() {
         return (
@@ -100,7 +107,10 @@ class DashNav extends Component {
                 {(this.context.currentList.name) ? 
                     <div>
                         <h1>{this.context.currentList.name}</h1>
-                        <EditListForm />
+                        {(this.state.editing) ? 
+                            <EditListForm editing={this.handleEditListClick}/>
+                            : null }
+                        <button onClick={this.handleEditListClick}>Edit List</button>
                     </div> 
                     : null}
 

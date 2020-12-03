@@ -6,8 +6,8 @@ class EditListForm extends Component {
     static contextType = OtakuContext;
 
     state = {
-        newName: '',        
-        error: null,        
+        newName: '',
+        error: null,
     }
 
     handleChange = (event) => {
@@ -24,7 +24,12 @@ class EditListForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} className='EditListForm'>
+            <form
+                className='EditListForm'
+                onSubmit={(event) => {
+                    this.handleSubmit(event);
+                    this.props.editing(event);
+                }}>
                 <label htmlFor='newName'></label>
                 <input
                     type='text'
@@ -32,7 +37,7 @@ class EditListForm extends Component {
                     placeholder='New List Name'
                     value={this.state.nameInput}
                     onChange={this.handleChange}
-                    required />                
+                    required />
                 <label htmlFor='editListSubmit'></label>
                 <button type='submit' name='editListSubmit'>Submit</button>
             </form>
