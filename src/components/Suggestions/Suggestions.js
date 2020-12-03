@@ -51,7 +51,7 @@ export default class Suggestions extends Component {
             <div className='animeDescription'>
               <span className='animeDescriptionTitle'>{anime.title}</span><br></br><br></br>
               <span className='animeDescriptionRating'>{`Rating: ${anime.rating}`}</span><br></br>
-              <span className='animeDescriptionCount'>{`Episode Count: ${anime.episodeCount}`}</span><br></br>
+              <span className='animeDescriptionCount'>{`Episode Count: ${anime.episode_count}`}</span><br></br>
               <span className='animeDescriptionGenre'>{`Genres: ${genreString}`}</span>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default class Suggestions extends Component {
           description: anime.description,
           image_url: anime.mediumImage,
           rating: anime.rating,
-          episode_count: anime.episodeCount,
+          episode_count: anime.episode_count,
           genre: anime.genres
         })
       }

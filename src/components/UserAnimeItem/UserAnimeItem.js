@@ -16,7 +16,7 @@ export default class UserAnimeItem extends Component {
 
   render() {
     //asuming all anime details will be passed in from the parent component
-    const { title, description, imageUrl, rating, episodeCount, expand, genres } = this.props
+    const { title, description, imageUrl, rating, episode_count, expand, genres } = this.props
     return (
       <div onClick={this.handleExpand} className='animeItemContainer'>
         <div className='animeItemHeader'>
@@ -27,8 +27,8 @@ export default class UserAnimeItem extends Component {
           <p>Description: {description}</p>
           <img src={imageUrl} alt={title}></img>
           <p>Rating: {rating}</p>
-          <p>Episode Count: {episodeCount}</p>
-          <>Genres: {genres.map(genre => <p>{genre}</p>)}</>
+          <p>Episode Count: {episode_count}</p>
+          <div>Genres: {genres.map(genre => <p>{genre}</p>)}</div>
         </div>
         }
       </div>

@@ -64,7 +64,7 @@ class SearchedListRoute extends Component {
                         description={anime.description}
                         imageUrl={anime.image_url}
                         rating={anime.rating}
-                        episodeCount={anime.episode_count}
+                        episode_count={anime.episode_count}
                         genres={anime.genre}
                         expand={expand}
                         updateExpandedItem={this.updateExpandedItem}

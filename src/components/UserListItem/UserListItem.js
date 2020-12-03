@@ -50,7 +50,7 @@ export default class UserListItem extends Component {
           description = {anime.description}
           imageUrl = {anime.imageUrl}
           rating = {anime.rating}
-          episodeCount = {anime.episodeCount}
+          episode_count = {anime.episode_count}
           expand = {expand}
           updateExpandedItem = {this.updateExpandedItem}
         />

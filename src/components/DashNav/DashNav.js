@@ -6,6 +6,7 @@ import './DashNav.css';
 import OtakuApiService from '../../services/otakuApiService';
 import Rating from '../Rating/Rating';
 import Comments from '../Comments/Comments';
+import EditListForm from '../EditListForm/EditListForm';
 
 class DashNav extends Component {
     static contextType = OtakuContext;
@@ -25,12 +26,8 @@ class DashNav extends Component {
         this.context.setCurrentList({})
     }
 
-    handleItemDelete = () => {
-        console.log('item deleted')
-        console.log(this.context.currentList.list_anime)
-        this.setState({ currentList: this.context.currentList });
-        this.forceUpdate();
-
+    handleItemDelete = () => {        
+        this.setState({ currentList: this.context.currentList });        
     }
 
     handleFilterClick = () => {
@@ -100,7 +97,12 @@ class DashNav extends Component {
                 <button className="navB" onClick={this.handleFilterClick}>
                     &#9776; Anime Lists
                 </button>
-                {(this.context.currentList) ? <h1>{this.context.currentList.name}</h1> : null}
+                {(this.context.currentList.name) ? 
+                    <div>
+                        <h1>{this.context.currentList.name}</h1>
+                        <EditListForm />
+                    </div> 
+                    : null}
 
                 <section className='animeItem'>
                     {(this.state.currentList.anime) ? this.state.currentList.anime.map(anime =>

@@ -6,28 +6,28 @@ const userList = {
       description: 'great show',
       imageUrl: null,
       rating: 5,
-      episodeCount: 56
+      episode_count: 56
     },
     {
       title: 'DoroHeDoro', 
       description: 'great show',
       imageUrl: null,
       rating: 5,
-      episodeCount: 56
+      episode_count: 56
     },
     {
       title: 'ASDF', 
       description: 'great show',
       imageUrl: null,
       rating: 5,
-      episodeCount: 56
+      episode_count: 56
     },
     {
       title: 'asdf', 
       description: 'great show',
       imageUrl: null,
       rating: 5,
-      episodeCount: 56
+      episode_count: 56
     },
   ]
 }

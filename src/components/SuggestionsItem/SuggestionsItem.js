@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 export default class SuggestionsItem extends Component {
   render() {
-    const { title, description, rating, episodeCount } = this.props
+    const { title, description, rating, episode_count } = this.props
     return (
       // <div className='suggestionsItemContainer'>
       //   <h2>{title}</h2>
       //   <div className='suggestionsItemMain'>
       //     <span>{description}</span>
-      //     <span>{episodeCount}</span>
+      //     <span>{}</span>
       //     <span>{rating}</span>
       //   </div>
       // </div>
