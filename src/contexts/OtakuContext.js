@@ -16,6 +16,7 @@ const OtakuContext = React.createContext({
   registration: false,
   currentList: {},
   resetComments: () => {},
+  resetListName: () => {},
   resetRating: () => {},
   resetCurrentList: () => {},
   setCurrentList: () => {},
@@ -68,6 +69,17 @@ export class OtakuProvider extends Component {
     const newList = {...this.state.currentList};
     newList.comments = [...newList.comments, newComment];
     this.setState({currentList: newList});
+  }
+
+  resetListName = (name, list_id) => {
+    const newList = {...this.state.currentList};
+    const userLists = [...this.state.loggedInUserLists]
+    let index = userLists.findIndex(list => list.list_id === list_id)
+    userLists[index].name = name;      
+    newList.name = name;
+    this.setState({ 
+        currentList: newList,
+        loggedInUserLists: userLists });
   }
 
   setRegistration = (value) => {
@@ -158,6 +170,7 @@ export class OtakuProvider extends Component {
       searchOption: this.state.searchOption,
       currentList: this.state.currentList,
       resetComments: this.resetComments,
+      resetListName: this.resetListName,
       resetRating: this.resetRating,
       resetCurrentList: this.resetCurrentList,
       setCurrentList: this.setCurrentList,

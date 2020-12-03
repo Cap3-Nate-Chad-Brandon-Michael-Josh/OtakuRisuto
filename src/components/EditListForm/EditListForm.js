@@ -19,8 +19,7 @@ class EditListForm extends Component {
         const newListName = this.state.newName;
         const list = this.context.currentList;
         OtakuApiService.updateListName(newListName, list)
-        OtakuApiService.getLoggedInUserLists(list.list_id)
-            .then(res => OtakuContext.setCurrentList(res))
+        this.context.resetListName(newListName, list.list_id);
     }
 
     render() {
