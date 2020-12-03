@@ -22,9 +22,23 @@ class EditListForm extends Component {
         this.context.resetListName(newListName, list.list_id);
     }
 
+    handleDelete = ev => {
+        const list_id = this.context.currentList.list_id;
+        console.log(list_id)
+        OtakuApiService.deleteList(list_id)
+            .then(result => {
+                if(result === true){
+                    this.context.resetUserLists(list_id);
+                    this.context.setCurrentList({});
+                }
+            });
+
+    }
+
     render() {
         return (
-            <form
+            <div>
+                <form
                 className='EditListForm'
                 onSubmit={(event) => {
                     this.handleSubmit(event);
@@ -41,6 +55,9 @@ class EditListForm extends Component {
                 <label htmlFor='editListSubmit'></label>
                 <button type='submit' name='editListSubmit'>Submit</button>
             </form>
+            <button onClick={this.handleDelete}>Delete List</button>
+            </div>
+            
         )
     }
 }

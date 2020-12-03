@@ -47,7 +47,7 @@ export default class Modal extends Component {
                             <div className="modal-body">
                                 <img src={this.props.anime.image_url} />
                                 <h3>Genres:</h3>
-                                {this.props.anime.genre.map(genre => <h4>{genre}</h4>)}
+                                {this.props.anime.genre.map((genre, index) => <h4 key={index}>{genre}</h4>)}
                                 <h3>Episode Count: {this.props.anime.episode_count}</h3>
                                 <h3>Rating: {this.props.anime.rating}</h3>
                                 <p>Description: {this.props.anime.description}</p>

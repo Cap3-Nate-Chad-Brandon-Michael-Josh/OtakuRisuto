@@ -115,10 +115,8 @@ class DashNav extends Component {
                     : null}
 
                 <section className='animeItem'>
-                    {(this.state.currentList.anime) ? this.state.currentList.anime.map(anime =>
-                        <div>
-                            <Modal handleItemDelete={this.handleItemDelete} anime={anime} />
-                        </div>)
+                    {(this.context.currentList.anime) ? this.context.currentList.anime.map((anime, index) =>
+                            <Modal key={index} handleItemDelete={this.handleItemDelete} anime={anime} />)
                         : null
                     }
                 </section>
