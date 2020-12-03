@@ -18,7 +18,7 @@ function Roulette() {
     // }
   return (
     <div className="main">
-        <img src={require("./1.png")} alt="" id="img" />
+        <img src={require("../../img/naruto-cover.jpg")} alt="" id="img" />
         
         <button id="btn" onClick={shuffle}>Shuffle</button>
     </div>

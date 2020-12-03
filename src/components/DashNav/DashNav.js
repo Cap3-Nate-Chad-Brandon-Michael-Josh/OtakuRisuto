@@ -3,6 +3,7 @@ import { component } from 'react'
 import OtakuContext from '../../contexts/OtakuContext';
 import Suggestions from '../Suggestions/Suggestions'
 import Modal from './Modal'
+import Roulette from '../Roulette/Roulette'
 
 import './DashNav.css'
 
@@ -39,6 +40,7 @@ class DashNav extends Component {
             <h1>Anime Name</h1>
             <Modal />
         </section>
+        <Roulette />
     </div>
   
        )
