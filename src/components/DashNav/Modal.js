@@ -7,7 +7,7 @@ import OtakuApiService from '../../services/otakuApiService';
 export default class Modal extends Component {
     static contextType = OtakuContext;
     state = {
-        modal: false,
+        modal: this.props.show,
         className: "modal-wrapper",
         classNameHidden: "modal-wrapper2",
         error: null

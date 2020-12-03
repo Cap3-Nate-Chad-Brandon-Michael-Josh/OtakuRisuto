@@ -6,6 +6,7 @@ import './DashNav.css';
 import OtakuApiService from '../../services/otakuApiService';
 import Rating from '../Rating/Rating';
 import Comments from '../Comments/Comments';
+import Roulette from '../Roulette/Roulette';
 
 class DashNav extends Component {
     static contextType = OtakuContext;
@@ -16,7 +17,8 @@ class DashNav extends Component {
         registration: this.context.registration,
         newListInput: '',
         privateOption: true,
-        currentList: this.context.currentList
+        currentList: this.context.currentList,
+        randomAnimeIndex: null
     }
 
     async componentDidMount() {
@@ -61,6 +63,23 @@ class DashNav extends Component {
         this.setState({ [event.target.name]: event.target.value})
     } 
 
+    setRandomAnime = (num) => {
+        this.setState({randomAnime:num})
+    }
+
+    generateModalList = (num) => {
+        console.log(this.state.currentList.anime.length)
+        for (let i = 0; i < this.state.currentList.anime.length; i++){
+            let expanded= false;
+            if(i === num){
+                expanded = true
+            }
+            return (<div>
+            <Modal handleItemDelete={this.handleItemDelete} anime={this.state.currentList.anime[i]} show={expanded} />
+        </div>)
+
+        }
+    }
     render() {
         return (
             <div>
@@ -103,10 +122,7 @@ class DashNav extends Component {
                 {(this.context.currentList) ? <h1>{this.context.currentList.name}</h1> : null}
 
                 <section className='animeItem'>
-                    {(this.state.currentList.anime) ? this.state.currentList.anime.map(anime =>
-                        <div>
-                            <Modal handleItemDelete={this.handleItemDelete} anime={anime} />
-                        </div>)
+                    {(this.state.currentList.anime) ? this.generateModalList(this.state.randomAnimeIndex)
                         : null
                     }
                 </section>
@@ -116,6 +132,13 @@ class DashNav extends Component {
                         <Comments currentList={this.context.currentList} />
                     </div>
                     : null}
+                            {/* <img src={require("./1.png")} alt="" id="img" /> */}
+
+                    <Roulette 
+                        list={this.state.currentList}
+                        updateExpandedItem={this.setRandomAnime}
+                    />
+        
             </div>
 
         )
@@ -123,3 +146,12 @@ class DashNav extends Component {
 }
 
 export default DashNav;
+
+{/* <section className='animeItem'>
+                    {(this.state.currentList.anime) ? this.state.currentList.anime.map(anime =>
+                        <div>
+                            <Modal handleItemDelete={this.handleItemDelete} anime={anime} />
+                        </div>)
+                        : null
+                    }
+                </section> */}

@@ -3,7 +3,8 @@
 import React, { Component } from 'react'
 import UserAnimeItem from '../UserAnimeItem/UserAnimeItem'
 import UserList from '../../store/testStoreForUserListRoute'
-
+import Roulette from '../Roulette/Roulette'
+import userList from '../../store/testStoreForUserListRoute'
 export default class UserListItem extends Component {
   state = {
     userList: UserList,
@@ -62,6 +63,10 @@ export default class UserListItem extends Component {
     return (
       <div className='userListItemContainer'>
         {this.renderListItems()}
+        {/* <Roulette 
+        list={userList}
+        updateExpandedItem={this.updateExpandedItem}
+        /> */}
       </div>
     )
   }

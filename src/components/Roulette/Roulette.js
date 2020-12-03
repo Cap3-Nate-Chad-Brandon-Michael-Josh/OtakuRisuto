@@ -2,13 +2,14 @@ import React from 'react';
 //  import './DiceApp.css'
 
 
-function Roulette() {
-    function shuffle() {
+function Roulette(props) {
+    function shuffle(list) {
         const img = document.getElementById("img");
         console.log(img)
-        let randomNumber = Math.floor(Math.random() * 6) + 1;
+        let randomNumber = Math.floor(Math.random() * props.list.length-1) + 1;
         // console.log(randomNumber)
-        img.setAttribute('src', `${randomNumber}.png`)
+        // img.setAttribute('src', `${randomNumber}.png`)
+        props.updateExpandedItem(randomNumber)
     }
 
     // function anim() {
