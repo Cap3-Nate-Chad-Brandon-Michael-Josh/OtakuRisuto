@@ -73,16 +73,20 @@ export default class Suggestions extends Component {
         suggestionsResults.push({
           title: anime.title,
           description: anime.description,
-          image_url: anime.mediumImage,
+          image_url: anime.ImageUrl,
           rating: anime.rating,
           episode_count: anime.episodeCount,
-          genre: anime.genres
+          genre: anime.genre
         })
       }
     }
 
     OtakuApiService.postList('My First Anime List', false, suggestionsResults)
+      .then(
+        this.context.setLoggedInUserLists(this.context.loggedInUserLists.push([null, null, 'My First Anime List', false, suggestionsResults]))
+      )
     this.context.setRegistration()
+    console.log(this.context.loggedInUserLists)
   }
 
   handleCancelSubmit = () => {
@@ -95,7 +99,7 @@ export default class Suggestions extends Component {
         {this.state.seggestions !== [] &&
         <div className='wrapper'>
           <div className='title'>
-            Choose Your Favorites!
+            We found some popular anime to help you create your first list!
           </div>
           <div></div>
           <div className='container'>
