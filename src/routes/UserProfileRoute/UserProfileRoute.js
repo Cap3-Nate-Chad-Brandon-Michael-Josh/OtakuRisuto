@@ -24,11 +24,24 @@ class UserProfileRoute extends Component {
         this.props.history.push(`/SearchedList/${listId}`);
     }  
 
+    renderRating(list){
+        let acc = Math.round(list.rating);
+        let res = []
+        for(let i = 0; i < 5; i++){
+            if(acc === 0){
+                res.push(<i key={i} className="far fa-star"></i>)
+            } else {
+                res.push(<i key={i} className="fas fa-star"></i>)
+                acc--;
+            }
+        }
+        return res;
+    }
+
     render() {
         return (
             <section className='userProfileRoute'>
                 <Header />                
-                {/* <Modal /> */}
                 <Link to={'/home'}>
                     Home
                 </Link>
@@ -36,10 +49,11 @@ class UserProfileRoute extends Component {
                 {this.state.userLists && this.state.userLists.map((list, index) => {
                     return (
                         <section key={index}>
-                            <h2>{list.name}</h2>
-                            <button onClick={event => this.handleViewListClick(event, list.list_id)}>
-                                View {list.name}
-                            </button>                            
+                            <h2 onClick={event => this.handleViewListClick(event, list.list_id)}>{list.name}</h2>
+                            <div>
+                                <h3>Avg OR Rating:</h3>
+                                {this.renderRating(list)}
+                            </div>                        
                         </section>
                     )
                 })}

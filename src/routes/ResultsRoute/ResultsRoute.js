@@ -129,29 +129,20 @@ class ResultsRoute extends Component {
         <Link to={"/"}>landing page</Link>
         <p>this is the Results Route</p>
 
-        {/* The multiple ternary statements conditionally render what is
-                    displayed in the results route based off of the search option */}
+                {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
+                (this.context.searchOption === 'anime') ? 
+                this.renderAnimeFromKitsu() : null : null}
 
-        {this.state.kitsuAnimeData && this.state.kitsuAnimeData
-          ? this.context.searchOption === "anime"
-            ? this.renderAnimeFromKitsu()
-            : null
-          : null}
+                {(this.state.searchedUserData && this.state.searchedUserData) ? 
+                (this.context.searchOption === 'users') ? 
+                this.renderUsers() : null : null}
 
-        {this.state.searchedUserData && this.state.searchedUserData
-          ? this.context.searchOption === "users"
-            ? this.renderUsers()
-            : null
-          : null}
-
-        {this.state.publicListsData && this.state.publicListsData
-          ? this.context.searchOption === "lists"
-            ? this.renderLists()
-            : null
-          : null}
-      </section>
-    );
-  }
+                {(this.state.publicListsData && this.state.publicListsData) ?
+                 (this.context.searchOption === 'lists') ? 
+                 this.renderLists() : null : null}
+            </section>
+        )
+    }
 }
 
 export default withRouter(ResultsRoute);
