@@ -1,6 +1,5 @@
 import { Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
-import Header from "../Header/Header";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PublicOnlyRoute from "../PublicOnlyRoute/PublicOnlyRoute";
 import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute";
@@ -10,8 +9,6 @@ import DashboardRoute from "../../routes/DashboardRoute/DashboardRoute";
 import ResultsRoute from "../../routes/ResultsRoute/ResultsRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import "./App.css";
-
-import NewListForm from "../NewListForm/NewListForm";
 import UserProfileRoute from "../../routes/UserProfileRoute/UserProfileRoute";
 import SearchedListRoute from "../../routes/SearchedListRoute/SearchedListRoute";
 
@@ -19,7 +16,6 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Header /> */}
         <main>
           <Switch>
             <PrivateRoute exact path={"/home"} component={DashboardRoute} />
