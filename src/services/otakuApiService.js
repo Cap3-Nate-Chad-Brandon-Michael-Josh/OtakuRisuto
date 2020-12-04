@@ -84,7 +84,6 @@ const OtakuApiService = {
     );
   },
   postList(title, privacy, anime = []) {
-    console.log(typeof privacy);
     return fetch(`${config.API_ENDPOINT}/list`, {
       method: "POST",
       headers: {

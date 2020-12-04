@@ -29,8 +29,6 @@ class SearchedListRoute extends Component {
         this.context.setCurrentList(res);
       })
       .catch(this.context.setError);
-
-    console.log(this.context.currentList);
   }
 
   updateExpandedItem = (index) => {
@@ -79,7 +77,6 @@ class SearchedListRoute extends Component {
     if (privacy.checked) {
       privateStatus = true;
     }
-    console.log("HEEEEERE", this.context.currentList.anime);
     OtakuApiService.postList(
       name.value,
       privateStatus,

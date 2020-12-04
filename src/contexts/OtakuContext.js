@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import AuthApiService from '../services/auth-api-service';
-import TokenService from '../services/token-service';
-import IdleService from '../services/idle-service';
-
+import React, { Component } from "react";
+import AuthApiService from "../services/auth-api-service";
+import TokenService from "../services/token-service";
+import IdleService from "../services/idle-service";
 
 const OtakuContext = React.createContext({
   user: {},
   error: null,
-  searchTerm: '',
-  searchOption: '',
+  searchTerm: "",
+  searchOption: "",
   kitsuAnimeData: [],
   loggedInUserLists: [],
   searchedUserData: [],
-  publicListsData: [],     
+  publicListsData: [],
   registration: false,
   currentList: {},
   resetComments: () => {},
@@ -21,7 +20,7 @@ const OtakuContext = React.createContext({
   resetRating: () => {},
   resetCurrentList: () => {},
   setCurrentList: () => {},
-  setRegistration: () => {},  
+  setRegistration: () => {},
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -30,141 +29,140 @@ const OtakuContext = React.createContext({
   setKitsuAnimeData: () => {},
   setLoggedInUserLists: () => {},
   setSearchedUserData: () => {},
-  setPublicListsData: () => {},  
+  setPublicListsData: () => {},
   processLogin: () => {},
   processLogout: () => {},
-})
+});
 export default OtakuContext;
 
 export class OtakuProvider extends Component {
   constructor(props) {
-    super(props)
-    const state = { 
+    super(props);
+    const state = {
       user: {},
       loggedInUserLists: [],
       kitsuAnimeData: [],
       searchedUserData: [],
-      publicListsData: [],      
+      publicListsData: [],
       error: null,
-      searchTerm: '',
-      searchOption: '', 
+      searchTerm: "",
+      searchOption: "",
       registration: false,
-      currentList: {}
-    }
+      currentList: {},
+    };
 
-    const jwtPayload = TokenService.parseAuthToken()
+    const jwtPayload = TokenService.parseAuthToken();
 
     if (jwtPayload)
       state.user = {
-        id: jwtPayload.user_id,        
+        id: jwtPayload.user_id,
         username: jwtPayload.sub,
-      }
+      };
 
     this.state = state;
-    IdleService.setIdleCallback(this.logoutBecauseIdle)
-  }  
+    IdleService.setIdleCallback(this.logoutBecauseIdle);
+  }
 
-  resetComments = comment => {
+  resetComments = (comment) => {
     const newComment = comment;
     newComment.username = this.state.user.username;
-    const newList = {...this.state.currentList};
+    const newList = { ...this.state.currentList };
     newList.comments = [...newList.comments, newComment];
-    this.setState({currentList: newList});
-  }
+    this.setState({ currentList: newList });
+  };
 
   resetListName = (name, list_id) => {
-    const newList = {...this.state.currentList};
-    const userLists = [...this.state.loggedInUserLists]
-    let index = userLists.findIndex(list => list.list_id === list_id)
-    userLists[index].name = name;      
+    const newList = { ...this.state.currentList };
+    const userLists = [...this.state.loggedInUserLists];
+    let index = userLists.findIndex((list) => list.list_id === list_id);
+    userLists[index].name = name;
     newList.name = name;
-    this.setState({ 
-        currentList: newList,
-        loggedInUserLists: userLists });
-  }
+    this.setState({
+      currentList: newList,
+      loggedInUserLists: userLists,
+    });
+  };
 
   resetUserLists = (list_id) => {
-    const userLists = this.state.loggedInUserLists.filter(item => {
+    const userLists = this.state.loggedInUserLists.filter((item) => {
       return item.list_id !== list_id;
     });
-    this.setState({loggedInUserLists: userLists});
-  }
+    this.setState({ loggedInUserLists: userLists });
+  };
 
   setRegistration = (value) => {
     this.setState({
-      registration: value
-    })
-  }
+      registration: value,
+    });
+  };
 
-  resetCurrentList = anime => {
-    console.log(anime)
-    const newArr = this.state.currentList.list_anime.filter(item => {
+  resetCurrentList = (anime) => {
+    const newArr = this.state.currentList.list_anime.filter((item) => {
       return item.list_anime_id !== anime.list_anime_id;
-    })
-    const newArr2 = this.state.currentList.anime.filter(item => {
-      return item.anime_id !== anime.anime_id
-    })
+    });
+    const newArr2 = this.state.currentList.anime.filter((item) => {
+      return item.anime_id !== anime.anime_id;
+    });
     const newList = this.state.currentList;
     newList.list_anime = newArr;
     newList.anime = newArr2;
-    this.setState({currentList: newList})
-    console.log(this.state.currentList.list_anime)
-  }
+    this.setState({ currentList: newList });
+  };
 
-  setCurrentList = data => {
-    this.setState({currentList: data})
-  }
+  setCurrentList = (data) => {
+    this.setState({ currentList: data });
+  };
 
-  setError = error => {
-    console.error(error)
-    this.setState({ error })
-  }
+  setError = (error) => {
+    console.error(error);
+    this.setState({ error });
+  };
 
   clearError = () => {
-    this.setState({ error: null })
-  }
+    this.setState({ error: null });
+  };
 
-  setUser = user => {    
-    this.setState({ user })
-  }
+  setUser = (user) => {
+    this.setState({ user });
+  };
 
-  setLoggedInUserLists = data => {
-    this.setState({ loggedInUserLists: data })
-  }
+  setLoggedInUserLists = (data) => {
+    this.setState({ loggedInUserLists: data });
+  };
 
-  setKitsuAnimeData = data => {
-    this.setState({ kitsuAnimeData: data })
-  }
-  
-  setSearchedUserData = data => {
-    this.setState({ searchedUserData: data })
-  }
+  setKitsuAnimeData = (data) => {
+    this.setState({ kitsuAnimeData: data });
+  };
 
-  setPublicListsData = data => {
-    this.setState({ publicListsData: data })
-  }
+  setSearchedUserData = (data) => {
+    this.setState({ searchedUserData: data });
+  };
 
-  setSearchTerm = searchTerm => {
-    this.setState({ searchTerm })
-  }
+  setPublicListsData = (data) => {
+    this.setState({ publicListsData: data });
+  };
 
-  setSearchOption = searchOption => {
-    this.setState({ searchOption })
-  }
+  setSearchTerm = (searchTerm) => {
+    this.setState({ searchTerm });
+  };
 
-  processLogin = authToken => {
-    TokenService.saveAuthToken(authToken)
-    const jwtPayload = TokenService.parseAuthToken()
+  setSearchOption = (searchOption) => {
+    this.setState({ searchOption });
+  };
+
+  processLogin = (authToken) => {
+    TokenService.saveAuthToken(authToken);
+    const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
-      id: jwtPayload.user_id,      
+      id: jwtPayload.user_id,
       username: jwtPayload.sub,
-    })    
-  }
+    });
+  };
 
   processLogout = () => {
-    TokenService.clearAuthToken()    
-    this.setUser({})
-  } 
+    TokenService.clearAuthToken();
+    this.setUser({});
+  };
 
   render() {
     const value = {
@@ -173,7 +171,7 @@ export class OtakuProvider extends Component {
       kitsuAnimeData: this.state.kitsuAnimeData,
       loggedInUserLists: this.state.loggedInUserLists,
       searchedUserData: this.state.searchedUserData,
-      publicListsData: this.state.publicListsData,      
+      publicListsData: this.state.publicListsData,
       searchTerm: this.state.searchTerm,
       searchOption: this.state.searchOption,
       currentList: this.state.currentList,
@@ -191,18 +189,18 @@ export class OtakuProvider extends Component {
       registration: this.state.registration,
       setSearchTerm: this.setSearchTerm,
       setRegistration: this.setRegistration,
-      setSearchOption: this.setSearchOption,      
+      setSearchOption: this.setSearchOption,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-    }
+    };
 
     return (
       <OtakuContext.Provider value={value}>
         {this.props.children}
       </OtakuContext.Provider>
-    )
+    );
   }
 }
