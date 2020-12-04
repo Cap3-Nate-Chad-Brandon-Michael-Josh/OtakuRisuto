@@ -24,8 +24,7 @@ class EditListForm extends Component {
     }
 
     handleDelete = ev => {
-        const list_id = this.context.currentList.list_id;
-        console.log(list_id)
+        const list_id = this.context.currentList.list_id;       
         OtakuApiService.deleteList(list_id)
             .then(result => {
                 if (result === true) {
@@ -33,7 +32,6 @@ class EditListForm extends Component {
                     this.context.setCurrentList({});
                 }
             });
-
     }
 
     render() {
