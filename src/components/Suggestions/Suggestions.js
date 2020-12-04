@@ -1,10 +1,8 @@
 //should give a list of suggestions for the purpose of prefilling some anime lists that someone might be interested in. Should occur during registration process
 import React, { Component } from 'react'
 import KitsuApiService from '../../services/kitsuApiService'
-import SuggestionsItem from '../SuggestionsItem/SuggestionsItem'
 import Context from '../../contexts/OtakuContext'
 import './Suggestions.css'
-import OtakuApiService from '../../services/otakuApiService'
 
 export default class Suggestions extends Component {
   state = {
@@ -69,24 +67,19 @@ export default class Suggestions extends Component {
     let suggestionsResults = []
     for(var i=0; i<10; i++) {
       if(inputElements[i].checked) {
+        console.log(this.state.suggestions[i])
         let anime = this.state.suggestions[i]
         suggestionsResults.push({
           title: anime.title,
           description: anime.description,
-          image_url: anime.ImageUrl,
+          image_url: anime.image_url,
           rating: anime.rating,
           episode_count: anime.episode_count,
           genre: anime.genre
         })
       }
     }
-
-    OtakuApiService.postList('My First Anime List', false, suggestionsResults)
-      .then(
-        this.context.setLoggedInUserLists(this.context.loggedInUserLists.push([null, null, 'My First Anime List', false, suggestionsResults]))
-      )
-    this.context.setRegistration()
-    console.log(this.context.loggedInUserLists)
+    this.props.addSuggestionsList(suggestionsResults)
   }
 
   handleCancelSubmit = () => {

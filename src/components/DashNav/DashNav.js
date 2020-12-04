@@ -80,11 +80,19 @@ class DashNav extends Component {
         this.setState({randomAnimeIndex: null})
         
     }
+    handleAddSuggestionsList = (anime) => {
+        console.log('handleAddSuggestionsList');
+        OtakuApiService.postList('My First Anime List', false, anime)
+        OtakuApiService.getLoggedInUserLists()
+            .then(res => this.context.setLoggedInUserLists(res));    
+        this.context.setRegistration()
+    }
+
     render() {
         return (
             <div>
                 {this.context.registration &&
-                    <Suggestions />
+                    <Suggestions addSuggestionsList={this.handleAddSuggestionsList}/>
                 }
                 <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
                     <h1>Your lists</h1>
