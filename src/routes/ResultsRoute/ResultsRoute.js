@@ -85,11 +85,11 @@ class ResultsRoute extends Component {
     if (this.context.searchedUserData) {
       return (
         <div>
-          {this.context.searchedUserData.map((user) => {
+          {this.context.searchedUserData.map((user, index) => {
             return (
               <UserResultItem
                 user={user}
-                key={user.username}
+                key={index}
                 viewUser={this.handleViewUserClick}
               />
             );
@@ -112,7 +112,7 @@ class ResultsRoute extends Component {
             return (
               <SearchPublicListResults
                 list={list}
-                key={(list.name, index)}
+                key={(index, list.list_id)}
                 viewList={this.handleViewListClick}
               />
             );
