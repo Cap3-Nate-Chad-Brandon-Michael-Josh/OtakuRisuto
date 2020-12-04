@@ -126,9 +126,6 @@ class ResultsRoute extends Component {
     return (
       <section className="results">
         <Header />
-        <Link to={"/"}>landing page</Link>
-        <p>this is the Results Route</p>
-
                 {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
                 (this.context.searchOption === 'anime') ? 
                 this.renderAnimeFromKitsu() : null : null}
