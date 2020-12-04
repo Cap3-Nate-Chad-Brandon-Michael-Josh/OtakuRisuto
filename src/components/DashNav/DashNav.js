@@ -65,11 +65,18 @@ class DashNav extends Component {
         this.setState({ editing: !this.state.editing })
     }
 
+    handleAddSuggestionsList = (list) => {
+        OtakuApiService.postList(list)
+        OtakuApiService.getLoggedInUserLists()
+            .then(res => this.context.setLoggedInUserLists(res));    
+        this.context.setRegistration()
+    }
+
     render() {
         return (
             <div>
                 {this.context.registration &&
-                    <Suggestions />
+                    <Suggestions addSuggestionsList={this.handleAddSuggestionsList}/>
                 }
                 <div id="mySidenav" className={(this.state.Nav) ? this.state.className : this.state.classNameHidden}>
                     <h1>Your lists</h1>

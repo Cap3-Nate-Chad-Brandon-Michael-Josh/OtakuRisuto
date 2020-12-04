@@ -69,24 +69,29 @@ export default class Suggestions extends Component {
     let suggestionsResults = []
     for(var i=0; i<10; i++) {
       if(inputElements[i].checked) {
+        console.log(this.state.suggestions[i])
         let anime = this.state.suggestions[i]
         suggestionsResults.push({
           title: anime.title,
           description: anime.description,
-          image_url: anime.ImageUrl,
+          image_url: anime.image_url,
           rating: anime.rating,
           episode_count: anime.episode_count,
           genre: anime.genre
         })
       }
     }
+    this.props.addSuggestionsList(suggestionsResults)
 
-    OtakuApiService.postList('My First Anime List', false, suggestionsResults)
-      .then(
-        this.context.setLoggedInUserLists(this.context.loggedInUserLists.push([null, null, 'My First Anime List', false, suggestionsResults]))
-      )
-    this.context.setRegistration()
-    console.log(this.context.loggedInUserLists)
+    // OtakuApiService.postList('My First Anime List', false, suggestionsResults)
+    // OtakuApiService.getLoggedInUserLists()
+    // .then(res => {
+    //   this.context.setLoggedInUserLists(res)
+    // })
+    // .then(res => {
+    //   this.props.setRegistration()
+    // });   
+    // this.context.setRegistration()
   }
 
   handleCancelSubmit = () => {
