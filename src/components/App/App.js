@@ -10,7 +10,7 @@ import DashboardRoute from "../../routes/DashboardRoute/DashboardRoute";
 import ResultsRoute from "../../routes/ResultsRoute/ResultsRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import "./App.css";
-import UserListRoute from "../../routes/UserListRoute/UserListRoute";
+
 import NewListForm from "../NewListForm/NewListForm";
 import UserProfileRoute from "../../routes/UserProfileRoute/UserProfileRoute";
 import SearchedListRoute from "../../routes/SearchedListRoute/SearchedListRoute";
@@ -24,7 +24,6 @@ export default class App extends Component {
           <Switch>
             <PrivateRoute exact path={"/home"} component={DashboardRoute} />
 
-            {/* NEEDS TO BE CHANGED TO PRIVATE ROUTE WHEN READY */}
             <PrivateRoute exact path={"/results"} component={ResultsRoute} />
 
             <PublicOnlyRoute
@@ -33,7 +32,7 @@ export default class App extends Component {
               component={RegistrationRoute}
             />
             <PublicOnlyRoute exact path={"/login"} component={LoginRoute} />
-            <PrivateRoute exact path={"/userList"} component={UserListRoute} />
+
             <PrivateRoute
               exact
               path={"/userProfile/:id"}
