@@ -8,13 +8,14 @@ class RegistrationRoute extends Component {
     render(){
         return(
             <section className='RegistrationRoute'>
-                 <h2>OtakuRisuto</h2>
-                <Link to={'/'}>Landing</Link>
-                <br></br>
-                <Registration history={this.props.history}/>
-                <Link className='login-QA' to={'/login'}>Already have an account?</Link><br></br>
-                {/* <p>this is the registration page</p> */}
-                <Link to={'/login'}>Login</Link>
+                <h2>OtakuRisuto</h2>
+                <div className='RegistrationContainer'>
+                    <br></br>
+                    <Registration history={this.props.history}/>
+                </div>
+                <div className='Login-QA-Container'>
+                    <Link className='Login-QA' to={'/login'}>Already have an account?</Link><br></br>
+                </div>
             </section>
         )
     }

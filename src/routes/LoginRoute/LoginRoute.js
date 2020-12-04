@@ -10,12 +10,13 @@ class LoginRoute extends Component {
         return(
             <section className='LoginRoute'>
                 <h1>OtakuRisuto</h1>
-                <Link to={'/'}>Landing</Link>
-                <br></br>
-                <Login history={this.props.history}/>
-                <Link className="Register-QA" to={'/register'}>Don't have an account yet?</Link><br></br>
-                {/* <p>this is the login page</p> */}
-                <Link to={'/register'}>Sign Up</Link>
+                <div className='LoginContainer'>
+                    <br></br>
+                    <Login history={this.props.history}/>
+                </div>
+                <div className='Register-QA-Container'>
+                    <Link className="Register-QA" to={'/register'}>Don't have an account yet?</Link><br></br>
+                </div>
             </section>
         )
     }

@@ -54,7 +54,7 @@ class Login extends Component {
                 <label htmlFor="username" ref={this.firstInput}>Username</label><br></br>
                 <input type='text' name='username' className='' placeholder='username'></input><br></br>
                 <label htmlFor="password">Password</label><br></br>
-                <input type='text' name='password' className='' placeholder='password'></input><br></br>
+                <input type='password' name='password' className='' placeholder='password'></input><br></br>
                 <button type='submit' className='Submit'>Login</button>
             </form>
         )
