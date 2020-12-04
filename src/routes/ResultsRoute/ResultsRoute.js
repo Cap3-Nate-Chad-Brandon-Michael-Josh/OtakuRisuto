@@ -112,7 +112,7 @@ class ResultsRoute extends Component {
             return (
               <SearchPublicListResults
                 list={list}
-                key={(index, list.name)}
+                key={(index, list.list_id)}
                 viewList={this.handleViewListClick}
               />
             );
