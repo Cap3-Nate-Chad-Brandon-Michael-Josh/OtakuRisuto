@@ -29,7 +29,7 @@ class Header extends Component {
                             {/* Logout */}
                             </Link>
                     </nav>
-                    <Link to={'/home'}><h1>OtakuRisuto</h1></Link>
+                    <Link className='MainTitle' to={'/home'}><h1>OtakuRisuto</h1></Link>
                 </div>
                 <div className='headerItems'>
                     <div className='headerLogout'>
