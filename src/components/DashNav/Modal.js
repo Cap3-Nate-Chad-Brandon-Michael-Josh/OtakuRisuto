@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import "./Modal.css";
 import OtakuContext from "../../contexts/OtakuContext";
@@ -40,7 +39,6 @@ export default class Modal extends Component {
   };
 
   render() {
-    const animeImg = require("../../img/animeCover.png");
     return (
       <div>
         <h2
@@ -60,7 +58,7 @@ export default class Modal extends Component {
           <div>
             <div className="modal-content">
               <div className="modal-body">
-                <img src={this.props.anime.image_url} />
+                <img src={this.props.anime.image_url} alt={'Image of ' + this.props.anime.title}/>
                 <h3>Genres:</h3>
                 {this.props.anime.genre.map((genre, index) => (
                   <h4 key={index}>{genre}</h4>

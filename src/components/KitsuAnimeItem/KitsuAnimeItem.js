@@ -1,4 +1,3 @@
-// functional component do display anime details
 import React from 'react';
 import './KitsuAnimeItem.css'
 const KitsuAnimeItem = (props) => {
@@ -17,7 +16,7 @@ const KitsuAnimeItem = (props) => {
                             {props.anime.rating}
                             <p className='titles'>Genre</p>
                             {props.anime.genre.map((genre, index) => {
-                                return <p className='genre' key={genre, index}>{genre}</p>
+                                return <p className='genre' key={genre + index}>{genre}</p>
                             })}
                         </div>
                         <form onSubmit={event => props.submitAnime(event, props.anime)}>
