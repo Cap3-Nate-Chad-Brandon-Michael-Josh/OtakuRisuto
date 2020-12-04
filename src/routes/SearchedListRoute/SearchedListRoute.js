@@ -84,11 +84,13 @@ class SearchedListRoute extends Component {
     );
   };
   render() {
+      console.log(this.context.currentList)
     return (
       <section className="SearchedListRoute">
         <Header />
         <Link to={"/home"}>Home</Link>
         <h2>{this.context.currentList && this.context.currentList.name}</h2>
+        <h3>Owned by: {this.context.currentList && this.context.currentList.owner_username}</h3>
         <form onSubmit={this.cloneList}>
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" />
