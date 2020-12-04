@@ -140,6 +140,11 @@ class DashNav extends Component {
         {this.context.currentList.name ? (
           <div>
             <h1>{this.context.currentList.name}</h1>
+            <Roulette
+              list={this.state.currentList.anime}
+              updateExpandedItem={this.setRandomAnime}
+              handleShuffle={this.handleShuffle}
+            />
             {this.state.editing ? (
               <EditListForm editing={this.handleEditListClick} />
             ) : null}
@@ -176,12 +181,6 @@ class DashNav extends Component {
             <Comments currentList={this.context.currentList} />
           </div>
         ) : null}
-
-        <Roulette
-          list={this.state.currentList.anime}
-          updateExpandedItem={this.setRandomAnime}
-          handleShuffle={this.handleShuffle}
-        />
       </div>
     );
   }

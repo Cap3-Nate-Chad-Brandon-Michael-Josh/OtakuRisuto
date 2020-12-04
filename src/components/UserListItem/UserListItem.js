@@ -1,24 +1,18 @@
-//Should return a list for displaying on dashboard. Or nav bar? Instructions unclear dick caught in ceiling fan. (Please remove this comment when you write this so it doesnt get into final production guys)
-
 import React, { Component } from "react";
 import UserAnimeItem from "../UserAnimeItem/UserAnimeItem";
-import UserList from "../../store/testStoreForUserListRoute";
-import Roulette from "../Roulette/Roulette";
-import userList from "../../store/testStoreForUserListRoute";
 export default class UserListItem extends Component {
   state = {
-    userList: UserList,
+    userList: null,
     expandedItem: null,
   };
 
   componentDidMount() {
     //fetch call to the OR db. This will return an object with All the list information and an array containing all the anime associated with that list
-    //OtakuRisuto.getAllAnime()
-    //  .then(res => {
-    //   this.setState({
-    //     userList: res
-    //   })
-    // })
+    OtakuRisuto.getAllAnime().then((res) => {
+      this.setState({
+        userList: res,
+      });
+    });
   }
 
   updateExpandedItem = (index) => {
