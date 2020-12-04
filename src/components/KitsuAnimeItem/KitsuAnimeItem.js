@@ -1,4 +1,3 @@
-// functional component do display anime details
 import React from 'react';
 import './KitsuAnimeItem.css'
 const KitsuAnimeItem = (props) => {
@@ -17,13 +16,13 @@ const KitsuAnimeItem = (props) => {
                             {props.anime.rating}
                             <p className='titles'>Genre</p>
                             {props.anime.genre.map((genre, index) => {
-                                return <p className='genre' key={genre, index}>{genre}</p>
+                                return <p className='genre' key={genre + index}>{genre}</p>
                             })}
                         </div>
                         <form onSubmit={event => props.submitAnime(event, props.anime)}>
                             <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)}>
                                 <option value=''>--Select One--</option>
-                                {props.userLists.map(list => <option value={list.list_id}>{list.name}</option>)}
+                                {props.userLists.map((list, index) => <option key={index} value={list.list_id}>{list.name}</option>)}
                             </select>
                             <button>Add to list</button>
                         </form>
@@ -48,7 +47,7 @@ const KitsuAnimeItem = (props) => {
                 <form onSubmit={event => props.submitAnime(event, props.anime)}>
                     <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)}>
                         <option value=''>--Select One--</option>
-                        {props.userLists.map(list => <option value={list.list_id}>{list.name}</option>)}
+                        {props.userLists.map((list, index) => <option key={index} value={list.list_id}>{list.name}</option>)}
                     </select>
                     <button type='submit'>Add to list</button>
                 </form >
