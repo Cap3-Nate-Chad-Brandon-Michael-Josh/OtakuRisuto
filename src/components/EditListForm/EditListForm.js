@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
 import OtakuApiService from '../../services/otakuApiService';
+import './EditListForm.css';
 
 class EditListForm extends Component {
     static contextType = OtakuContext;
@@ -27,7 +28,7 @@ class EditListForm extends Component {
         console.log(list_id)
         OtakuApiService.deleteList(list_id)
             .then(result => {
-                if(result === true){
+                if (result === true) {
                     this.context.resetUserLists(list_id);
                     this.context.setCurrentList({});
                 }
@@ -39,25 +40,27 @@ class EditListForm extends Component {
         return (
             <div>
                 <form
-                className='EditListForm'
-                onSubmit={(event) => {
-                    this.handleSubmit(event);
-                    this.props.editing(event);
-                }}>
-                <label htmlFor='newName'></label>
-                <input
-                    type='text'
-                    name='newName'
-                    placeholder='New List Name'
-                    value={this.state.nameInput}
-                    onChange={this.handleChange}
-                    required />
-                <label htmlFor='editListSubmit'></label>
-                <button type='submit' name='editListSubmit'>Submit</button>
-            </form>
-            <button onClick={this.handleDelete}>Delete List</button>
+                    className='EditListForm'
+                    onSubmit={(event) => {
+                        this.handleSubmit(event);
+                        this.props.editing(event);
+                    }}>
+                    <label htmlFor='newName'></label>
+                    <input
+                        type='text'
+                        name='newName'
+                        placeholder='New List Name'
+                        value={this.state.nameInput}
+                        onChange={this.handleChange}
+                        required />
+                    <label htmlFor='editListSubmit'></label>
+                    <button type='submit' name='editListSubmit'>Submit</button>
+                </form>
+                <button onClick={this.handleDelete} className='delete-button'>
+                    <i className="fas fa-trash-alt"></i>
+                </button>
             </div>
-            
+
         )
     }
 }
