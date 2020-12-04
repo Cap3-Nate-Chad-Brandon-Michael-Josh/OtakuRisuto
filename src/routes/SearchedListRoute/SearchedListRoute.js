@@ -84,7 +84,6 @@ class SearchedListRoute extends Component {
     );
   };
   render() {
-      console.log(this.context.currentList)
     return (
       <section className="SearchedListRoute">
         <Header />
