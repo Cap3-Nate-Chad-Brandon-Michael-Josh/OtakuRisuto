@@ -133,7 +133,9 @@ class DashNav extends Component {
                         {(this.state.editing) ? 
                             <EditListForm editing={this.handleEditListClick}/>
                             : null }
-                        <button onClick={this.handleEditListClick}>Edit List</button>
+                        <button onClick={this.handleEditListClick} className='edit-button'>
+                            <i className="fas fa-pencil-alt"></i>
+                        </button>
                     </div> 
                     : null}
 
