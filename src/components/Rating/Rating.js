@@ -1,33 +1,27 @@
 import React, { Component } from 'react';
 import OtakuContext from '../../contexts/OtakuContext';
-import RatingForm from '../RatingForm/RatingForm'
-import otakuApiService from '../../services/otakuApiService'
+import RatingForm from '../RatingForm/RatingForm';
 
 class Rating extends Component {
     static contextType = OtakuContext;
 
     componentDidMount() {
-        this.context.clearError()
-        // await otakuApiService.getListInfo(1)
-        //     .then(res => {
-        //         this.context.setCurrentList(res);
-        //     })
-        //     .catch(this.context.setError)
+        this.context.clearError();
     }
 
     renderRating(){
         let acc = Math.round(this.props.currentList.rating);
-        let res = []
+        let res = [];
         for(let i = 0; i < 5; i++){
             if(acc === 0){
-                res.push(<i key={i} className="far fa-star"></i>)
+                res.push(<i key={i} className="far fa-star"></i>);
             } else {
-                res.push(<i key={i} className="fas fa-star"></i>)
+                res.push(<i key={i} className="fas fa-star"></i>);
                 acc--;
-            }
-        }
+            };
+        };
         return res;
-    }
+    };
 
     renderItems() {
         const { currentList = {} } = this.props;        
@@ -41,8 +35,8 @@ class Rating extends Component {
                 <RatingForm user_rating={currentList.user_rating} rating={currentList.rating} list_id={currentList.list_id}/>
             </div>
             )
-        }
-    }
+        };
+    };
 
     render() {
         const { error } = this.context
@@ -53,7 +47,7 @@ class Rating extends Component {
                     : this.renderItems()}
             </section>
         )
-    }
-}
+    };
+};
 
 export default Rating;

@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import "./Modal.css";
 import OtakuContext from "../../contexts/OtakuContext";
@@ -40,7 +39,6 @@ export default class Modal extends Component {
   };
 
   render() {
-    const animeImg = require("../../img/animeCover.png");
     return (
       <div>
         <h2
