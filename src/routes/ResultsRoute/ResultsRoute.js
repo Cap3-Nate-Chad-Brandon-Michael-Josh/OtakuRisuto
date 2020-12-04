@@ -124,7 +124,7 @@ class ResultsRoute extends Component {
                 <Link to={'/'}>
                     landing page
                 </Link>
-                <p>this is the Results Route</p>
+                {/* <p>this is the Results Route</p> */}
 
                 {/* The multiple ternary statements conditionally render what is
                     displayed in the results route based off of the search option */}

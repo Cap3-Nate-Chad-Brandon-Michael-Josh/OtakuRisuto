@@ -74,7 +74,7 @@ button{
     height:30px;
     color:rgba(0, 0, 0, 0.767);
     border-radius:4px;
-    background-color: white;
+    /* background-color: white; */
     margin: 4px;
 }
 
@@ -82,7 +82,7 @@ p {
     font-size: 30px;
     /* background-color: rgba(253, 59, 0, 0.63); */
     color:black;
-    width: 445px;
+    /* width: 445px; */
     margin: auto;
 }
 
