@@ -18,25 +18,22 @@ class Header extends Component {
         return (
             <section className='Header'>
                 <div className='headerTitle'>
-                <nav className='DashNav'>
-                <SearchBar />
-                        <Link
-                            onClick={this.handleLogoutClick}
-                            to={'/'}>
+                    <nav className='DashNav'>
+                        <SearchBar />
+                        <div className='headerLogout sign-out'>
+                            <Link
+                                onClick={this.handleLogoutClick}
+                                to={'/'}>
                                 <span className='sign-out'>
-                            <i className="fas fa-sign-out-alt"></i>
+                                    <i className="fas fa-sign-out-alt"></i>
                                 </span>
-                            {/* Logout */}
                             </Link>
+                            <h3>{this.context.user.username}</h3>
+
+
+                        </div>
                     </nav>
-                    <Link to={'/home'}><h1>OtakuRisuto</h1></Link>
-                </div>
-                <div className='headerItems'>
-                    <div className='headerLogout'>
-                        <h2>{this.context.user.username}</h2>
-                           
-                    </div>
-                   
+                    <Link className='MainTitle' to={'/home'}><h1>OtakuRisuto</h1></Link>
                 </div>
             </section>
         )

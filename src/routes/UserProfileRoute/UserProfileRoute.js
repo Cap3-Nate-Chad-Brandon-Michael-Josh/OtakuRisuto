@@ -50,6 +50,7 @@ class UserProfileRoute extends Component {
                     return (
                         <section key={index}>
                             <h2 onClick={event => this.handleViewListClick(event, list.list_id)}>{list.name}</h2>
+                            <h3>Owned by: {list.owner.username}</h3>
                             <div>
                                 <h3>Avg OR Rating:</h3>
                                 {this.renderRating(list)}
