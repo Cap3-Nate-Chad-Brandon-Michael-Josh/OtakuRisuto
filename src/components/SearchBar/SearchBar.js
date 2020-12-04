@@ -55,8 +55,7 @@ class SearchBar extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('search submitted');
+        event.preventDefault();        
         this.context.setSearchTerm(this.state.searchTerm);
         this.context.setSearchOption(this.state.searchOption);
         if (this.state.searchOption === 'anime') {
@@ -80,7 +79,7 @@ class SearchBar extends Component {
             <div>
                 <form className="DashSearch" onSubmit={(event) => this.handleSubmit(event)}>
                     <label htmlFor='search-bar'></label>
-                    {this.context.error ? <p>{this.context.error}</p> : null}
+                    {this.context.error ? <p>{this.context.error.error}</p> : null}
                     <br />
                     {/* <nav className='DashNav'> */}
                     <input
