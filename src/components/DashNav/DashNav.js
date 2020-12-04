@@ -65,8 +65,9 @@ class DashNav extends Component {
         this.setState({ editing: !this.state.editing })
     }
 
-    handleAddSuggestionsList = (list) => {
-        OtakuApiService.postList(list)
+    handleAddSuggestionsList = (anime) => {
+        console.log('handleAddSuggestionsList');
+        OtakuApiService.postList('My First Anime List', false, anime)
         OtakuApiService.getLoggedInUserLists()
             .then(res => this.context.setLoggedInUserLists(res));    
         this.context.setRegistration()
