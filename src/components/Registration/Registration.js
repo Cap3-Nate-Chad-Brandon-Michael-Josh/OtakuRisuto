@@ -54,53 +54,21 @@ class Registration extends Component {
       });
   };
 
-  render() {
-    return (
-      <form className="Registration" onSubmit={this.handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <br></br>
-        <input
-          type="text"
-          name="email"
-          className=""
-          placeholder="email"
-        ></input>
-        <br></br>
-        <label htmlFor="username" ref={this.firstInput}>
-          Username
-        </label>
-        <br></br>
-        <input
-          type="text"
-          name="username"
-          className=""
-          placeholder="username"
-        ></input>
-        <br></br>
-        <label htmlFor="password">Password</label>
-        <br></br>
-        <input
-          type="text"
-          name="password"
-          className=""
-          placeholder="password"
-        ></input>
-        <br></br>
-        <label htmlFor="re-enter password">Re-enter password</label>
-        <br></br>
-        <input
-          type="text"
-          className=""
-          name="password2"
-          placeholder="re-enter password"
-        ></input>
-        <br></br>
-        <button type="submit" className="">
-          Submit
-        </button>
-      </form>
-    );
-  }
+    render(){
+        return(
+            <form className='Registration' onSubmit={this.handleSubmit}>
+                <label htmlFor='email'>Email</label><br></br>
+                <input type='text' name='email' className='' placeholder='email'></input><br></br>
+                <label htmlFor="username" ref={this.firstInput}>Username</label><br></br>
+                <input type='text' name='username' className='' placeholder='username'></input><br></br>
+                <label htmlFor='password'>Password</label><br></br>
+                <input type='password' name='password' className='' placeholder='password'></input><br></br>
+                <label htmlFor='re-enter password'>Re-enter password</label><br></br>
+                <input type='password' className='' name='password2' placeholder='re-enter password'></input><br></br>
+                <button type='submit' className=''>Submit</button>
+            </form>
+        )
+    }
 }
 
 export default Registration;

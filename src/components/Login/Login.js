@@ -44,36 +44,20 @@ class Login extends Component {
     this.firstInput.current.focus();
   }
 
-  render() {
-    return (
-      <form className="Login" onSubmit={this.handleSubmit}>
-        <div role="alert">{this.state.error && <p>{this.state.error}</p>}</div>
-        <label htmlFor="username" ref={this.firstInput}>
-          Username
-        </label>
-        <br></br>
-        <input
-          type="text"
-          name="username"
-          className=""
-          placeholder="username"
-        ></input>
-        <br></br>
-        <label htmlFor="password">Password</label>
-        <br></br>
-        <input
-          type="text"
-          name="password"
-          className=""
-          placeholder="password"
-        ></input>
-        <br></br>
-        <button type="submit" className="Submit">
-          Login
-        </button>
-      </form>
-    );
-  }
+    render() {
+        return (
+            <form className='Login' onSubmit={this.handleSubmit}>
+                <div role='alert'>
+                    {this.state.error && <p>{this.state.error}</p>}
+                </div>
+                <label htmlFor="username" ref={this.firstInput}>Username</label><br></br>
+                <input type='text' name='username' className='' placeholder='username'></input><br></br>
+                <label htmlFor="password">Password</label><br></br>
+                <input type='password' name='password' className='' placeholder='password'></input><br></br>
+                <button type='submit' className='Submit'>Login</button>
+            </form>
+        )
+    }
 }
 
 export default Login;
