@@ -33,7 +33,7 @@ class SearchBar extends Component {
                     KitsuApiService.serializeAnime(res.included, res.data)
                 )
                 :
-                this.context.setError('Sorry, we did not find any anime related to your search.')
+                this.context.setError({error: 'Sorry, we did not find any anime related to your search.'})
             )
             .catch(error => this.context.setError(error))
     }
