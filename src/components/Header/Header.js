@@ -33,7 +33,7 @@ class Header extends Component {
 
                         </div>
                     </nav>
-                    <Link to={'/home'}><h1>OtakuRisuto</h1></Link>
+                    <Link className='MainTitle' to={'/home'}><h1>OtakuRisuto</h1></Link>
                 </div>
             </section>
         )
