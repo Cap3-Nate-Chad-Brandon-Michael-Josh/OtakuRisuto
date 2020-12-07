@@ -38,7 +38,9 @@ class Login extends Component {
   };
 
   componentDidMount() {
-    this.firstInput.current.focus();
+    if (this.firstInput.current) { 
+      this.firstInput.current.focus(); 
+    }
   }
 
     render() {
