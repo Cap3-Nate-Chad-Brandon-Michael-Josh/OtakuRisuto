@@ -6,7 +6,12 @@ import Modal from './Modal';
 configure({ adapter: new Adapter()})
 
 describe('<Modal />', () => {
-  it.skip('should render without crashing', () => {
-    shallow(<Modal />);    
+  it('should render without crashing', () => {
+    const anime = {
+      title: 'test anime',
+      image_url: 'test image',
+      genre: ['genre1', 'genre2'],
+    }
+    shallow(<Modal anime={anime}/>);    
   })
 })

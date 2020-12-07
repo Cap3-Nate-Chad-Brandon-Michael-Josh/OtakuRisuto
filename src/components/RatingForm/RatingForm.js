@@ -95,13 +95,13 @@ class RatingForm extends Component {
         );
     }
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit} className="ratingForm">
-                {this.starRatingInput()}
-                <label htmlFor="ratingSubmit"></label>
-                <button type="submit" name="ratingSubmit">
-                    Submit Rating
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit} className="ratingForm">
+        {this.starRatingInput()}
+        <label htmlFor="ratingSubmit"></label>
+        <button className="submit" type="submit" name="ratingSubmit">
+          Submit
         </button>
             </form>
         );

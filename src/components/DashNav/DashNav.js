@@ -8,6 +8,7 @@ import Rating from "../Rating/Rating";
 import Comments from "../Comments/Comments";
 import Roulette from "../Roulette/Roulette";
 import EditListForm from "../EditListForm/EditListForm";
+import RatingForm from '../RatingForm/RatingForm';
 
 class DashNav extends Component {
   static contextType = OtakuContext;
@@ -97,7 +98,7 @@ class DashNav extends Component {
 
   render() {
     return (
-      <div>
+      <div data-testid='dashNav'>
         {this.context.registration && (
           <Suggestions addSuggestionsList={this.handleAddSuggestionsList} />
         )}
@@ -140,13 +141,16 @@ class DashNav extends Component {
               <option value={true}>Private</option>
             </select>
             <br />
-            <button type="submit">add</button>
+            <button className="addButton" type="submit">
+              {/* add */}
+              <i className="fas fa-plus-circle"></i>
+              </button>
           </form>
         </div>
         <button className="navB" onClick={this.handleFilterClick}>
           &#9776; Anime Lists
-        </button>
-        {this.context.currentList.name ? (
+        </button>       
+        {this.context.currentList.name ? (          
           <div>
             <h1>{this.context.currentList.name}</h1>
             <Roulette

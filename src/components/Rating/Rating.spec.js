@@ -1,13 +1,18 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import Rating from './Rating';
 import OtakuContext from '../../contexts/OtakuContext';
-
-configure({ adapter: new Adapter()})
+import { render, queryByTestId, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('<Rating />', () => {
-  it.skip('should render without crashing', () => {
-    shallow(<Rating />);    
+  it('should render without crashing', () => {
+    render(
+      <OtakuContext.Provider value={{
+        clearError: () => { },
+      }}>
+        <Rating />
+      </OtakuContext.Provider>);
+      const element = screen.getByTestId('rating')
+      expect(element).toBeTruthy();
   })
 })

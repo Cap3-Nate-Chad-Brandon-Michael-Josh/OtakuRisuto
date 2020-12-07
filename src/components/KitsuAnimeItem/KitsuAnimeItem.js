@@ -43,7 +43,7 @@ const KitsuAnimeItem = (props) => {
     return (
         <div className='expanded-anime-card'>
             <div className='pop-out'>
-                <button onClick={event => props.clickDetails(event, props.anime.title)}>condense</button> <br></br>
+                <button className="condense2" onClick={event => props.clickDetails(event, props.anime.title)}>condense</button> <br></br>
                 <form onSubmit={event => props.submitAnime(event, props.anime)}>
                     <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)}>
                         <option value=''>--Select One--</option>

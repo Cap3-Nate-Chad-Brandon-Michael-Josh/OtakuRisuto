@@ -45,7 +45,7 @@ class Rating extends Component {
     render() {
         const { error } = this.context
         return (
-            <section className='rating'>
+            <section className='rating' data-testid='rating'>
                 {error
                     ? <p className=''>There was an error, try again</p>
                     : this.renderItems()}
