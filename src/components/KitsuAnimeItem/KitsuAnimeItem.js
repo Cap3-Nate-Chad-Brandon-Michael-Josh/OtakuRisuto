@@ -13,7 +13,7 @@ const KitsuAnimeItem = (props) => {
                     <div className='overlay'>
                         <div className="text">
                             <p className='titles'>Rating</p>
-                            {props.anime.rating}
+                            <p className='rating'>{props.anime.rating}</p>
                             <p className='titles'>Genre</p>
                             {props.anime.genre.map((genre, index) => {
                                 return <p className='genre' key={genre + index}>{genre}</p>
