@@ -79,7 +79,6 @@ class SearchedListRoute extends Component {
     return (
       <section className="SearchedListRoute">
         <Header />
-
         <h2>{this.context.currentList && this.context.currentList.name}</h2>
         <h3>
           Owned by:{" "}
