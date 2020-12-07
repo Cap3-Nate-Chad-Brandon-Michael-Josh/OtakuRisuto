@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.OR:hover{
+  color: gold;
+
+}
 body{
   background-image: url(../../img/animeCover.png);
   /* background-repeat: no-repeat; */
@@ -91,7 +95,59 @@ body{
                                         /* comment background */
 .comments{
   background-color: rgba(255, 255, 255, 0.445);
-}                                         
+  /* background-color: red; */
+
+}       
+
+.condense2{
+  display: inline-block;
+  padding: 1px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #000000c7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.condense2:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.condense2:hover{
+  background-color: red;
+
+}
+
+.delete{
+  display: inline-block;
+  padding: 1px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #000000c7;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.delete:hover{
+  color: #61dafb;
+
+}
+
+.delete:active {
+  background-color: #c01919;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
                         /* ---------------------------------- */
                                         /* media  */
 
@@ -126,6 +182,10 @@ body{
   .navB{
     font-size: 11px;
   }
+
+  /* .desc{
+    margin:auto 6em;
+  } */
 }
 
 @media (min-width:370px) {
@@ -150,6 +210,14 @@ body{
   }
   .navB{
     font-size: 12px;
+  }
+  .desc{
+  
+    margin: auto 7em;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.596);
+  
+  
   }
 }
 
@@ -177,6 +245,11 @@ body{
   .navB{
     font-size: large;
   }
+  .desc {
+    color: white;
+    font-size: 30px;
+    margin: auto 6em;
+}
 }
 
 @media all and (min-width:1200px) {
