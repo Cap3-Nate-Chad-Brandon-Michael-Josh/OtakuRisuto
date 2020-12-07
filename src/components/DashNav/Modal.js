@@ -42,6 +42,7 @@ export default class Modal extends Component {
     return (
       <div>
         <h2
+          className="anime-title"
           onClick={() => {
             this.handleModalclick();
           }}
@@ -58,7 +59,10 @@ export default class Modal extends Component {
           <div>
             <div className="modal-content">
               <div className="modal-body">
-                <img src={this.props.anime.image_url} alt={'Image of ' + this.props.anime.title}/>
+                <img
+                  src={this.props.anime.image_url}
+                  alt={"Image of " + this.props.anime.title}
+                />
                 <h3>Genres:</h3>
                 {this.props.anime.genre.map((genre, index) => (
                   <h4 key={index}>{genre}</h4>
