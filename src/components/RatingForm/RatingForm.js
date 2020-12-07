@@ -110,7 +110,7 @@ class RatingForm extends Component {
         {this.starRatingInput()}
         <label htmlFor="ratingSubmit"></label>
         <button type="submit" name="ratingSubmit">
-          Submit
+          Submit Rating
         </button>
       </form>
     );

@@ -28,7 +28,7 @@ export default class UserAnimeItem extends Component {
           <img src={imageUrl} alt={title}></img>
           <p>Rating: {rating}</p>
           <p>Episode Count: {episode_count}</p>
-          <div>Genres: {genres.map(genre => <p>{genre}</p>)}</div>
+          <div>Genres: {genres.map((genre, index) => <p key={index}>{genre}</p>)}</div>
         </div>
         }
       </div>
