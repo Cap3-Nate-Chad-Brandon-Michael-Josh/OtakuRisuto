@@ -145,8 +145,8 @@ class DashNav extends Component {
         </div>
         <button className="navB" onClick={this.handleFilterClick}>
           &#9776; Anime Lists
-        </button>
-        {this.context.currentList.name ? (
+        </button>       
+        {this.context.currentList.name ? (          
           <div>
             <h1>{this.context.currentList.name}</h1>
             <Roulette
