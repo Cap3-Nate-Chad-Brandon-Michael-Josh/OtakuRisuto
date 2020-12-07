@@ -140,7 +140,10 @@ class DashNav extends Component {
               <option value={true}>Private</option>
             </select>
             <br />
-            <button type="submit">add</button>
+            <button className="addButton" type="submit">
+              {/* add */}
+              <i class="fas fa-plus-circle"></i>
+              </button>
           </form>
         </div>
         <button className="navB" onClick={this.handleFilterClick}>

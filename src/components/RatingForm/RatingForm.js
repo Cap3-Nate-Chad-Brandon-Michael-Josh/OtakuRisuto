@@ -109,8 +109,8 @@ class RatingForm extends Component {
       <form onSubmit={this.handleSubmit} className="ratingForm">
         {this.starRatingInput()}
         <label htmlFor="ratingSubmit"></label>
-        <button type="submit" name="ratingSubmit">
-          Submit Rating
+        <button className="submitT" type="submit" name="ratingSubmit">
+          Submit
         </button>
       </form>
     );
