@@ -101,6 +101,9 @@ body{
   .container2{
     margin:auto 12%;
   }
+  .navB{
+    font-size: 11px;
+  }
 }
 
 @media (min-width:370px) {
@@ -122,6 +125,9 @@ body{
   }
   .genre{
     font-size:15px;
+  }
+  .navB{
+    font-size: 12px;
   }
 }
 
@@ -145,6 +151,9 @@ body{
   }
   .genre{
     font-size:30px;
+  }
+  .navB{
+    font-size: large;
   }
 }
 
@@ -178,7 +187,7 @@ body{
     
     /* color:rgb(255, 255, 255); */
   }
-
+  
 }
 
 
