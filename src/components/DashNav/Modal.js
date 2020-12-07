@@ -71,6 +71,7 @@ export default class Modal extends Component {
                 <h3>Rating: {this.props.anime.rating}</h3>
                 <p>Description: {this.props.anime.description}</p>
                 <button
+                className="delete"
                   onClick={() => {
                     this.handleDelete();
                     this.props.handleItemDelete();
