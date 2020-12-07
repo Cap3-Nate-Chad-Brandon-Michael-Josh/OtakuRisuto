@@ -93,14 +93,7 @@ body{
     background-color: #0000004d;
   }
 
-  .animeImg{
-    /* color:yellow; */
-    /* display:block; */
-    /* margin-left: 0;
-    margin-right:0; */
-
-
-  }
+ 
 
   img{
     width:16em
@@ -116,23 +109,12 @@ body{
     /* color:rgb(195, 0, 255); */
   }
 
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 118px;
-    right: 0px;
-    height: 99%;
-    width: 62%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #0000004d;
-  } */
+  
   img{
     width:16em
   }
   .container2{
-    /* margin:auto 12%; */
+   
     width: 16em;
   }
   .text{
@@ -150,18 +132,7 @@ body{
     /* color:blue; */
   }
 
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 118px;
-    right: 0px;
-    height: 99%;
-    width: 62%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #0000004d;
-  } */
+  
   img{
     width:24em
   }
@@ -183,18 +154,6 @@ body{
     /* color:green; */
   }
 
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 118px;
-    right: 0px;
-    height: 99%;
-    width: 62%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #0000004d;
-  } */
 }
 
 @media all and (min-width:1250px) {
@@ -203,18 +162,7 @@ body{
     /* color:rgb(158, 100, 235); */
   }
 
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 148px;
-    right: 0;
-    height: 100%;
-    width: 57%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #0000004d;
-  } */
+
   .container2{
     /* margin:auto 12%; */
     width: 25em;
@@ -231,18 +179,6 @@ body{
     /* color:rgb(255, 255, 255); */
   }
 
-  /* .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 152px;
-    right: 0;
-    height: 100%;
-    width: 52%;
-    opacity:0;
-    transition: .5s ease;
-    background-color: #0000004d;
-  } */
 }
 
 

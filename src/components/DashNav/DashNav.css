@@ -127,6 +127,11 @@ i:active {
   cursor: pointer;
 }
 
-.animeItem {
-  background-color: rgba(75, 240, 255, 0.63);
+.animeItem{
+background-color: rgba(75, 240, 255, 0.63);
+}
+
+.lists{
+  padding: 18px;
+
 }

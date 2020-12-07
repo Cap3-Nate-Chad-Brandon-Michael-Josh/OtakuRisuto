@@ -107,6 +107,7 @@ class DashNav extends Component {
             this.context.loggedInUserLists.map((list, index) => {
               return (
                 <h3
+                  className="lists"
                   key={index}
                   value={list.list_id}
                   onClick={this.handleListClick}
