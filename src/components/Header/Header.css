@@ -1,9 +1,11 @@
 .sign-out {
-  position: fixed;
+  
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-right: 2%;
+    margin-top: 3%;
 
-  top: 0;
-  right: 0;
-  padding-right: 2%;
 }
 
 .DashSearch {
@@ -19,4 +21,8 @@
 h1 {
   display: inline-flex;
   max-width: fit-content;
+}
+
+.user{
+  margin-top: 65px;
 }

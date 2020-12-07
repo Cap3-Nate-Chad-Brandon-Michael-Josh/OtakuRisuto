@@ -1,7 +1,16 @@
+
 .App {
   text-align: center;
+  position:relative;
+  overflow-x:hidden;
+
 }
-.OR:hover {
+/* #root{
+  overflow-x:hidden;
+
+} */
+
+.OR:hover{
   color: gold;
 }
 .result-item {
