@@ -5,6 +5,10 @@ import RatingForm from '../RatingForm/RatingForm';
 class Rating extends Component {
     static contextType = OtakuContext;
 
+    state = {
+        currentList: this.props.currentList
+    }
+
     componentDidMount() {
         this.context.clearError();
     }
@@ -32,7 +36,7 @@ class Rating extends Component {
                     <p>Average OR Rating:</p>
                     {this.renderRating()}
                 </div>
-                <RatingForm user_rating={currentList.user_rating} rating={currentList.rating} list_id={currentList.list_id}/>
+                <RatingForm key={currentList.user_rating} user_rating={currentList.user_rating} list_id={currentList.list_id}/>
             </div>
             )
         };
