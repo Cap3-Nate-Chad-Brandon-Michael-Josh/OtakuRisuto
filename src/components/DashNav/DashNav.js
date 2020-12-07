@@ -143,7 +143,7 @@ class DashNav extends Component {
             <br />
             <button className="addButton" type="submit">
               {/* add */}
-              <i class="fas fa-plus-circle"></i>
+              <i className="fas fa-plus-circle"></i>
               </button>
           </form>
         </div>
