@@ -6,7 +6,7 @@ import Login from './Login';
 configure({ adapter: new Adapter()})
 
 describe('<Login />', () => {
-  it.skip('should render without crashing', () => {
+  it('should render without crashing', () => {
     shallow(<Login />);    
   })
 })
