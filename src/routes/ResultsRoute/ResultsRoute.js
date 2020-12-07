@@ -1,7 +1,7 @@
 // Search results container
 import Header from "../../components/Header/Header";
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import OtakuContext from "../../contexts/OtakuContext";
 import KitsuAnimeItem from "../../components/KitsuAnimeItem/KitsuAnimeItem";
 import UserResultItem from "../../components/UserResultItem/UserResultItem";
@@ -28,11 +28,9 @@ class ResultsRoute extends Component {
     );
   }
 
-  // this is for expanding kitsu anime item details
   handleDetails = (event, item) => {
     event.preventDefault();
     let update = item;
-    // this will allow an already expanded list item to collapse
     if (item === this.state.expandedItem) {
       update = null;
     }
@@ -126,20 +124,26 @@ class ResultsRoute extends Component {
     return (
       <section className="results">
         <Header />
-                {(this.state.kitsuAnimeData && this.state.kitsuAnimeData) ? 
-                (this.context.searchOption === 'anime') ? 
-                this.renderAnimeFromKitsu() : null : null}
+        {this.state.kitsuAnimeData && this.state.kitsuAnimeData
+          ? this.context.searchOption === "anime"
+            ? this.renderAnimeFromKitsu()
+            : null
+          : null}
 
-                {(this.state.searchedUserData && this.state.searchedUserData) ? 
-                (this.context.searchOption === 'users') ? 
-                this.renderUsers() : null : null}
+        {this.state.searchedUserData && this.state.searchedUserData
+          ? this.context.searchOption === "users"
+            ? this.renderUsers()
+            : null
+          : null}
 
-                {(this.state.publicListsData && this.state.publicListsData) ?
-                 (this.context.searchOption === 'lists') ? 
-                 this.renderLists() : null : null}
-            </section>
-        )
-    }
+        {this.state.publicListsData && this.state.publicListsData
+          ? this.context.searchOption === "lists"
+            ? this.renderLists()
+            : null
+          : null}
+      </section>
+    );
+  }
 }
 
 export default withRouter(ResultsRoute);

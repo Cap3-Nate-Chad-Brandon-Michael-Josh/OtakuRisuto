@@ -48,7 +48,7 @@ body{
   
 }
 /* ---------------------------------- */
-@media all and (max-width:340px) {
+/* @media all and (max-width:340px) {
   * {
     
     color:rgb(255, 251, 0);
@@ -67,14 +67,14 @@ body{
     background-color: #0000004d;
   }
   .animeImg{
-    /* color:yellow; */
-    /* margin-left: -61px; */
+    color:yellow;
+    
 
   }
-}
+} */
 
 
-@media all and (min-width:350px) {
+@media all and (max-width:368px) {
   * {
     
     /* color:rgb(255, 0, 0); */
@@ -101,16 +101,22 @@ body{
 
 
   }
+
+  img{
+    width:16em
+  }
+  .container2{
+    margin:auto 12%;
+  }
 }
 
-
-@media all and (min-width:750px) {
+@media (min-width:370px) {
   * {
     
-    /* color:blue; */
+    /* color:rgb(195, 0, 255); */
   }
 
-  .overlay {
+  /* .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -121,6 +127,53 @@ body{
     opacity: 0;
     transition: .5s ease;
     background-color: #0000004d;
+  } */
+  img{
+    width:16em
+  }
+  .container2{
+    /* margin:auto 12%; */
+    width: 16em;
+  }
+  .text{
+    font-size:20px
+  }
+  .genre{
+    font-size:15px;
+  }
+}
+
+
+@media (min-width:750px) {
+  * {
+    
+    /* color:blue; */
+  }
+
+  /* .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 118px;
+    right: 0px;
+    height: 99%;
+    width: 62%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #0000004d;
+  } */
+  img{
+    width:24em
+  }
+  .container2{
+    /* margin:auto 12%; */
+    width: 25em;
+  }
+  .text{
+    font-size:30px;
+  }
+  .genre{
+    font-size:30px;
   }
 }
 
@@ -130,7 +183,7 @@ body{
     /* color:green; */
   }
 
-  .overlay {
+  /* .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -141,7 +194,7 @@ body{
     opacity: 0;
     transition: .5s ease;
     background-color: #0000004d;
-  }
+  } */
 }
 
 @media all and (min-width:1250px) {
@@ -150,7 +203,7 @@ body{
     /* color:rgb(158, 100, 235); */
   }
 
-  .overlay {
+  /* .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -161,6 +214,13 @@ body{
     opacity: 0;
     transition: .5s ease;
     background-color: #0000004d;
+  } */
+  .container2{
+    /* margin:auto 12%; */
+    width: 25em;
+  }
+  .genre{
+    font-size:30px;
   }
 }
 
@@ -171,7 +231,7 @@ body{
     /* color:rgb(255, 255, 255); */
   }
 
-  .overlay {
+  /* .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -182,7 +242,7 @@ body{
     opacity:0;
     transition: .5s ease;
     background-color: #0000004d;
-  }
+  } */
 }
 
 

@@ -1,7 +1,4 @@
-//form for registering
-
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-service";
 import OtakuContext from "../../contexts/OtakuContext";
 import "./Registration.css";
@@ -68,7 +65,7 @@ class Registration extends Component {
                 <button type='submit' className=''>Submit</button>
             </form>
         )
-    }
-}
+    };
+};
 
 export default Registration;
