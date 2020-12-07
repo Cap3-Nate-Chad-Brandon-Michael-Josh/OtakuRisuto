@@ -28,8 +28,15 @@ const KitsuAnimeItem = (props) => {
                         </form>
                     </div>
                 </div>
-                <p>{props.anime && props.anime.title}</p>
-                <button onClick={event => props.clickDetails(event, props.anime.title)}>expand</button>
+                <p className="animeName">{props.anime && props.anime.title}</p>
+                <button 
+                className="expand"
+                onClick={event => props.clickDetails(event, props.anime.title)}>
+                    {/* expand */}
+                    
+                        <i className="fas fa-expand"></i>
+                    
+                    </button>
             </div>
         )
     }
