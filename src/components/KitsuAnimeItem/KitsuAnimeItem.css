@@ -22,6 +22,10 @@
     transition: .5s ease;
     background-color: #0000004d;
   }
+
+  .overlay .genre{
+    font-size: 20px;
+  }
   
   .container2:hover .overlay {
     opacity: 1;
@@ -38,7 +42,7 @@
     overflow-x: hidden;
   }
 
-  .genre {
+  .genre{
       color:white;
       font-size: 25px;
   }
@@ -62,7 +66,11 @@
     overflow-x: hidden;
     transition: 0.5s;
      padding-top: 60px;
-     margin:auto;
+     margin: auto;
+ }
+
+ .pop-out .episodes{
+   padding-bottom: 7%;
  }
 
  .desc{

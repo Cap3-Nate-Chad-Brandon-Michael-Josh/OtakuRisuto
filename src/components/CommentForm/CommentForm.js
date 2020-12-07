@@ -48,7 +48,7 @@ class CommentForm extends Component {
                 <label htmlFor='newComment'></label>
                 <input type='text' name='newComment' placeholder='Add a new commment' value={this.state.item.comment} onChange={this.handleInputChange}></input>
                 <label htmlFor='commentSubmit'></label>
-                <button type='submit' name='commentSubmit'>Submit</button>
+                <button type='submit' name='commentSubmit'>Submit Comment</button>
             </form>
         )
     }
