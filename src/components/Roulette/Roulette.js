@@ -1,4 +1,5 @@
 import React from "react";
+import './Roulette.css'
 //  import './DiceApp.css'
 
 function Roulette(props) {
@@ -11,6 +12,7 @@ function Roulette(props) {
   return (
     <div className="main">
       <button
+        className='shuffle'
         id="btn"
         onClick={() => {
           shuffle();

@@ -58,6 +58,13 @@ h1 {
   font-size: 30px;
 }
 
+.addButton{
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 30px;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
@@ -78,14 +85,46 @@ h1 {
 
   color: black;
 }
-i:hover,
+/* i:hover,
 i:active {
   color: rgba(255, 0, 0, 0.603);
-}
+} */
 
 .fa-plus-circle:before {
   content: "\f055";
   font-size: 40px;
+}
+
+i.fas.fa-plus-circle:hover {
+  color: rgb(0, 183, 255);
+}
+
+i.fas.fa-star:hover {
+  color: red;
+}
+
+i.fas.fa-pencil-alt:hover {
+  color: red;
+}
+
+i.fas.fa-search:hover {
+  color: red;
+}
+
+button.navB:hover {
+  color: rgb(0, 183, 255);
+}
+
+h3.lists:hover {
+  color: rgb(0, 183, 255);
+}
+
+circle:hover {
+  color: rgb(0, 183, 255);
+}
+
+h2.anime-title:hover {
+  color: silver;
 }
 
 .navB {
