@@ -2,5 +2,6 @@
     padding: 0;
     border: none;
     background: none;
-    font-size: 30px;  
+    font-size: 30px;
+    cursor: pointer;  
   }
