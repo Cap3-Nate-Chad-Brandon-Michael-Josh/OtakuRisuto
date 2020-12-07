@@ -1,11 +1,13 @@
 .App {
   text-align: center;
 }
-.OR:hover{
+.OR:hover {
   color: gold;
-
 }
-body{
+.result-item {
+  cursor: pointer;
+}
+body {
   background-image: url(../../img/animeCover.png);
   /* background-repeat: no-repeat; */
   /* background-color: blue; */
@@ -44,62 +46,58 @@ body{
     transform: rotate(360deg);
   }
 }
-.DashNav{
+.DashNav {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
-  
 }
-                        /* ---------------------------------- */
-                                    /* button styles */
-.submitT{
+/* ---------------------------------- */
+/* button styles */
+.submitT {
   display: inline-block;
-    padding: 6px 25px;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #0000009b;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
+  padding: 6px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0000009b;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
 
-.submitT:hover{
+.submitT:hover {
   background-color: red;
 }
 
-.submitB{
+.submitB {
   display: inline-block;
-    padding: 6px 25px;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #0000009b;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-
+  padding: 6px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0000009b;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 }
 
-.submitB:hover{
+.submitB:hover {
   background-color: red;
-
 }
-                                        /* comment background */
-.comments{
+/* comment background */
+.comments {
   background-color: rgba(255, 255, 255, 0.445);
   /* background-color: red; */
+}
 
-}       
-
-.condense2{
+.condense2 {
   display: inline-block;
   padding: 1px 25px;
   font-size: 20px;
@@ -119,12 +117,11 @@ body{
   transform: translateY(4px);
 }
 
-.condense2:hover{
+.condense2:hover {
   background-color: red;
-
 }
 
-.delete{
+.delete {
   display: inline-block;
   padding: 1px 25px;
   font-size: 20px;
@@ -138,9 +135,8 @@ body{
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
-.delete:hover{
+.delete:hover {
   color: #61dafb;
-
 }
 
 .delete:active {
@@ -148,13 +144,11 @@ body{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-                        /* ---------------------------------- */
-                                        /* media  */
+/* ---------------------------------- */
+/* media  */
 
-
-@media all and (max-width:368px) {
+@media all and (max-width: 368px) {
   * {
-    
     /* color:rgb(255, 0, 0); */
   }
 
@@ -167,22 +161,21 @@ body{
     height: 99%;
     width: 62%;
     opacity: 0;
-    transition: .5s ease;
+    transition: 0.5s ease;
     background-color: #0000004d;
   }
 
   .overlay .genre, .overlay .rating{
     font-size: 25%;
   }
- 
 
-  img{
-    width:16em
+  img {
+    width: 16em;
   }
-  .container2{
-    margin:auto 12%;
+  .container2 {
+    margin: auto 12%;
   }
-  .navB{
+  .navB {
     font-size: 11px;
   }
 
@@ -191,9 +184,8 @@ body{
   } */
 }
 
-@media (min-width:370px) {
+@media (min-width: 370px) {
   * {
-    
     /* color:rgb(195, 0, 255); */
   }
 
@@ -201,37 +193,30 @@ body{
     font-size: 65%;
   }
 
-  
-  img{
-    width:16em
-  }
-  .container2{
-   
+  img {
     width: 16em;
   }
-  .text{
-    font-size:20px
+  .container2 {
+    width: 16em;
   }
-  .genre{
-    font-size:15px;
+  .text {
+    font-size: 20px;
   }
-  .navB{
+  .genre {
+    font-size: 15px;
+  }
+  .navB {
     font-size: 12px;
   }
-  .desc{
-  
+  .desc {
     margin: auto 7em;
     font-size: 16px;
     background-color: rgba(0, 0, 0, 0.596);
-  
-  
   }
 }
 
-
-@media (min-width:750px) {
+@media (min-width: 750px) {
   * {
-    
     /* color:blue; */
   }
 
@@ -239,45 +224,41 @@ body{
     font-size: 67%;
   }
 
-  
-  img{
-    width:24em
+  img {
+    width: 24em;
   }
-  .container2{
+  .container2 {
     /* margin:auto 12%; */
     width: 25em;
   }
-  .text{
-    font-size:30px;
+  .text {
+    font-size: 30px;
   }
-  .genre{
-    font-size:30px;
+  .genre {
+    font-size: 30px;
   }
-  .navB{
+  .navB {
     font-size: large;
   }
   .desc {
     color: white;
     font-size: 30px;
     margin: auto 6em;
-}
+  }
 }
 
-@media all and (min-width:1200px) {
+@media all and (min-width: 1200px) {
   * {
-   
     /* color:green; */
   }
 
   .overlay .genre, .overlay .rating{
     font-size: 67%;
   }
-
 }
 
-@media all and (min-width:1250px) {
+@media all and (min-width: 1250px) {
   * {
-    
     /* color:rgb(158, 100, 235); */
   }
 
@@ -285,23 +266,17 @@ body{
     font-size: 67%;
   }
 
-  .container2{
+  .container2 {
     /* margin:auto 12%; */
     width: 25em;
   }
-  .genre{
-    font-size:30px;
+  .genre {
+    font-size: 30px;
   }
 }
 
-
-@media all and (min-width:1300px) {
+@media all and (min-width: 1300px) {
   * {
-    
     /* color:rgb(255, 255, 255); */
   }
-  
 }
-
-
-

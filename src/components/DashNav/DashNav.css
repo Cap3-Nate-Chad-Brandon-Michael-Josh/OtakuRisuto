@@ -63,6 +63,15 @@ h1 {
   border: none;
   background: none;
   font-size: 30px;
+  cursor: pointer;
+}
+
+.privateOption {
+  cursor: pointer;
+}
+
+.edit-button {
+  cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {

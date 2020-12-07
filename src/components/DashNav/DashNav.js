@@ -135,7 +135,7 @@ class DashNav extends Component {
               required
             />
             <br />
-            <select name="privateOption" onChange={this.handleChange} required>
+            <select name="privateOption" className="privateOption" onChange={this.handleChange} required>
               <option>--Select One--</option>
               <option value={false}>Public</option>
               <option value={true}>Private</option>
