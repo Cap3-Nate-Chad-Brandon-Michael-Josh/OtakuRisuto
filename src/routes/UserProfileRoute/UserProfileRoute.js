@@ -1,4 +1,5 @@
 import Header from '../../components/Header/Header'
+import { Link } from "react-router-dom";
 import React, { Component } from 'react';
 import './UserProfileRoute.css';
 import OtakuApiService from '../../services/otakuApiService';
@@ -38,12 +39,9 @@ class UserProfileRoute extends Component {
         return (
             <section className='userProfileRoute'>
                 <Header />                
-<<<<<<< HEAD
                 <Link to={'/home'}>
                     Home
                 </Link>
-=======
->>>>>>> b6d08d01688ca112134e8b53ff0f22101362b951
                 {this.state.userLists && this.state.userLists.map((list, index) => {
                     return (
                         <section key={index}>
