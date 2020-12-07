@@ -52,7 +52,7 @@ class EditListForm extends Component {
                         onChange={this.handleChange}
                         required />
                     <label htmlFor='editListSubmit'></label>
-                    <button type='submit' name='editListSubmit'>Submit</button>
+                    <button type='submit' name='editListSubmit' className='submitT'>Submit</button>
                 </form>
                 <button onClick={this.handleDelete} className='delete-button'>
                     <i className="fas fa-trash-alt"></i>
