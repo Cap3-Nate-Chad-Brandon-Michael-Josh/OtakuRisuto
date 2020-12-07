@@ -1,18 +1,22 @@
 .sign-out {
-    position: fixed;
-    
-     top: 0;
-     right: 0;
-     padding-right: 2%;
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  padding-right: 2%;
 }
 
-.DashSearch{
-    top: 0;
-    left: -23%;
-    right: -27%;
-    position: absolute;
+.DashSearch {
+  top: 0;
+  left: -23%;
+  right: -27%;
+  position: absolute;
 }
 
 .MainTitle {
-    text-decoration: none;
+  text-decoration: none;
+}
+h1 {
+  display: inline-flex;
+  max-width: fit-content;
 }
