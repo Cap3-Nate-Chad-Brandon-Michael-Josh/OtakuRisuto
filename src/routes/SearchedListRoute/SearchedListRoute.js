@@ -1,6 +1,5 @@
 import Header from "../../components/Header/Header";
 import React, { Component } from "react";
-
 import "./SearchedListRoute.css";
 import OtakuContext from "../../contexts/OtakuContext";
 import OtakuApiService from "../../services/otakuApiService";

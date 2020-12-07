@@ -24,8 +24,11 @@ class DashNav extends Component {
   };
 
   async componentDidMount() {
-    await OtakuApiService.getLoggedInUserLists().then((res) =>
+    await OtakuApiService.getLoggedInUserLists().then((res) => {
+      // this.context.setCurrentList(res[i])
+      console.log(res)
       this.context.setLoggedInUserLists(res)
+    }
     );
     this.context.setCurrentList({});
   }
