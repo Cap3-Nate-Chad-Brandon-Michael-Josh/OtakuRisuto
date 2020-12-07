@@ -1,8 +1,7 @@
-import Header from '../../components/Header/Header'
-import { Link } from "react-router-dom";
-import React, { Component } from 'react';
-import './UserProfileRoute.css';
-import OtakuApiService from '../../services/otakuApiService';
+import Header from "../../components/Header/Header";
+import React, { Component } from "react";
+import "./UserProfileRoute.css";
+import OtakuApiService from "../../services/otakuApiService";
 
 class UserProfileRoute extends Component {
   state = {
@@ -36,28 +35,32 @@ class UserProfileRoute extends Component {
     return res;
   }
 
-    render() {
-        return (
-            <section className='userProfileRoute'>
-                <Header />                
-                <Link to={'/home'}>
-                    Home
-                </Link>
-                {this.state.userLists && this.state.userLists.map((list, index) => {
-                    return (
-                        <section key={index}>
-                            <h2 onClick={event => this.handleViewListClick(event, list.list_id)}>{list.name}</h2>
-                            <h3>Owned by: {list.owner.username}</h3>
-                            <div>
-                                <h3>Avg OR Rating:</h3>
-                                {this.renderRating(list)}
-                            </div>                        
-                        </section>
-                    )
-                })}
-            </section>
-        )
-    }
+  render() {
+    return (
+      <section className="userProfileRoute">
+        <Header />
+        {this.state.userLists &&
+          this.state.userLists.map((list, index) => {
+            return (
+              <section key={index}>
+                <h2
+                  onClick={(event) =>
+                    this.handleViewListClick(event, list.list_id)
+                  }
+                >
+                  {list.name}
+                </h2>
+                <h3>Owned by: {list.owner.username}</h3>
+                <div>
+                  <h3>Avg OR Rating:</h3>
+                  {this.renderRating(list)}
+                </div>
+              </section>
+            );
+          })}
+      </section>
+    );
+  }
 }
 
 export default UserProfileRoute;
