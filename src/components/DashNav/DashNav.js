@@ -25,12 +25,17 @@ class DashNav extends Component {
 
   async componentDidMount() {
     await OtakuApiService.getLoggedInUserLists().then((res) => {
-      // this.context.setCurrentList(res[i])
-      console.log(res)
       this.context.setLoggedInUserLists(res)
+      if(res[0] === undefined) {
+        this.setState({ currentList: {} });
+      } else {
+        OtakuApiService.getListInfo(res[0].list_id).then((res) => {
+          this.context.setCurrentList(res);
+          this.setState({ currentList: this.context.currentList });
+        });
+      }
     }
     );
-    this.context.setCurrentList({});
   }
 
   handleItemDelete = () => {
