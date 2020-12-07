@@ -8,6 +8,7 @@ import Rating from "../Rating/Rating";
 import Comments from "../Comments/Comments";
 import Roulette from "../Roulette/Roulette";
 import EditListForm from "../EditListForm/EditListForm";
+import RatingForm from '../RatingForm/RatingForm';
 
 class DashNav extends Component {
   static contextType = OtakuContext;
@@ -97,7 +98,7 @@ class DashNav extends Component {
 
   render() {
     return (
-      <div>
+      <div data-testid='dashNav'>
         {this.context.registration && (
           <Suggestions addSuggestionsList={this.handleAddSuggestionsList} />
         )}
