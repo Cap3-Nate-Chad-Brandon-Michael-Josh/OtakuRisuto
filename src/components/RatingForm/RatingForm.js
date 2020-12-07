@@ -65,6 +65,9 @@ class RatingForm extends Component {
   renderRating() {
     let acc = Math.round(this.state.item.rating);
     let res = [];
+    if (!acc || isNaN(acc)) {
+      acc = 0;
+    }
     for (let i = 0; i < 5; i++) {
       if (acc === 0) {
         res.push(
