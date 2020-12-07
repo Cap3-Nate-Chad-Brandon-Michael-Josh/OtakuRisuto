@@ -153,11 +153,13 @@ class DashNav extends Component {
         {this.context.currentList.name ? (          
           <div>
             <h1>{this.context.currentList.name}</h1>
+            {!this.state.editing ?
             <Roulette
               list={this.state.currentList.anime}
               updateExpandedItem={this.setRandomAnime}
               handleShuffle={this.handleShuffle}
             />
+            : null }
             {this.state.editing ? (
               <EditListForm editing={this.handleEditListClick} />
             ) : null}

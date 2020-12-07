@@ -5,3 +5,9 @@
     font-size: 30px;
     cursor: pointer;  
   }
+
+  .delete-button:hover {
+    color: red;
+  }
+
+  
