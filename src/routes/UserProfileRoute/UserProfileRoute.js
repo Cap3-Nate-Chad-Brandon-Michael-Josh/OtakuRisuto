@@ -45,7 +45,6 @@ class UserProfileRoute extends Component {
                 <Link to={'/home'}>
                     Home
                 </Link>
-                <p>this is User Profile Route</p>
                 {this.state.userLists && this.state.userLists.map((list, index) => {
                     return (
                         <section key={index}>

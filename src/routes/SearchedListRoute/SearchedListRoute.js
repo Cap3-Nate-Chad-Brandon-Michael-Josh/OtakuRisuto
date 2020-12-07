@@ -87,7 +87,6 @@ class SearchedListRoute extends Component {
     return (
       <section className="SearchedListRoute">
         <Header />
-        <Link to={"/home"}>Home</Link>
         <h2>{this.context.currentList && this.context.currentList.name}</h2>
         <form onSubmit={this.cloneList}>
           <label htmlFor="name">Name:</label>
