@@ -27,13 +27,16 @@ class Header extends Component {
                                 <span className='sign-out'>
                                     <i className="fas fa-sign-out-alt"></i>
                                 </span>
+
                             </Link>
-                            <h3>{this.context.user.username}</h3>
+
+                            <h3 className='user'>{this.context.user.username}</h3>
 
 
                         </div>
                     </nav>
                     <Link className='MainTitle' to={'/home'}><h1 className="OR">OtakuRisuto</h1></Link>
+
                 </div>
             </section>
         )
