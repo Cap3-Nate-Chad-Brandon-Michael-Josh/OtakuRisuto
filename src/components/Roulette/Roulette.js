@@ -21,6 +21,6 @@ function Roulette(props) {
       </button>
     </div>
   );
-} n
+}
 
 export default Roulette;
