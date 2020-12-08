@@ -87,11 +87,12 @@ TECHNOLOGY:
     
 
 GETTING STARTED:
+
 Run npm install to load dependencies
 
 Run npm test to ensure a stable build
 
-This is only the front end client, so develop locally you'll need the backend server as well.
+This is only the front end client, so develop locally you'll need the backend server as well
 
 To get the backend up and running see https://github.com/Cap3-Nate-Chad-Brandon-Michael-Josh/OtakuRisutoServer
 
