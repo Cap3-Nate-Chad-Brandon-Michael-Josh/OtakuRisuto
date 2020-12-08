@@ -20,10 +20,12 @@ APP: Registration and Login
 Anyone is allowed to register for an account as long as they provide an email address, a username, and password. 
 
 All fields are required and the password must meet specific requirements. Once the client receives a valid response, the user will automatically be redirected to the login page where they will then enter their login information.
+
 ![registration page](./src/img/screenshots/registration.PNG)
 
 If the user is registering for the first time, they will automatically be logged-in and redirected to their dashboard page. 
 Otherwise, returning users can login through the login page.
+
 ![login page](./src/img/screenshots/login.PNG)
 
 
@@ -31,6 +33,7 @@ Otherwise, returning users can login through the login page.
 APP: Suggestions
 
 After a successful registration, the user will be taken to their dashboard page where they will prompted to create their first anime list. We will provide the user with ten suggestions from some of the most popular anime to make getting started easy.
+
 ![dashboard page with suggestions](./src/img/screenshots/suggestions.PNG)
 
 
@@ -42,6 +45,7 @@ The dashboard is where our users will be able to access the majority of our appl
 At the top of the dashboard is a search bar where the user can search by name for specific anime, other users, or other users' lists. 
 
 The center of the dashboard will populate with all the data from a list they selected from the navigation menu.
+
 ![dashboard page](./src/img/screenshots/dashboard.PNG)
 
 
@@ -52,6 +56,7 @@ When a user selects a list from the navigation menu, all the anime from that lis
 The user will also have the option to leave a rating and comments for that list. Additionally by clicking the edit icon for the list, the user can edit the list name or delete the entire list.
 
 The shuffle button will automatically calculate and present the user with the best anime to watch next based on their specific preferences.
+
 ![user list](./src/img/screenshots/user-list.PNG)
 
 
@@ -61,9 +66,11 @@ APP: Search
 The user has three categories to search from: anime, users, and lists. 
 
 When a user searches for an anime, they will be presented with the ten closest results. By hovering over an anime or clicking the expand button, a user will get specific information about that anime and have the option to add it to a specific list.
+
 ![anime search](./src/img/screenshots/search-anime.PNG)
 
 A user can also search for specific user by their username and see all the lists that they have made publicly available. Any user can comment on, rate, or clone lists that are public.
+
 ![user search](./src/img/screenshots/search-user.PNG)
 
 A user can also search for specific lists by list name.
