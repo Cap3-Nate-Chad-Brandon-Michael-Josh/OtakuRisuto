@@ -46,6 +46,7 @@ The center of the dashboard will populate with all the data from a list they sel
 
 
 APP: User List
+
 When a user selects a list from the navigation menu, all the anime from that list will populate in the center of their dashboard. Each anime listed is expandable with a single click and will provide the user with specific information about that anime such as description, genre, rating, episode count, etc. as well as a trash icon to remove that specific anime from the list.
 
 The user will also have the option to leave a rating and comments for that list. Additionally by clicking the edit icon for the list, the user can edit the list name or delete the entire list.
@@ -56,6 +57,7 @@ The shuffle button will automatically calculate and present the user with the be
 
 
 APP: Search 
+
 The user has three categories to search from: anime, users, and lists. 
 
 When a user searches for an anime, they will be presented with the ten closest results. By hovering over an anime or clicking the expand button, a user will get specific information about that anime and have the option to add it to a specific list.
