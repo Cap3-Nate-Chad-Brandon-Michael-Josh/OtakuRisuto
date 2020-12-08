@@ -31,7 +31,7 @@ Otherwise, returning users can login through the login page.
 APP: Suggestions
 
 After a successful registration, the user will be taken to their dashboard page where they will prompted to create their first anime list. We will provide the user with ten suggestions from some of the most popular anime to make getting started easy.
-![dashboard page with suggestions](./src/img/screenshots/suggestions.png)
+![dashboard page with suggestions](./src/img/screenshots/suggestions.PNG)
 
 
 
