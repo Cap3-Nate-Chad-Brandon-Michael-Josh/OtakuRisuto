@@ -4,7 +4,7 @@ import './Roulette.css'
 
 function Roulette(props) {
   function shuffle(list) {
-    let randomNumber = Math.floor(Math.random() * (props.list.length - 1)) + 1;
+    let randomNumber = Math.floor(Math.random() * (props.list.length));
 
     props.updateExpandedItem(randomNumber);
   }
