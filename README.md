@@ -82,4 +82,8 @@ This is only the front end client, so to develop locally you'll need the backend
 
 To get the backend up and running see https://github.com/Cap3-Nate-Chad-Brandon-Michael-Josh/OtakuRisutoServer
 
-Deployments are handled through Vercel and can be run via npm run deploy
+Run mv example.env .env
+
+Then enter the REACT_APP_API_ENDPOINT you want to use in your local .env file. This name is already wired up in config.js, so you'll only need to change the value if you wish to use a different value than the given value.
+
+Deployments are handled through Vercel and can be run via npm run deploy.
