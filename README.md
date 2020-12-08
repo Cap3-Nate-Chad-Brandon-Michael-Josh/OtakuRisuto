@@ -14,6 +14,7 @@ If our users are still can't decide what to watch next, we have them covered. We
 We understand that there are increasing amount of people discovering anime for the first time as well. Because of that, a user can search for and clone anime lists created by other users that they have made public. The lists also have a rating system and comment section to help our community discover new content that fits their taste. 
 
 APP: Registration and Login
+
 Anyone is allowed to register for an account as long as they provide an email address, a username, and password. 
 
 All fields are required and the password must meet specific requirements. Once the client receives a valid response, the user will automatically be redirected to the login page where they will then enter their login information.
