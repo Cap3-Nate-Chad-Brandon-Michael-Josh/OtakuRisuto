@@ -71,6 +71,7 @@ A user can also search for specific lists by list name.
 
 
 TECHNOLOGY:
+
   Front End
     - React
       - Create React App
