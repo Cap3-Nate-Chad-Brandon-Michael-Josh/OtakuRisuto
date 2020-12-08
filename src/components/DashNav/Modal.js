@@ -40,7 +40,7 @@ export default class Modal extends Component {
 
   render() {
     return (
-      <div>
+      <div className="anime-border">
         <h2
           className="anime-title"
           onClick={() => {

@@ -58,6 +58,12 @@ h1 {
   font-size: 30px;
 }
 
+.edit-button:active {
+  color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 .addButton{
   padding: 0;
   border: none;
