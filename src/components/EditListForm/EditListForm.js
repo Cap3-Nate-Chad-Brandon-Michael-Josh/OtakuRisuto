@@ -51,7 +51,8 @@ class EditListForm extends Component {
                         value={this.state.nameInput}
                         onChange={this.handleChange}
                         required />
-                    <label htmlFor='editListSubmit'></label>
+                    <label htmlFor='editListSubmit' />
+                    <br />
                     <button type='submit' name='editListSubmit' className='submitT'>Submit</button>
                 </form>
                 <button onClick={this.handleDelete} className='delete-button'>
