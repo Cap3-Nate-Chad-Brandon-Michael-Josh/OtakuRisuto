@@ -2,9 +2,9 @@
 
 Live link: https://otaku-risuto.vercel.app/
 
-Demo Username:
+Demo Username: DemoUser
 
-Demo Password:
+Demo Password: P@ssword1
 
 ## INTRODUCTION: Why OtakuRisuto
 
