@@ -27,7 +27,10 @@ const KitsuAnimeItem = (props) => {
                                         <option 
                                             key={index} 
                                             value={list.list_id}
-                                            aria-label={`Add anime to ${list.name}`}>{list.name}</option>)                                        
+                                            aria-label={`Add anime to ${list.name}`}>
+                                                {list.name}
+                                        </option>
+                                    )                                        
                                 })}
                             </select>
                             <button aria-label="Add anime to list">Add to list</button>
