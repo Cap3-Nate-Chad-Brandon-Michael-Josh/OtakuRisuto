@@ -54,6 +54,8 @@ class Login extends Component {
                 <label htmlFor="password">Password</label><br></br>
                 <input type='password' name='password' className='' placeholder='password'></input><br></br>
                 <button type='submit' className='Submit'>Login</button>
+                <p>Demo Username: DemoUser</p>
+                <p>Demo Password: P@ssword1</p>
             </form>
         )
     }
