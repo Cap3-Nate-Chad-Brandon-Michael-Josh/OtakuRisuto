@@ -19,7 +19,7 @@ function Roulette(props) {
           props.handleShuffle();
         }}
       >
-        Shuffle
+        Roulette
       </button>
     </div>
   );
