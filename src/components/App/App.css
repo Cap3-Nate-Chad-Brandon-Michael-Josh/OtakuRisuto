@@ -208,7 +208,7 @@ body {
   } */
 }
 
-@media (min-width: 370px) {
+@media (min-width: 360px) {
   * {
     /* color:rgb(195, 0, 255); */
   }
