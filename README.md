@@ -1,8 +1,11 @@
 # OtakuRisuto
 
 Live link: https://otaku-risuto.vercel.app/
+
 Demo Username:
+
 Demo Password:
+
 ## INTRODUCTION: Why OtakuRisuto
 
 Welcome to OtakuRisuto, your home to manage, track, and make progress on all the anime you have put on the backburner
