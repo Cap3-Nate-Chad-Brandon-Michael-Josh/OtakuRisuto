@@ -77,7 +77,7 @@ class SearchBar extends Component {
                     <input
                         name='searchTerm'
                         type='text'
-                        htmlFor='search-bar'
+                        aria-label="Search for anime users or lists"
                         onChange={this.handleChange}
                         value={this.state.searchTerm}
                         placeholder='Search: anime, friends or lists'
@@ -93,8 +93,8 @@ class SearchBar extends Component {
                     <button
                         className='search'
                         type='submit'
-                        htmlFor='Submit search'>
-                        <i className="fas fa-search"></i>
+                        aria-label='SearchBarSubmit'>
+                        <i className='fas fa-search'></i>
                         {/* Search! */}
                     </button>
                     {/* </nav> */}

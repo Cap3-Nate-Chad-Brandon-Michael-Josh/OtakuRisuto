@@ -54,7 +54,7 @@ class EditListForm extends Component {
                     <label htmlFor='editListSubmit'></label><br></br>
                     <button type='submit' name='editListSubmit' className='submitT'>Submit</button>
                 </form>
-                <button onClick={this.handleDelete} className='delete-button'>
+                <button onClick={this.handleDelete} className='delete-button' aria-label='Delete list'>
                     <i className="fas fa-trash-alt"></i>
                 </button>
             </div>

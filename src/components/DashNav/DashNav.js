@@ -143,7 +143,7 @@ class DashNav extends Component {
                             <option value={true}>Private</option>
                         </select>
                         <br />
-                        <button className="addButton" type="submit">
+                        <button className="addButton" type="submit" aria-label="Add new list">
                             {/* add */}
                             <i className="fas fa-plus-circle"></i>
                         </button>
@@ -165,7 +165,7 @@ class DashNav extends Component {
                         {this.state.editing ? (
                             <EditListForm editing={this.handleEditListClick} />
                         ) : null}
-                        <button onClick={this.handleEditListClick} className="edit-button">
+                        <button onClick={this.handleEditListClick} className="edit-button" aria-label="Edit List">
                             <i className="fas fa-pencil-alt"></i>
                         </button>
                     </div>
