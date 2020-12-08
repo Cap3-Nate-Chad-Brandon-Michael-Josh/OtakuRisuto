@@ -64,7 +64,7 @@ class RatingForm extends Component {
                         key={i}
                         value={i + 1}
                         name={`star${i + 1}`}
-                        className="far fa-star"
+                        className="far fa-star click"
                     ></i>
                 );
             } else {
@@ -74,7 +74,7 @@ class RatingForm extends Component {
                         key={i}
                         value={i + 1}
                         name={`star${i + 1}`}
-                        className="fas fa-star"
+                        className="fas fa-star click"
                     ></i>
                 );
                 acc--;
