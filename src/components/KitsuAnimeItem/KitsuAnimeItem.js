@@ -56,9 +56,12 @@ const KitsuAnimeItem = (props) => {
                 <h3>Description: </h3>
                 <p className='desc'>{props.anime && props.anime.description}</p>
                 <p>Average rating: {props.anime && props.anime.rating}</p>
-                {props.anime.genre.map(genre => {
-                    return <p className='genre' key={genre}>{genre}</p>
-                })}
+                <div className='expanded-anime-genre-container'>
+                    {props.anime.genre.map(genre => {
+                        return <p className='genre' key={genre}>{genre}</p>
+                    })}
+                </div>
+
                 <p className='episodes'>Total Episodes: {props.anime.episode_count}</p>
 
             </div>
