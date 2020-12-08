@@ -13,6 +13,7 @@ If our users are still can't decide what to watch next, we have them covered. We
 
 We understand that there are increasing amount of people discovering anime for the first time as well. Because of that, a user can search for and clone anime lists created by other users that they have made public. The lists also have a rating system and comment section to help our community discover new content that fits their taste. 
 
+
 APP: Registration and Login
 
 Anyone is allowed to register for an account as long as they provide an email address, a username, and password. 
@@ -24,9 +25,12 @@ If the user is registering for the first time, they will automatically be logged
 Otherwise, returning users can login through the login page.
 ![login page](./src/img/screenshots/login.png)
 
+
 APP: Suggestions
+
 After a successful registration, the user will be taken to their dashboard page where they will prompted to create their first anime list. We will provide the user with ten suggestions from some of the most popular anime to make getting started easy.
 ![dashboard page with suggestions](./src/img/screenshots/suggestions.png)
+
 
 APP: Dashboard
 The dashboard is where our users will be able to access the majority of our application's features. On the left is a navigation menu where a user can quickly access any list they have added as well as add a new empty. The menu can be toggled by a button at the top. 
@@ -36,6 +40,7 @@ At the top of the dashboard is a search bar where the user can search by name fo
 The center of the dashboard will populate with all the data from a list they selected from the navigation menu.
 ![dashboard page](./src/img/screenshots/dashboard.png)
 
+
 APP: User List
 When a user selects a list from the navigation menu, all the anime from that list will populate in the center of their dashboard. Each anime listed is expandable with a single click and will provide the user with specific information about that anime such as description, genre, rating, episode count, etc. as well as a trash icon to remove that specific anime from the list.
 
@@ -43,6 +48,7 @@ The user will also have the option to leave a rating and comments for that list.
 
 The shuffle button will automatically calculate and present the user with the best anime to watch next based on their specific preferences.
 ![user list](./src/img/screenshots/user-list.png)
+
 
 APP: Search 
 The user has three categories to search from: anime, users, and lists. 
