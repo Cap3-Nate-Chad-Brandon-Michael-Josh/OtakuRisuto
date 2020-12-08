@@ -64,7 +64,7 @@ h1 {
   transform: translateY(4px);
 }
 
-.addButton{
+.addButton {
   padding: 0;
   border: none;
   background: none;
@@ -188,4 +188,5 @@ h2.anime-title:hover {
 
 .lists {
   padding: 18px;
+  cursor: pointer;
 }
