@@ -8,7 +8,7 @@ class RegistrationRoute extends Component {
     render(){
         return(
             <section className='RegistrationRoute'>
-                <h2>OtakuRisuto</h2>
+                <h1>OtakuRisuto</h1>
                 <div className='RegistrationContainer'>
                     <br></br>
                     <Registration history={this.props.history}/>

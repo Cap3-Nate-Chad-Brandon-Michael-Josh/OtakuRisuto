@@ -77,13 +77,13 @@ class SearchBar extends Component {
                     <input
                         name='searchTerm'
                         type='text'
-                        htmlFor='search-bar'
+                        aria-label="Search for anime users or lists"
                         onChange={this.handleChange}
                         value={this.state.searchTerm}
                         placeholder='Search: anime, friends or lists'
                         required />
                     <br />
-                    <select name='searchOption' onChange={this.handleChange} required>
+                    <select name='searchOption' onChange={this.handleChange} required aria-label='search options'>
                         <option value=''>--Choose one--</option>
                         <option value='anime'>Anime</option>
                         <option value='users'>Users</option>
@@ -93,8 +93,8 @@ class SearchBar extends Component {
                     <button
                         className='search'
                         type='submit'
-                        htmlFor='Submit search'>
-                        <i className="fas fa-search"></i>
+                        aria-label='SearchBarSubmit'>
+                        <i className='fas fa-search'></i>
                         {/* Search! */}
                     </button>
                     {/* </nav> */}

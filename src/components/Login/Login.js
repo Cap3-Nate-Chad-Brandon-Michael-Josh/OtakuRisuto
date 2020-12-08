@@ -50,9 +50,9 @@ class Login extends Component {
                     {this.state.error && <p>{this.state.error}</p>}
                 </div>
                 <label htmlFor="username" ref={this.firstInput}>Username</label><br></br>
-                <input type='text' name='username' className='' placeholder='username'></input><br></br>
+                <input type='text' id='username' className='' placeholder='username'></input><br></br>
                 <label htmlFor="password">Password</label><br></br>
-                <input type='password' name='password' className='' placeholder='password'></input><br></br>
+                <input type='password' id='password' className='' placeholder='password'></input><br></br>
                 <button type='submit' className='Submit'>Login</button>
                 <p>Demo Username: DemoUser</p>
                 <p>Demo Password: P@ssword1</p>

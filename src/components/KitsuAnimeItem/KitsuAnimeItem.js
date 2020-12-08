@@ -20,16 +20,26 @@ const KitsuAnimeItem = (props) => {
                             })}
                         </div>
                         <form onSubmit={event => props.submitAnime(event, props.anime)}>
-                            <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)}>
+                            <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)} aria-label="Add to selected list">
                                 <option value=''>--Select One--</option>
-                                {props.userLists.map((list, index) => <option key={index} value={list.list_id}>{list.name}</option>)}
+                                {props.userLists.map((list, index) => {
+                                    return (
+                                        <option 
+                                            key={index} 
+                                            value={list.list_id}
+                                            aria-label={`Add anime to ${list.name}`}>
+                                                {list.name}
+                                        </option>
+                                    )                                        
+                                })}
                             </select>
-                            <button>Add to list</button>
+                            <button aria-label="Add anime to list">Add to list</button>
                         </form>
                     </div>
                 </div>
                 <p className="animeName">{props.anime && props.anime.title}</p>
                 <button 
+                aria-label="Anime expanded view"
                 className="expand"
                 onClick={event => props.clickDetails(event, props.anime.title)}>
                     {/* expand */}
