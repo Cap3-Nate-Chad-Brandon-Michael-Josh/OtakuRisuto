@@ -28,14 +28,9 @@ Otherwise, returning users can login through the login page.
 
 APP: Suggestions
 
-<<<<<<< HEAD
-After a successful registration, the user will be taken to their dashboard page where they will be prompted to create their first anime list. We will provide the user with ten suggestions from some of the most popular anime to make getting started easy.
-![dashboard page with suggestions](./src/img/screenshots/suggestions.png)
-=======
 After a successful registration, the user will be taken to their dashboard page where they will prompted to create their first anime list. We will provide the user with ten suggestions from some of the most popular anime to make getting started easy.
 
 ![dashboard page with suggestions](./src/img/screenshots/suggestions.PNG)
->>>>>>> c955ec03d2c9cf4d5cf2deaf2159ec72d3bca865
 
 APP: Dashboard
 
@@ -43,14 +38,8 @@ The dashboard is where our users will be able to access the majority of our appl
 
 At the top of the dashboard is a search bar where the user can search by name for specific anime, other users, or other users' lists.
 
-<<<<<<< HEAD
 The center of the dashboard will be populated with all the data from a list they selected from the navigation menu.
-![dashboard page](./src/img/screenshots/dashboard.png)
-=======
-The center of the dashboard will populate with all the data from a list they selected from the navigation menu.
-
 ![dashboard page](./src/img/screenshots/dashboard.PNG)
->>>>>>> c955ec03d2c9cf4d5cf2deaf2159ec72d3bca865
 
 APP: User List
 
@@ -58,14 +47,8 @@ When a user selects a list from the navigation menu, all the anime from that lis
 
 The user will also have the option to leave a rating and comments for that list. Additionally by clicking the edit icon for the list, the user can edit the list name or delete the entire list.
 
-<<<<<<< HEAD
 The shuffle button will automatically calculate and present the user with an anime to watch next based on their specific preferences.
-![user list](./src/img/screenshots/user-list.png)
-=======
-The shuffle button will automatically calculate and present the user with the best anime to watch next based on their specific preferences.
-
 ![user list](./src/img/screenshots/user-list.PNG)
->>>>>>> c955ec03d2c9cf4d5cf2deaf2159ec72d3bca865
 
 APP: Search
 
