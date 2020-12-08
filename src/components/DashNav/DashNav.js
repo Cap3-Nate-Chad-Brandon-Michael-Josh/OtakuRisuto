@@ -110,7 +110,7 @@ class DashNav extends Component {
                         this.state.Nav ? this.state.className : this.state.classNameHidden
                     }
                 >
-                    <h1>Your lists</h1>
+                    <h2>Your lists</h2>
                     {this.context.loggedInUserLists &&
                         this.context.loggedInUserLists.map((list, index) => {
                             return (
@@ -129,6 +129,7 @@ class DashNav extends Component {
                         onSubmit={(event) => this.handleAddNewList(event)}
                     >
                         <input
+                            aria-label="new list name"
                             placeholder="New List"
                             name="newListInput"
                             htmlFor="New list name"
@@ -137,7 +138,7 @@ class DashNav extends Component {
                             required
                         />
                         <br />
-                        <select name="privateOption" className="privateOption" onChange={this.handleChange} required>
+                        <select name="privateOption" className="privateOption" onChange={this.handleChange} required aria-label='private option'>
                             <option>--Select One--</option>
                             <option value={false}>Public</option>
                             <option value={true}>Private</option>

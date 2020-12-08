@@ -83,7 +83,7 @@ class SearchBar extends Component {
                         placeholder='Search: anime, friends or lists'
                         required />
                     <br />
-                    <select name='searchOption' onChange={this.handleChange} required>
+                    <select name='searchOption' onChange={this.handleChange} required aria-label='search options'>
                         <option value=''>--Choose one--</option>
                         <option value='anime'>Anime</option>
                         <option value='users'>Users</option>
