@@ -30,7 +30,6 @@ class RatingForm extends Component {
         const newRating = this.state.rating;
         const list_id = this.props.list_id;
         if (newRating && list_id) {
-            console.log(list_id)
             await OtakuApiService.postRating(newRating, list_id)
                 .then((res) => {
                     this.context.resetRating(res);
@@ -54,8 +53,6 @@ class RatingForm extends Component {
             acc = Math.round(this.state.rating);
         }
         let res = [];
-        console.log(this.props.user_rating)
-        console.log(this.state.rating)
         if (!acc || isNaN(acc)) {
             acc = 0;
         }

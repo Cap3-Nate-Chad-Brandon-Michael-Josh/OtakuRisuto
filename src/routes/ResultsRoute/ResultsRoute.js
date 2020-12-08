@@ -44,8 +44,14 @@ class ResultsRoute extends Component {
   handleAddToList = (event, anime) => {
     event.preventDefault();
     OtakuApiService.addAnimeToList(anime, this.state.addToSelectedList);
-
-    this.setState({ expandedItem: null });
+    let addedTo = this.context.loggedInUserLists.find(list => {      
+      return list.list_id === Number(this.state.addToSelectedList)
+    })    
+    this.setState({ 
+      expandedItem: null,        
+    }); 
+    
+    alert(`${anime.title} added to ${addedTo.name}`)   
   };
 
   renderAnimeFromKitsu() {
