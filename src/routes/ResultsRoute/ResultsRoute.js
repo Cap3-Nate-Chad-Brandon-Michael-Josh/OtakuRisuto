@@ -7,6 +7,7 @@ import KitsuAnimeItem from "../../components/KitsuAnimeItem/KitsuAnimeItem";
 import UserResultItem from "../../components/UserResultItem/UserResultItem";
 import SearchPublicListResults from "../../components/SearchPublicListsResults/SearchPublicListsResults";
 import OtakuApiService from "../../services/otakuApiService";
+import AddedResponse from "../../components/AddedResponse/AddedResponse";
 
 class ResultsRoute extends Component {
   state = {
@@ -48,10 +49,13 @@ class ResultsRoute extends Component {
       return list.list_id === Number(this.state.addToSelectedList)
     })    
     this.setState({ 
-      expandedItem: null,        
+      expandedItem: null,
+      addSuccess: true,
+      addedAnime: anime.title,
+      addedList: addedTo.name        
     }); 
     
-    alert(`${anime.title} added to ${addedTo.name}`)   
+    // alert(`${anime.title} added to ${addedTo.name}`)   
   };
 
   renderAnimeFromKitsu() {
@@ -129,7 +133,8 @@ class ResultsRoute extends Component {
   render() {
     return (
       <section className="results">
-        <Header />
+        <Header />       
+
         {this.state.kitsuAnimeData && this.state.kitsuAnimeData
           ? this.context.searchOption === "anime"
             ? this.renderAnimeFromKitsu()

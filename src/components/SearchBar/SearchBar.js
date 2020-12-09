@@ -36,6 +36,7 @@ class SearchBar extends Component {
                 this.context.setSearchedUserData(res)
             })
             .catch(error => this.context.setError(error))
+            // .catch(error => console.log(error))
     }
 
     fetchOtakuPublicLists(searchTerm) {
