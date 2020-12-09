@@ -24,8 +24,15 @@ class LandingRoute extends Component {
                 
             </nav>
             <h1>Welcome to OtakuRisuto!</h1>
-                <p>Otaku Risuto allows you to keep track of your favorite anime, which ones you have seen, which ones you want to see, 
-        and any other type of list you want. It also helps you pick what to watch next! Just go to the list and click the anime roulette button!</p>
+                <p>
+                    Otaku Risuto allows you to keep track of your favorite anime, 
+                    which ones you have seen, which ones you want to see, 
+                    and any other type of list you want. It also helps you pick 
+                    what to watch next! Just go to the list and click the anime 
+                    roulette button! Check it out by using our Demo account (credentials
+                    are listed on the login form) or sign up for a personal account to start
+                    keeping track of your favorite anime titles!
+                </p>
             </section>
             </section>
         )
