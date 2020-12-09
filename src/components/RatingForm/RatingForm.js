@@ -32,7 +32,10 @@ class RatingForm extends Component {
         if (newRating && list_id) {
             await OtakuApiService.postRating(newRating, list_id)
                 .then((res) => {
-                    this.context.resetRating(res);
+                    OtakuApiService.getListInfo(list_id)
+                        .then((res) => {
+                            this.context.setCurrentList(res)
+                        })
                 })
                 .catch((error) => {
                     this.setState(error);
