@@ -63,6 +63,7 @@ body {
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 70px;
 }
 /* ---------------------------------- */
 /* button styles */
@@ -203,6 +204,10 @@ body {
     font-size: 11px;
   }
 
+  .searchError{
+    font-size: 15px;
+  }
+
   /* .desc{
     margin:auto 6em;
   } */
@@ -237,6 +242,9 @@ body {
     font-size: 16px;
     background-color: rgba(0, 0, 0, 0.596);
   }
+  .searchError{
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 750px) {
@@ -269,6 +277,9 @@ body {
     font-size: 30px;
     margin: auto 6em;
   }
+  .searchError{
+    font-size: 25px;
+  }
 }
 
 @media all and (min-width: 1200px) {
@@ -278,6 +289,9 @@ body {
 
   .overlay .genre, .overlay .rating{
     font-size: 67%;
+  }
+  .searchError{
+    font-size: 30px;
   }
 }
 
@@ -297,10 +311,16 @@ body {
   .genre {
     font-size: 30px;
   }
+  .searchError{
+    font-size: 35px;
+  }
 }
 
 @media all and (min-width: 1300px) {
   * {
     /* color:rgb(255, 255, 255); */
+  }
+  .searchError{
+    font-size: 35px;
   }
 }

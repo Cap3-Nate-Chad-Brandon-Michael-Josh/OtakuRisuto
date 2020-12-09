@@ -70,9 +70,8 @@ class SearchBar extends Component {
         return (
             <div>
                 <form className="DashSearch" onSubmit={(event) => this.handleSubmit(event)}>
-                    {this.context.error ? <p>{this.context.error.error}</p> : null}
+                    {this.context.error ? <p className='searchError'>{this.context.error.error}</p> : null}
                     <br />
-                    {/* <nav className='DashNav'> */}
                     <input
                         name='searchTerm'
                         type='text'
@@ -94,9 +93,7 @@ class SearchBar extends Component {
                         type='submit'
                         aria-label='SearchBarSubmit'>
                         <i className='fas fa-search'></i>
-                        {/* Search! */}
                     </button>
-                    {/* </nav> */}
                 </form>
             </div>
         )

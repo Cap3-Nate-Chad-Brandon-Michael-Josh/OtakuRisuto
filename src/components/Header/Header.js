@@ -18,7 +18,6 @@ class Header extends Component {
       <section className="Header">
         <div className="headerTitle">
           <nav className="DashNav">
-            <SearchBar />
             <div className="headerLogout sign-out">
               <Link
                 aria-label="Logout"
@@ -29,9 +28,9 @@ class Header extends Component {
                   <i className="fas fa-sign-out-alt"></i>
                 </span>
               </Link>
-
               <h3 className="user">{this.context.user.username}</h3>
             </div>
+            <SearchBar />
           </nav>
           <Link className="MainTitle" to={"/home"}>
             <h1 className="OR">OtakuRisuto</h1>
