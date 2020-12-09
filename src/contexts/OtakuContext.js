@@ -112,8 +112,7 @@ export class OtakuProvider extends Component {
     this.setState({ currentList: data });
   };
 
-  setError = (error) => {
-    console.error(error);
+  setError = (error) => {    
     this.setState({ error });
   };
 
