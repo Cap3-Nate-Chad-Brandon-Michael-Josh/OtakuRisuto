@@ -100,6 +100,12 @@
   margin: auto 6em;
 }
 
+.overlay-anime-genre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .genre {
   margin: 4px  10px 4px 10px !important;
   display: unset;
