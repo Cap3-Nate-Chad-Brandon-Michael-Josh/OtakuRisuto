@@ -15,9 +15,11 @@ const KitsuAnimeItem = (props) => {
                             <p className='titles'>Rating</p>
                             <p className='rating'>{props.anime.rating}</p>
                             <p className='titles'>Genre</p>
-                            {props.anime.genre.map((genre, index) => {
-                                return <p className='genre' key={genre + index}>{genre}</p>
-                            })}
+                            <div className='overlay-anime-genre-container'>
+                                {props.anime.genre.map(genre => {
+                                    return <p className='genre' key={genre}>{genre}</p>
+                                })}
+                            </div>
                         </div>
                         <form onSubmit={event => props.submitAnime(event, props.anime)}>
                             <select name='addToSelectedList' onChange={event => props.changeSelectedList(event)} aria-label="Add to selected list">
