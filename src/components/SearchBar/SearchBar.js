@@ -70,7 +70,6 @@ class SearchBar extends Component {
         return (
             <div>
                 <form className="DashSearch" onSubmit={(event) => this.handleSubmit(event)}>
-                    <label htmlFor='search-bar'></label>
                     {this.context.error ? <p>{this.context.error.error}</p> : null}
                     <br />
                     {/* <nav className='DashNav'> */}

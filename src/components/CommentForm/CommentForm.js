@@ -45,10 +45,8 @@ class CommentForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} className='commentForm'>
-                <label htmlFor='newComment'></label>
                 <input type='text' name='newComment' placeholder='Add a new commment' value={this.state.item.comment} onChange={this.handleInputChange} aria-label='add a new comment'></input>
-                <label htmlFor='commentSubmit'></label><br></br>
-                <button className="submitB" type='submit' name='commentSubmit'>Post</button>
+                <button className="submitB" type='submit' name='commentSubmit' aria-label='post comment'>Post</button>
             </form>
         )
     }

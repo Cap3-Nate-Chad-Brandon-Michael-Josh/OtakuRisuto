@@ -96,8 +96,7 @@ class RatingForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="ratingForm">
         {this.starRatingInput()}
-        <label htmlFor="ratingSubmit"></label>
-        <button className="submitT" type="submit" name="ratingSubmit">
+        <button className="submitT" type="submit" id="ratingSubmit" aria-label='submit rating'>
           Submit
         </button>
             </form>
