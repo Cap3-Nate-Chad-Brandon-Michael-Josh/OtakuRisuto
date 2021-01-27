@@ -11,6 +11,8 @@ import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import "./App.css";
 import UserProfileRoute from "../../routes/UserProfileRoute/UserProfileRoute";
 import SearchedListRoute from "../../routes/SearchedListRoute/SearchedListRoute";
+import ForgotPasswordForm from "../ForgotPasswordForm/ForgotPasswordForm";
+import PasswordResetForm from "../PasswordResetForm/PasswordResetForm";
 
 export default class App extends Component {
   render() {
@@ -40,6 +42,16 @@ export default class App extends Component {
               component={SearchedListRoute}
             />
             <PublicOnlyRoute exact path={"/"} component={LandingRoute} />
+            <PublicOnlyRoute
+              exact
+              path={"/reset"}
+              component={ForgotPasswordForm}
+            />
+            <PublicOnlyRoute
+              exact
+              path={"/reset/:token"}
+              component={PasswordResetForm}
+            />
             <Route component={NotFoundRoute} />
           </Switch>
         </main>
