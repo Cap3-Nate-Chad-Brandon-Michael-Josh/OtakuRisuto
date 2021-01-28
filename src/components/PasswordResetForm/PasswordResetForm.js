@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthApiService from "../../services/auth-api-service";
 import OtakuContext from "../../contexts/OtakuContext";
+import "./PasswordResetForm.css";
 
 export default class PasswordResetForm extends Component {
   static defaultProps = {
@@ -40,16 +41,27 @@ export default class PasswordResetForm extends Component {
   render() {
     return (
       <div>
-        <h3>New Password</h3>
-        <p>{this.state.message}</p>
-        <p>{this.state.error}</p>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="password">New Password:</label>
-          <input type="text" id="password" name="password" />
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="text" id="confirmPassword" name="confirmPassword" />
-          <input type="submit" value="Reset Password" />
-        </form>
+        <h1>OtakuRisuto</h1>
+        <div className="passwordReset">
+          <h3>New Password</h3>
+          <p>{this.state.message}</p>
+          <p>{this.state.error}</p>
+          <form className="Reset" onSubmit={this.handleSubmit}>
+            <label htmlFor="password">New Password:</label>
+            <br />
+            <input type="password" id="password" name="password" />
+            <br />
+            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <br />
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+            />
+            <br />
+            <input type="submit" className="Submit" value="Reset Password" />
+          </form>
+        </div>
       </div>
     );
   }
