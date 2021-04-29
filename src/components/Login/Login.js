@@ -33,7 +33,11 @@ class Login extends Component {
         history.push("/home");
       })
       .catch((res) => {
-        this.setState({ error: (res.error.message + ", please try again later") });
+        if(res.error.message){
+          this.setState({ error: res.error.message});
+        } else if (res.error){
+          this.setState({ error: res.error});
+        }
       });
   };
 
