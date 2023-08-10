@@ -1,5 +1,7 @@
 # OtakuRisuto
 
+Due to changes in pricing and requirements, the server side hosting from Heroku is currently unavailable. Feel free to browse the back-end code in the Github Repo while the necessary changes are being made to bring the public version back online.
+
 Live link: https://otaku-risuto.vercel.app/
 
 Demo Username: DemoUser
